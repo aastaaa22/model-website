@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Security Council</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+            :root {
+                --primary: #000000;
+                --accent: #f7b731;
+                --text: #fff;
+                --muted: #b0b0b0;
+            }
+        * { box-sizing: border-box; }
+            body {
+                margin: 0;
+                font-family: 'Montserrat', Arial, sans-serif;
+                background: #000;
+                color: var(--text);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+        nav {
+            width: 100%;
+            background: rgba(14,16,28,0.95);
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-right: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 3rem 1rem;
+            background: linear-gradient(180deg, #0e101c 60%, #181b2a 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+        }
+        .hero .socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .hero .socials a {
+            color: var(--accent);
+            font-size: 2rem;
+            transition: color 0.2s;
+        }
+        .hero .socials a:hover {
+            color: #fff;
+        }
+        section {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: #181b2a;
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+        }
+        section h2 {
+            color: var(--accent);
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        section p, section ul {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+        section ul {
+            padding-left: 1.2rem;
+        }
+        footer {
+            margin-top: auto;
+            background: #181b2a;
+            color: var(--muted);
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 1.2rem 0.7rem; }
+            nav .logo { font-size: 1.2rem; }
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+        <header style="width:100%;background:#111;text-align:center;padding:1.5rem 0 1rem 0;letter-spacing:2px;">
+            <img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" style="vertical-align:middle;margin-right:12px;height:48px;">
+            <h1 style="display:inline-block;margin:0;font-size:2.5rem;color:#f7b731;font-family:'Montserrat',Arial,sans-serif;vertical-align:middle;">National Security Council</h1>
+            <img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" style="vertical-align:middle;margin-left:12px;height:48px;">
+        </header>
+        <nav>
+            <div class="nav-links" style="position:sticky;top:0;z-index:20;background:rgba(14,16,28,0.97);padding:0.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                <ul style="margin:0;padding:0;list-style:none;display:flex;gap:2rem;justify-content:center;">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#rank-lists">Rank Lists</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#department">Department</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                    <li><a href="#portal">Portal</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero">
+            <p>Welcome to the official site of the National Security Council. Explore our projects, connect with us, and learn more about what we do.</p>
+            <div class="socials">
+                <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:someone@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    <section id="foundation-team">
+        <h2 style="text-align:center;font-family:'Montserrat',Arial,sans-serif;font-size:2.5rem;font-weight:800;letter-spacing:2px;color:#f7b731;margin-bottom:1.5rem;">Foundation Team</h2>
+        <div class="team-row" style="display:flex;justify-content:center;align-items:center;gap:2rem;flex-wrap:wrap;width:100%;max-width:900px;margin:0 auto;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:180px;">
+                <a href="#"><img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5019-1394-.hd-3091-8-.ch-3077-1413-110-.lg-3058-110-.sh-3016-110-.ha-3209-63-.ea-1403-110-.fa-1201-undefined-.ca-3085-93-.cc-3327-1325-110-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Member 1" style="border-radius:12px;max-width:100%;height:auto;"></a>
+                <span style="font-size:0.95rem;color:#b0b0b0;margin-top:8px;">Hasroy</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:180px;">
+                <a href="#"><img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3860-61-61-.hd-3536-1-14-.ch-3688-110-.lg-3136-110-.fa-3276-72-.cc-3867-92-92-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Member 2" style="border-radius:12px;max-width:100%;height:auto;"></a>
+                <span style="font-size:0.95rem;color:#b0b0b0;margin-top:8px;">.SpicyIce</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:180px;">
+                <a href="#"><img src="https://www.habbo.com/habbo-imaging/avatarimage?user=VorpalX&direction=3&head_direction=3&gesture=nor&headonly=1&action=wav&size=l&format=.gif" alt="Member 3" style="border-radius:12px;max-width:100%;height:auto;"></a>
+                <span style="font-size:0.95rem;color:#b0b0b0;margin-top:8px;">VorpalX</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:180px;">
+                <a href="#"><img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3841-42-.hd-4174-19-.ch-4361-73-64-.lg-285-64-.sh-300-64-.ea-1403-1408-.fa-3592-64-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Member 4" style="border-radius:12px;max-width:100%;height:auto;"></a>
+                <span style="font-size:0.95rem;color:#b0b0b0;margin-top:8px;">XxxTrayxxX</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:120px;max-width:180px;">
+                <a href="#"><img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3163-34-.hd-185-1-.ch-5452-63-1408-.lg-3502-92-.ha-5867-93-67-.fa-3276-72-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Member 5" style="border-radius:12px;max-width:100%;height:auto;"></a>
+                <span style="font-size:0.95rem;color:#b0b0b0;margin-top:8px;">gleamingskyline</span>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>About us</h2>
+        <p>Founded on  , the National Security Council (NSC) is a Habbo roleplaying agency dedicated to building a safe, welcoming, and inclusive environment for all members.<br>
+        At NSC, we believe in creating a strong sense of community through engaging role play, structured agency operations, and rewarding activity. Members are given the opportunity to grow, connect, and contribute to something bigger, while also earning up credits through dedication and participation.<br>
+        ​Whether you're new to Habbo or a seasoned agency member, NSC offers a place where your voice matters, your safety is prioritized, and your efforts are valued.<br>
+        Join us and be a part of something greater.</p>
+    </section>
+    <section id="contact">
+    <h2>Our Mission</h2>
+    <p>Welcome to the National Security Council, a place where everyone is welcome and everyone is heard. We believe in creating a friendly, respectful and healthy environment where people from all walks of life can come together to learn, grow and collaborate.<br>
+    As a community rooted in Filipino values, we embrace the spirit of bayanihan, resilience, and hospitality. Through meaningful discussions, cultural exchanges, and engaging activities, we aim to share the rich traditions, history, and diversity of the Philippines with all members.<br>
+    Join us as we build a safe, inclusive, and empowering space, where your voice matters and where you can connect with like-minded individuals while discovering the beauty of Filipino Culture.</p>
+    </section>
+    <footer>
+        &copy; NAtional Security Council. All rights reserved.
+    </footer>
+</body>
+</html>

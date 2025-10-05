@@ -2,6 +2,6 @@
   "version": 2,
   "public": true,
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+  { "src": "/(.*)", "dest": "/home.html" }
   ]
 }
