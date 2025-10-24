@@ -471,6 +471,40 @@ body.flicker {
                         });
 
                         document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+                        // Policies dropdown: mirror Rank Lists behaviour so it works on hover, keyboard and touch
+                        (function(){
+                            var policiesToggle = document.getElementById('policies-toggle');
+                            if(!policiesToggle) return;
+                            var policiesLi = policiesToggle.parentNode;
+                            var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                            var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+
+                            // Hover open/close for desktop
+                            policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                            policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+
+                            // Click/tap toggles the menu (useful on touch devices)
+                            policiesToggle.addEventListener('click', function(e){
+                                // If already visible, let clicks on links navigate; otherwise toggle visibility
+                                var visible = policiesDropdown.style.display === 'block' || window.getComputedStyle(policiesDropdown).display === 'block';
+                                policiesDropdown.style.display = visible ? 'none' : 'block';
+                                policiesToggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
+                                e.preventDefault();
+                            });
+
+                            // keyboard navigation inside the dropdown
+                            policiesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); }
+                            });
+
+                            // Clicking outside closes the policies dropdown
+                            document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
                     });
                     // Improved flicker + drip initialization, auto-enables Halloween between Oct 27–Nov 30 (respects prefers-reduced-motion)
                     (function(){
