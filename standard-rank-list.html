@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard Rank List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        :root {
+            /* Bayanihan-inspired palette */
+            --primary: #071029; /* deep navy base */
+            --panel: rgba(8,16,28,0.66); /* slightly stronger for contrast */
+            --accent-sun: #FFC62B; /* sun yellow (titles) */
+            --accent-red: #C1272D; /* flag red */
+            --accent-blue: #0038A8; /* flag blue */
+            --text: #ffffff;
+            --muted: #c9d0d8;
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+                body {
+                        margin: 0;
+                        font-family: 'Montserrat', Arial, sans-serif;
+                        /* layered background: deep navy base + soft sun vignette + subtle red band */
+                        background:
+                            radial-gradient(900px 300px at 50% 10%, rgba(255,198,43,0.08), transparent 18%),
+                            linear-gradient(180deg, #071029 0%, #02102a 60%, #03102f 100%),
+                            linear-gradient(180deg, rgba(193,39,45,0.02), rgba(193,39,45,0) 30%);
+                        background-attachment: fixed;
+                        color: var(--text);
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                }
+        /* per-page nav styles (copied for easy copy/paste) */
+        nav {
+            width: 100%;
+            background: var(--panel);
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+        nav .logo { font-size: 1.7rem; font-weight: 700; color: var(--accent-blue); letter-spacing: 2px; margin-right: 2rem; }
+        nav ul { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; font-family: 'Montserrat', Arial, sans-serif; }
+        nav ul li a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.4px; transition: color 0.18s; padding: 0.15rem 0.25rem; }
+        nav ul li a:hover { color: var(--accent-sun); }
+
+        .nav-list { display: flex; gap: 2.5rem; margin:0; padding:0; list-style:none; justify-content:center; font-family: 'Montserrat', Arial, sans-serif; }
+        .hamburger { display: none; background:transparent;border:0;color:var(--text);font-size:1.6rem; cursor:pointer; }
+        .hamburger:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px; }
+
+        @media (max-width: 900px) {
+            .hamburger { display:inline-block; }
+            .nav-list { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--panel); margin: 0 auto; flex-direction: column; gap:0; padding:0.5rem; border-top:1px solid rgba(255,255,255,0.02); }
+            .nav-list.show { display:flex; }
+            .nav-list li { padding: 0.35rem 0.6rem; }
+        }
+
+        .dropdown-toggle { color: var(--text); font-weight:600; padding:0.1rem 0.2rem; cursor:default; }
+        .dropdown-toggle::after { content: '▾'; display:inline-block; margin-left:0.5rem; transition: transform 0.25s ease; color: var(--muted); }
+        .dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); color: var(--accent-sun); }
+        .nav-links li:hover .nav-dropdown { display: block; }
+        .nav-dropdown { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); box-shadow: none; backdrop-filter: blur(4px); border-radius:8px; padding:0.25rem 0; min-width:220px; position:absolute; top:100%; left:0; display:none; }
+        .nav-dropdown li + li { border-top: 1px solid rgba(255,255,255,0.02); }
+        .nav-dropdown a { display:block; padding:0.55rem 1rem; color:var(--text); text-decoration:none; font-size:1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .nav-dropdown a:hover { background: rgba(255,255,255,0.04); color: var(--accent-sun); }
+
+        .nav-links { background: var(--panel); position:sticky; top:0; z-index:20; padding:0.5rem 0; font-family: 'Montserrat', Arial, sans-serif; }
+        .nav-links ul { margin:0; padding:0; list-style:none; display:flex; gap:2rem; justify-content:center; }
+        @media (max-width: 600px) {
+            nav .logo { font-size: 1.2rem; }
+        }
+        /* Header / title bar */
+        header {
+            width:100%;
+            background: var(--panel);
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+        }
+    header h1 { display:inline-block; margin:0; font-size:2.5rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; vertical-align:middle; font-weight:800; text-shadow: 0 3px 12px rgba(0,0,0,0.4); }
+    /* nav styles moved to css/site.css */
+        h1 { color: var(--accent-sun); text-align: center; margin-top: 2rem; }
+    .container { max-width: 700px; margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
+    /* expandable division styles */
+    .expandable { background: rgba(255,255,255,0.02); border-radius: 10px; margin-top: 1.25rem; overflow: hidden; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.03); }
+    .expandable-header { padding: 0.9rem 1rem; cursor: pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .expandable-header strong { font-size: 1.05rem; color: var(--text); }
+    .expandable-header .caret { transition: transform 0.25s ease; font-size:1.1rem; }
+    .expandable-content { max-height: 0; overflow: hidden; transition: max-height 0.32s ease; padding: 0 1rem; }
+    .expandable.open .expandable-header { background: rgba(0,0,0,0.06); }
+    .expandable.open .caret { transform: rotate(180deg); }
+    .expandable .muted { color: var(--muted); margin: 0.5rem 0 1rem 0; }
+    .expandable-header .caret { color: var(--muted); }
+    .rank-list li { color: var(--text); }
+    .expandable .rank-list { list-style: none; padding: 0 0 1rem 0; margin: 0; }
+    .expandable .rank-list li { padding: 0.4rem 0; border-bottom: 1px dashed rgba(255,255,255,0.03); }
+
+    /* Accent styling: surface the Bayanihan blue and red accents */
+    /* Titles use the sun yellow for clarity, subtler blue for smaller UI bits */
+    .expandable-header strong { color: var(--accent-sun); font-weight:700; }
+    .expandable-header .caret { color: var(--accent-blue); }
+
+    /* When open, show a gold/red accent bar to emphasize the panel */
+    .expandable.open { box-shadow: 0 8px 28px rgba(0,0,0,0.5); border-left: 4px solid var(--accent-red); padding-left: calc(1rem - 4px); }
+
+    /* subtle blue hover tint on headers with stronger yellow focus */
+    .expandable-header:hover { background: rgba(0,56,168,0.04); }
+    .expandable-header:focus-within { background: rgba(255,198,43,0.04); }
+
+    /* utility badge for highlighting important ranks */
+    .rank-badge { background: linear-gradient(90deg, var(--accent-sun), var(--accent-red)); color: #0b0b0b; padding: 0.2rem 0.55rem; border-radius: 6px; display:inline-block; font-size:0.9rem; font-weight:700; }
+    /* site header / badges */
+    .site-header { width:100%; background: var(--panel); text-align:center; padding:1.5rem 0 1rem 0; letter-spacing:2px; box-shadow: 0 2px 10px rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; gap:12px; }
+    .site-title { display:inline-block; margin:0; font-size:2.5rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:800; }
+    .header-badge { height:48px; vertical-align:middle; }
+    .header-badge.left { margin-right:12px; }
+    .header-badge.right { margin-left:12px; }
+    /* nav styles moved to css/site.css */
+    </style>
+    </head>
+<body>
+    <header class="site-header">
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+        <h1 class="site-title">National Security Council</h1>
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <div class="nav-left">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li style="position:relative;">
+                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-labelledby="ranklists-toggle" aria-label="Rank Lists menu">
+                            <li><a href="standard-rank-list.html">Standard Rank Lists</a></li>
+                            <li><a href="elective-rank-list.html">Elective Rank Lists</a></li>
+                        </ul>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#department">Department</a></li>
+                <li style="position:relative;">
+                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                        <li><a href="pay-system.html">Pay System</a></li>
+                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            </ul>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navList = document.querySelector('.nav-list');
+            var hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', function(){
+                var open = navList.classList.toggle('show');
+                hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+            var toggle = rankListLi.querySelector('.dropdown-toggle');
+            var dropdown = rankListLi.querySelector('.nav-dropdown');
+            var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+
+            rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+            rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+
+            // click and keyboard handlers removed to restore hover-only dropdown behavior
+
+            dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
+
+            document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+
+            // Policies dropdown handlers
+            (function(){
+                var policiesToggle = document.getElementById('policies-toggle');
+                if(!policiesToggle) return;
+                var policiesLi = policiesToggle.parentNode;
+                var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+
+                policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+
+                policiesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); } else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); } });
+
+                document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+            })();
+        });
+        </script>
+    </nav>
+    <div class="container">
+        <h1>Standard Rank List</h1>
+        <!-- Expandable divisions -->
+        <div class="expandable" id="division-1c">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Standard Division - 1c</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 15 minutes)</p>
+                <ul class="rank-list">
+                    <li>Clerk</li>
+                    <li>Officer I</li>
+                    <li>Officer II</li>
+                    <li>Officer III</li>
+                    <li>Lead Officer I</li>
+                    <li>Lead Officer II</li>
+                    <li>Lead Officer III</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-security">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Security</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 30 minutes)</p>
+                <ul class="rank-list">
+                    <li>Trial Security</li>
+                    <li>Security I</li>
+                    <li>Security II</li>
+                    <li>Security III</li>
+                    <li>Security IV</li>
+                    <li>Security V</li>
+                    <li>Access Control Officer</li>
+                    <li>Surveillance Analyst</li>
+                    <li>Head of Security</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-education">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Education Div</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 1 hour)</p>
+                <ul class="rank-list">
+                    <li>Trial Education Mentee - Needs to do 2 training to promote to next rank</li>
+                    <li>Professor I</li>
+                    <li>Professor II</li>
+                    <li>Professor III</li>
+                    <li>Assistant Principal</li>
+                    <li>Principal</li>
+                    <li>Dean of Studies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-office-supervisor">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Office Supervisor</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 1 hour and 30 minutes) (Can promote until Trial Education Mentee)</p>
+                <ul class="rank-list">
+                    <li>Trial Observer - Needs to complete 4 promotions to promote to next rank</li>
+                    <li>Commander I</li>
+                    <li>Commander II</li>
+                    <li>Commander III</li>
+                    <li>Commander IV</li>
+                    <li>Advanced Supervisor</li>
+                    <li>Expert Supervisor</li>
+                    <li>Head Supervisor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-overseer">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Overseer</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 2 hours) (Can Promote Until Trial Observer)</p>
+                <ul class="rank-list">
+                    <li>Trial Overseer</li>
+                    <li>Overseer I</li>
+                    <li>Overseer II</li>
+                    <li>Expert Overseer I</li>
+                    <li>Expert Overseer III</li>
+                    <li>Assistant Head Overseer</li>
+                    <li>Head Overseer</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-management">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Management Officers</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 2 hours and 30 minutes) (Can Promote Until Trial Overseer)</p>
+                <ul class="rank-list">
+                    <li>Trial Manager - Needs to do 2 tours to promote to next rank</li>
+                    <li>Manager I</li>
+                    <li>Manager II</li>
+                    <li>Advanced Manager I</li>
+                    <li>Advanced Manager II</li>
+                    <li>Advanced Manager III</li>
+                    <li>Assistant Manager</li>
+                    <li>Head Manager</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-pr">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Public Relations</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 3 hours) (Can Promote Until Trial Manager)</p>
+                <ul class="rank-list">
+                    <li>Trial Public Relation Member</li>
+                    <li>Public Relations Trainee</li>
+                    <li>Public Relations Associate</li>
+                    <li>Public Speaker</li>
+                    <li>Communications Manager</li>
+                    <li>Social Media Influencer</li>
+                    <li>Social Media Star</li>
+                    <li>Assistant Head of Public Relations</li>
+                    <li>Head of Public Relation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-consultancy">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Consultancy</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 3 hours and 30 minutes) (Can Promote Until Trial Public Relation Member)</p>
+                <ul class="rank-list">
+                    <li>Trial Consultant</li>
+                    <li>Consultant I</li>
+                    <li>Consultant II</li>
+                    <li>Consultant III</li>
+                    <li>Rookie Consultant</li>
+                    <li>Junior Consultant</li>
+                    <li>Senior Consultant</li>
+                    <li>Assistant Head Consultant</li>
+                    <li>Head Consultant</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-government">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Government Affairs</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 4 hours) (Can Promote Until Trial Consultant)</p>
+                <ul class="rank-list">
+                    <li>Government Affairs Associate</li>
+                    <li>Junior Policy Advisor</li>
+                    <li>Policy Advisor</li>
+                    <li>Senior Policy Advisor</li>
+                    <li>Deputy Director of Government Affairs</li>
+                    <li>Director of Government Affairs</li>
+                    <li>Senior Representative</li>
+                    <li>Chief Representative</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-professional">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Professional Staff</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 4 hours and 30 minutes) (Can Promote Until Trial Government Affairs Associate)</p>
+                <ul class="rank-list">
+                    <li>Trial Finance Coordinator</li>
+                    <li>Administrative Advisor</li>
+                    <li>Management Analyst</li>
+                    <li>IT Advisor</li>
+                    <li>Evidence Analyst</li>
+                    <li>Legal Advisor</li>
+                    <li>Lead Advisor</li>
+                    <li>Principal Consultant</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-senior-exec">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Senior Executive</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 6 hours) (Can Promote Until Trial Finance Coordinator)</p>
+                <ul class="rank-list">
+                    <li>Trial Executive</li>
+                    <li>Junior Executive</li>
+                    <li>Senior Executive I</li>
+                    <li>Senior Executive II</li>
+                    <li>Senior Executive III</li>
+                    <li>Lead Executive I</li>
+                    <li>Lead Executive II</li>
+                    <li>Lead Executive III</li>
+                    <li>Chief Executive</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-leadership">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Leadership Council</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 8 hours) (Can Promote Until Trial Executive)</p>
+                <ul class="rank-list">
+                    <li>Trial Leader</li>
+                    <li>Leadership Intern</li>
+                    <li>Assistant Leader</li>
+                    <li>Leader</li>
+                    <li>General Leader</li>
+                    <li>Associate Leader</li>
+                    <li>Executive Leader</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-prestigious">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Prestigious Counsel</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 10 hours) (Can Promote Until Trial Leader)</p>
+                <ul class="rank-list">
+                    <li>Trial Counsel</li>
+                    <li>Associate Counsel</li>
+                    <li>Senior Counsel</li>
+                    <li>Chief Counsel</li>
+                    <li>Executive Counsel</li>
+                    <li>Chief Advisor</li>
+                    <li>Senior Consultant</li>
+                    <li>Prestigious Overseer</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="expandable" id="division-elites">
+            <div class="expandable-header" role="button" aria-expanded="false">
+                <strong>Elites</strong>
+                <span class="caret">▾</span>
+            </div>
+            <div class="expandable-content">
+                <p class="muted">(Can receive a promotion every 16 hours) (Can Promote Until Trial Counsel)</p>
+                <ul class="rank-list">
+                    <li>Trial Elite Citizen</li>
+                    <li>Elite Citizen I</li>
+                    <li>Elite Citizen II</li>
+                    <li>Elite Citizen III</li>
+                    <li>Experienced Elite Citizen</li>
+                    <li>Advanced Elite Citizen</li>
+                    <li>Expert Elite Citizen</li>
+                    <li>Head Elite Citizen</li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            (function(){
+                var expandables = document.querySelectorAll('.expandable');
+                expandables.forEach(function(exp){
+                    var header = exp.querySelector('.expandable-header');
+                    var content = exp.querySelector('.expandable-content');
+                    // ensure content height is correct if open on load
+                    if(exp.classList.contains('open')){
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        header.setAttribute('aria-expanded','true');
+                    }
+                    header.addEventListener('click', function(){
+                        var open = exp.classList.toggle('open');
+                        header.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        if(open) {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                        } else {
+                            content.style.maxHeight = '0';
+                        }
+                    });
+                });
+            })();
+        </script>
+    </div>
+</body>
+</html>

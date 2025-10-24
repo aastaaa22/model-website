@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pay System — NSC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff; --muted:#c9d0d8; --radius:14px }
+        body{ margin:0; font-family:'Montserrat',Arial,sans-serif; background:linear-gradient(180deg,#071029 0%,#02102a 60%); color:var(--text); }
+        .container{ max-width:980px; margin:3rem auto; background:var(--panel); padding:2rem; border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,0.6); backdrop-filter:blur(6px); }
+        .site-header{ width:100%; background:var(--panel); text-align:center; padding:1.5rem 0; box-shadow:0 2px 10px rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; gap:12px; }
+        .site-title{ font-size:2rem; color:var(--accent-sun); font-weight:800; }
+
+        /* Policy-specific styling to match site theme */
+        .policy-hero { display:block; margin-bottom:1rem; }
+        .policy-title { font-size:1.3rem; color:var(--accent-sun); font-weight:800; margin:0 0 0.35rem 0; }
+        .policy-sub { color:var(--muted); margin:0 0 1rem 0; }
+        .policy-section { margin:1rem 0; line-height:1.5; color:var(--text); }
+        .policy-section h3 { margin:0 0 0.6rem 0; color:var(--accent-blue); font-size:1.05rem; }
+        .policy-note { background: rgba(255,198,43,0.04); border-left: 4px solid var(--accent-sun); padding:0.8rem; border-radius:6px; color:var(--muted); margin:0.8rem 0; }
+        .policy-list { margin:0.5rem 0 0.5rem 1.05rem; color:var(--text); }
+        .policy-list li { margin-bottom:0.45rem; }
+        .policy-points { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.6rem; margin-top:0.6rem; }
+        .policy-card { background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); padding:0.7rem; border-radius:8px; }
+        .policy-cta { margin-top:1rem; color:var(--muted); font-size:0.95rem; }
+        @media (max-width:700px){ .policy-points{ grid-template-columns: 1fr; } }
+    </style>
+    <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+        <h1 class="site-title">National Security Council</h1>
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <div class="nav-left">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li style="position:relative;">
+                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                    <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+                        <li><a href="standard-rank-list.html">Standard Rank Lists</a></li>
+                        <li><a href="elective-rank-list.html">Elective Rank Lists</a></li>
+                    </ul>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#department">Department</a></li>
+                <li style="position:relative;">
+                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                        <li><a href="pay-system.html">Pay System</a></li>
+                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="policy-hero">
+            <h2 class="policy-title">DEPT OF FINANCE POLICY</h2>
+            <p class="policy-sub">Standard Pay System — Read carefully: eligibility rules, pay distribution, bonus and pay-bonus quotas.</p>
+        </div>
+
+        <section class="policy-section" aria-labelledby="standard-pay">
+            <h3 id="standard-pay">Standard Pay System</h3>
+            <p>Pay sessions take place four (4) times a day at <strong>2:00 AM</strong>, <strong>6:00 AM</strong>, <strong>2:00 PM</strong>, and <strong>6:00 PM (GMT+8)</strong>.</p>
+
+            <div class="policy-note" role="note">
+                To qualify for pay, members must have at least <strong>30 minutes</strong> of online time and be present in base to fill a station <strong>15 minutes</strong> before the session opens.
+                For example: if a pay session opens at 2:00 PM, members should be online by 1:30 PM and at base to fill a station on or before 1:45 PM.
+            </div>
+
+            <p>To receive pay:</p>
+            <ol class="policy-list">
+                <li>Members must join the pay session via the NSC Portal within <strong>five (5) minutes</strong> after the payer opens the session.</li>
+                <li>After the session closes the payer will check each member's eligibility (online time and station fill) one-by-one. Members must have filled a station for <strong>30 minutes</strong> to avoid pay ban.</li>
+                <li>If a member disconnects before, during or after pay they must immediately notify the payer and log the disconnection in Discord’s <code>#disconnection-logs</code> with proper format — tag the payer and any witnesses for vouch.</li>
+            </ol>
+
+            <p class="policy-cta"><strong>Note:</strong> If a non-agent member fails to join the pay session within the allotted time, their pay will be voided for that session.</p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="pay-distribution">
+            <h3 id="pay-distribution">Pay distribution (Standard)</h3>
+            <p>Pay is distributed per rank. (1 point = 1 credit)</p>
+
+            <div class="policy-points" aria-hidden="false">
+                <div class="policy-card">
+                    <strong>Standard Division</strong>
+                    <p>Clerk: <strong>1 point</strong></p>
+                </div>
+                <div class="policy-card">
+                    <strong>Security to Education</strong>
+                    <p><strong>2 points</strong></p>
+                </div>
+                <div class="policy-card">
+                    <strong>Office Supervisor to Management Officers</strong>
+                    <p><strong>3 points</strong></p>
+                </div>
+                <div class="policy-card">
+                    <strong>Public Relations to Professional Staff</strong>
+                    <p><strong>4 points</strong></p>
+                </div>
+                <div class="policy-card">
+                    <strong>Senior Executives to Elite</strong>
+                    <p><strong>5 points</strong></p>
+                </div>
+                <div class="policy-card">
+                    <strong>iC Divisions (5iC to 1iC)</strong>
+                    <p><strong>6 points</strong></p>
+                </div>
+            </div>
+
+            <p class="policy-cta">Payers must ensure all participants meet requirements before approving pay. Violations may result in removal from Department of Finance, additional disciplinary measures, or permanent expulsion from NSC.</p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="special-notice">
+            <h3 id="special-notice">Special Notice</h3>
+            <p>Promotions, training and tours are available during pay time except paylines: paylines are expected to line up to be included in the list of people to pay at the Portal.</p>
+        </section>
+
+        <section class="policy-section" aria-labelledby="bonus-points">
+            <h3 id="bonus-points">Bonus Points</h3>
+            <p>Every member is eligible to earn up to <strong>6 bonus points per day</strong>, resetting every 24 hours. Members request bonus points in the Portal with included evidence (training / tour):</p>
+            <ul class="policy-list">
+                <li>Up to 3 points from tours</li>
+                <li>Up to 3 points from trainings</li>
+            </ul>
+        </section>
+
+        <section class="policy-section" aria-labelledby="pay-bonus">
+            <h3 id="pay-bonus">Pay Bonus</h3>
+            <p>Starting from Education+ division, members may be eligible for Pay Bonus if they meet quotas by the end of the week (Sunday 3:00 AM to Friday 11:59 PM GMT+8).</p>
+
+            <div class="policy-note">
+                Payers, Advisory Boards and Founders can accept Pay Bonus requests until every Friday 11:59 PM GMT+8. Any member finishing their quota must not receive verbal warnings/strikes/punishment (including Pay Ban) or they will be voided from the Pay Bonus.
+            </div>
+
+            <h4>Quotas (summary)</h4>
+            <ul class="policy-list">
+                <li><strong>Education Division:</strong> 3 trainings; Promoted 3 times</li>
+                <li><strong>Office Supervisor to Overseer:</strong> Promote others 8 times; Promoted 4 times</li>
+                <li><strong>Management → Elites:</strong> choose one option below:<br>
+                    <ul>
+                        <li>Tour: 2 times; Promote others: 12 times</li>
+                        <li>Train: 2 times; Promote others: 12 times</li>
+                        <li>Train: 1 time; Tour: 1 time; Promote others: 10 times</li>
+                        <li>Promoted: 4 times; Promote others: 15 times</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="policy-cta">If quotas are met, members are entitled to a <strong>20c Pay Bonus</strong> every Saturday. Members have 24 hours (Saturday 2:00 AM to Sunday 2:00 AM GMT+8) to claim their Pay Bonus from available Payers, ABs, or Founders. Unclaimed bonuses will be removed automatically.</p>
+        </section>
+
+        <p style="margin-top:1.2rem;color:var(--muted);font-size:0.95rem;">If you'd like this page to include copy-to-clipboard buttons for each rule or anchor links for quick sharing, tell me where and I will add them to match the site's existing copy UX.</p>
+    </div>
+
+    <script>
+        // small nav helpers (same pattern used on other pages)
+        document.addEventListener('DOMContentLoaded', function(){
+            var navList = document.querySelector('.nav-list');
+            var hamburger = document.querySelector('.hamburger');
+            if(hamburger) hamburger.addEventListener('click', function(){ var open = navList.classList.toggle('show'); hamburger.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+
+            // Rank Lists hover
+            var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+            if(rankListLi){
+                var toggle = rankListLi.querySelector('.dropdown-toggle');
+                var dropdown = rankListLi.querySelector('.nav-dropdown');
+                var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+                rankListLi.addEventListener('mouseenter', function(){ dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                rankListLi.addEventListener('mouseleave', function(){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
+            }
+
+            // Policies hover/keyboard
+            (function(){ var policiesToggle = document.getElementById('policies-toggle'); if(!policiesToggle) return; var policiesLi = policiesToggle.parentNode; var policiesDropdown = policiesLi.querySelector('.nav-dropdown'); var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+                policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+                policiesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); } else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); } });
+                document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+            })();
+        });
+    </script>
+</body>
+</html>

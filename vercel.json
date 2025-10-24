@@ -2,6 +2,9 @@
   "version": 2,
   "public": true,
   "routes": [
-  { "src": "/(.*)", "dest": "/home.html" }
+    { "src": "/elective-rank-list.html", "dest": "/elective-rank-list.html" },
+    { "src": "/standard-rank-list.html", "dest": "/standard-rank-list.html" },
+    { "src": "/resources.html", "dest": "/resources.html" },
+    { "src": "/(.*)", "dest": "/home.html" }
   ]
 }

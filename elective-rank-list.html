@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elective Rank List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        :root {
+            --primary: #071029;
+            --panel: rgba(8,16,28,0.66);
+            --accent-sun: #FFC62B;
+            --accent-red: #C1272D;
+            --accent-blue: #0038A8;
+            --text: #ffffff;
+            --muted: #c9d0d8;
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+                body {
+                        margin: 0;
+                        font-family: 'Montserrat', Arial, sans-serif;
+                        background:
+                                    radial-gradient(900px 300px at 50% 10%, rgba(255,198,43,0.08), transparent 18%),
+                                    linear-gradient(180deg, #071029 0%, #02102a 60%, #03102f 100%),
+                                    linear-gradient(180deg, rgba(193,39,45,0.02), rgba(193,39,45,0) 30%);
+                        background-attachment: fixed;
+                        color: var(--text);
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                }
+        nav {
+            width: 100%;
+            background: rgba(14,16,28,0.95);
+            padding: 1.2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            letter-spacing: 2px;
+            margin-right: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing:0.4px;
+            transition: color 0.18s;
+            padding: 0.15rem 0.25rem;
+        }
+        nav ul li a:hover { color: var(--accent-sun); }
+        @media (max-width: 600px) {
+            nav .logo { font-size: 1.2rem; }
+        }
+    h1 { color: var(--accent-sun); text-align: center; margin-top: 2rem; }
+    .site-header {
+        width:100%;
+        background:var(--primary);
+        text-align:center;
+        padding:1.5rem 0 1rem 0;
+        letter-spacing:2px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:12px;
+    }
+    .site-title { display:inline-block; margin:0; font-size:2.5rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:800; }
+    .header-badge { vertical-align:middle; height:48px; }
+    .header-badge.left { margin-right:12px; }
+    .header-badge.right { margin-left:12px; }
+    /* per-page nav styles (copied for easy copy/paste) */
+    nav {
+        width: 100%;
+        background: var(--panel);
+        padding: 1.2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    nav .logo { font-size: 1.7rem; font-weight: 700; color: var(--accent-blue); letter-spacing: 2px; margin-right: 2rem; }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; font-family: 'Montserrat', Arial, sans-serif; }
+    nav ul li a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.4px; transition: color 0.18s; padding: 0.15rem 0.25rem; }
+    nav ul li a:hover { color: var(--accent-sun); }
+
+    .nav-list { display: flex; gap: 2.5rem; margin:0; padding:0; list-style:none; justify-content:center; font-family: 'Montserrat', Arial, sans-serif; }
+    .hamburger { display: none; background:transparent;border:0;color:var(--text);font-size:1.6rem; cursor:pointer; }
+    .hamburger:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px; }
+
+    @media (max-width: 900px) {
+        .hamburger { display:inline-block; }
+        .nav-list { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--panel); margin: 0 auto; flex-direction: column; gap:0; padding:0.5rem; border-top:1px solid rgba(255,255,255,0.02); }
+        .nav-list.show { display:flex; }
+        .nav-list li { padding: 0.35rem 0.6rem; }
+    }
+
+    .dropdown-toggle { color: var(--text); font-weight:600; padding:0.1rem 0.2rem; cursor:default; }
+    .dropdown-toggle::after { content: '▾'; display:inline-block; margin-left:0.5rem; transition: transform 0.25s ease; color: var(--muted); }
+    .dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); color: var(--accent-sun); }
+    .nav-links li:hover .nav-dropdown { display: block; }
+    .nav-dropdown { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); box-shadow: none; backdrop-filter: blur(4px); border-radius:8px; padding:0.25rem 0; min-width:220px; position:absolute; top:100%; left:0; display:none; }
+    .nav-dropdown li + li { border-top: 1px solid rgba(255,255,255,0.02); }
+    .nav-dropdown a { display:block; padding:0.55rem 1rem; color:var(--text); text-decoration:none; font-size:1rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .nav-dropdown a:hover { background: rgba(255,255,255,0.04); color: var(--accent-sun); }
+
+    .nav-links { background: var(--panel); position:sticky; top:0; z-index:20; padding:0.5rem 0; font-family: 'Montserrat', Arial, sans-serif; }
+    .container { display: block; background: var(--panel); border-radius: 24px; padding: 2.5rem; box-shadow: 0 12px 36px rgba(0,0,0,0.55); margin: 2rem auto; max-width: 1010px; width: 90%; backdrop-filter: blur(6px); }
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem 3rem;
+            justify-items: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .rank-card {
+            /* glass / translucent card */
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.04);
+            backdrop-filter: blur(6px);
+            border-radius: 12px;
+            padding: 1.2rem 0;
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .rank-card span { display: block; text-align: center; }
+        .rank-card img {
+            width: 100px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            margin-bottom: 0.7rem;
+            background: transparent;
+        }
+        .rank-card span:last-child {
+            color: #fff !important;
+        }
+        @media (max-width: 900px) {
+            .rank-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .rank-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+        <h1 class="site-title">National Security Council</h1>
+        <a href="home.html" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <div class="nav-left">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li style="position:relative;">
+                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                    <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+                        <li><a href="standard-rank-list.html">Standard Rank Lists</a></li>
+                        <li><a href="elective-rank-list.html">Elective Rank Lists</a></li>
+                    </ul>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="#department">Department</a></li>
+                <li style="position:relative;">
+                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                        <li><a href="pay-system.html">Pay System</a></li>
+                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            </ul>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var navList = document.querySelector('.nav-list');
+                    var hamburger = document.querySelector('.hamburger');
+                    hamburger.addEventListener('click', function(){
+                        var open = navList.classList.toggle('show');
+                        hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    });
+
+                    var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+                    var toggle = rankListLi.querySelector('.dropdown-toggle');
+                    var dropdown = rankListLi.querySelector('.nav-dropdown');
+                    var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+
+                    rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                    rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+
+                    // click and keyboard handlers removed to restore hover-only dropdown behavior
+
+                    dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
+
+                    document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+
+                    // Policies dropdown handlers
+                    (function(){
+                        var policiesToggle = document.getElementById('policies-toggle');
+                        if(!policiesToggle) return;
+                        var policiesLi = policiesToggle.parentNode;
+                        var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                        var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+
+                        policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                        policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+
+                        policiesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); } else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); } });
+
+                        document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+                    })();
+                });
+            </script>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Elective Rank List</h1>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>Presidential</h2>
+            <div class="rank-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 3rem; justify-items: center; width: 100%;">
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5971-1346-.hd-208-10-.ch-4111-110-.lg-5927-110-1408-.sh-3524-110-1408-.he-5088-undefined-.fa-3276-96-.cc-5951-92-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="VorpalX">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VorpalX</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">President of the Republic</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5019-40-.hd-180-14-.ch-210-1408-.lg-270-1408-.ea-1403-1408-.fa-1201-undefined-.cc-3327-1408-1408-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Hasroy">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Hasroy</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary-General</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3163-34-.hd-185-1-.ch-5452-63-1408-.lg-3502-92-.ha-5867-93-67-.fa-3276-72-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="gleamingskyline">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">gleamingskyline</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chief Events Strategist</span>
+                </div>
+                <div class="rank-card" style="grid-column: 1 / 2;">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3841-42-.hd-4174-19-.ch-4361-73-64-.lg-285-64-.sh-300-64-.ea-1403-1408-.fa-3592-64-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="XxxTrayxxX">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">XxxTrayxxX</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Internal Governance</span>
+                </div>
+                <div class="rank-card" style="grid-column: 3 / 4;">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3025-35-.hd-3536-1-14-.ch-215-92-.lg-3058-110-.sh-3016-110-.ha-3494-110-110-.fa-5624-96-.ca-5739-94-1408-.cc-3075-110-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt=".SpicyIce">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">.SpicyIce</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chief Diplomatic Officer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>Advisory Boards</h2>
+            <div class="rank-grid" style="justify-content: center; grid-template-columns: repeat(3, 1fr); margin: 0 auto;">
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3936-1403-1403-.hd-6219-1-1365-.ch-4128-92-110-.lg-5594-1341-.sh-6042-undefined-.he-6138-undefined-.fa-5600-92-.ca-3485-undefined-.cc-3867-110-110-.cp-3207-68-68-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="chay">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">habibiii_</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Board of Infrastructure and Fiscal Affairs</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-4996-49-.hd-6219-28-1367-.ch-255-77-.lg-280-92-.sh-5247-92-92-.ha-5364-undefined-.fa-3276-110-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Xorizo">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Xorizo</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Board of Personnel Mobility and Appointments</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Board of Human Capital and Governance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>1iCs Board of Executives</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Superintendent</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Executive Secretary</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Foreign Affairs</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Finance</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Labor and Employment</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Presidential Legal Counsel</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Presidential Communications Officer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>2iCs Senatorial Chamber</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Senate President</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Senate Secretary</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Majority Floor Leader</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Minority Floor Leader</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for Foreign Relations</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for National Defense and Security</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for Civic Order</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>3iCs House of Representatives</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Speaker</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Deputy Speaker</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Majority Floor Leader</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Minority Floor Leader</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for House Committee on Foreign Affairs</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for National Defense and Security</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for Public Order and Safety</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>4iCs Constitutional Commissions</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Commissioner on Elections</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Election Officers</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Commissioner on Civil Service</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Human Resource Specialists</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>5iCs Office of the Ombudsman</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Ombudsman</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Deputy Ombudsman</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Special Prosecutors</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Investigators</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Directors</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Officer in Charge</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
