@@ -2,9 +2,12 @@
   "version": 2,
   "public": true,
   "routes": [
+    { "src": "/home.html", "dest": "/home.html" },
+    { "src": "/resources.html", "dest": "/resources.html" },
     { "src": "/elective-rank-list.html", "dest": "/elective-rank-list.html" },
     { "src": "/standard-rank-list.html", "dest": "/standard-rank-list.html" },
-    { "src": "/resources.html", "dest": "/resources.html" },
+    { "src": "/pay-system.html", "dest": "/pay-system.html" },
+    { "src": "/code-of-conduct.html", "dest": "/code-of-conduct.html" },
     { "src": "/(.*)", "dest": "/home.html" }
   ]
 }
