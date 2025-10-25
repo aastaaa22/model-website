@@ -8,6 +8,7 @@
     { "src": "/standard-rank-list.html", "dest": "/standard-rank-list.html" },
     { "src": "/pay-system.html", "dest": "/pay-system.html" },
     { "src": "/code-of-conduct.html", "dest": "/code-of-conduct.html" },
+    { "src": "/([^\\.]+)$", "dest": "/$1.html" },
     { "src": "/(.*)", "dest": "/home.html" }
   ]
 }
