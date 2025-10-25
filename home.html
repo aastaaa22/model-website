@@ -9,15 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <style>
         :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff; --muted:#c9d0d8; --radius:14px }
-        .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:22px; }
-        .site-title{ display:inline-block; margin:0; font-size:3rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
-        .header-badge{ height:56px; width:56px; object-fit:contain; display:inline-block; vertical-align:middle; border-radius:50%; }
+    .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:18px; }
+    .site-title{ display:inline-block; margin:0; font-size:clamp(1.6rem,4vw,3rem); color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
+    .header-badge{ width:56px; height:56px; max-width:56px; object-fit:cover; display:inline-block; vertical-align:middle; border-radius:50%; }
         .header-badge.left{ margin-right:14px; }
         .header-badge.right{ margin-left:14px; }
         .site-header > a, .site-header > a img{ display:inline-flex; align-items:center; }
+    /* header CTA (small, prominent action) */
+    .header-cta{ margin-left:12px; display:inline-flex; align-items:center; gap:8px; padding:0.36rem 0.75rem; background: linear-gradient(90deg,var(--accent-sun), #ffb944); color:#071029; font-weight:800; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.35); text-decoration:none; font-size:0.95rem; transition:transform .12s ease, box-shadow .12s ease; }
+    .header-cta:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(0,0,0,0.45); }
+    .header-cta:focus-visible{ outline:3px solid rgba(255,198,43,0.14); outline-offset:3px; }
         .container{ max-width:980px; width: calc(100% - 3rem); margin:2rem auto; background:var(--panel); border-radius:var(--radius); padding:2.25rem; box-shadow:0 12px 36px rgba(0,0,0,0.6); backdrop-filter:blur(6px); }
-        @media (max-width:900px){ .site-title{ font-size:2.1rem; } .header-badge{ height:44px; width:44px; } }
-        @media (max-width:600px){ .site-title{ font-size:1.45rem; } .header-badge{ height:36px; width:36px; } }
+    @media (max-width:900px){ .site-title{ font-size:clamp(1.4rem,5vw,2.1rem); } .header-badge{ width:44px; height:44px; max-width:44px; } .header-cta{ padding:0.3rem 0.6rem; font-size:0.9rem; }}
+    @media (max-width:600px){ .site-title{ font-size:clamp(1.1rem,6vw,1.45rem); -webkit-text-stroke:1px rgba(7,16,41,0.9); text-shadow:0 3px 8px rgba(0,0,0,0.45); } .header-badge{ width:36px; height:36px; max-width:36px; } .site-header{ gap:10px; padding:0.6rem 0.5rem; } .header-cta{ display:none; }}
     </style>
     <style>
             :root {
@@ -199,9 +203,10 @@
 </head>
 <body>
         <header class="site-header">
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
             <h1 class="site-title">National Security Council</h1>
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+            <a class="header-cta" href="/resources" aria-label="Explore resources">Explore Resources</a>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
         </header>
         <nav>
             <div class="nav-links">
