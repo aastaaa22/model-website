@@ -1298,6 +1298,27 @@ body.flicker {
         }, {passive:true});
     })();
     </script>
+    <!-- Page-specific cursor override: remove pumpkin and use a simple black arrow + bat cursor for this page only -->
+    <style>
+    /* restore and set a custom bat cursor for this page (respects reduced-motion) */
+    @media (prefers-reduced-motion: no-preference) {
+        html, body, a, button, input, textarea, select {
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><g fill='black'><path d='M0 0 L12 12 L8 14 L10 18 L6 20 Z'/><g transform='translate(18,6)'><path d='M0 3c1-2 4-2 5 0 1 2 4 2 5 0 1 2-1 5-5 5s-6-3-5-5z'/></g></g></svg>") 0 0, auto !important;
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html, body, a, button, input, textarea, select { cursor: auto !important; }
+    }
+    </style>
+    <script>
+    // Remove the pumpkin cursor element if present (this page uses a simple bat cursor instead)
+    document.addEventListener('DOMContentLoaded', function(){
+        try{
+            var p = document.getElementById('site-pumpkin-cursor');
+            if(p && p.parentNode) p.parentNode.removeChild(p);
+        }catch(e){}
+    });
+    </script>
     <script>
         // Flying ghost spawner — creates lightweight ghost elements when .halloween is active
         (function(){
