@@ -90,6 +90,27 @@ nav ul li a:hover { color: var(--accent-sun); }
   position: relative;
 }
 
+/* Stronger specificity to override any per-page header rules that may be present
+   in inline <style> blocks. Keeps the header horizontally centered with the
+   left/right badges beside the title. */
+header.site-header {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure the immediate child anchors/images stay inline and don't break to a new line */
+.site-header > a, .site-header > a img {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* Keep the title centered while allowing small spacing to badges */
+.site-header .site-title { order: 0; text-align: center; }
+.site-header .header-badge.left { order: -1; }
+.site-header .header-badge.right { order: 1; }
+
 /* Title sits centered; badges left/right are inline siblings so they appear beside the title */
 .site-title {
   display: inline-block;
