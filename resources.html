@@ -170,9 +170,9 @@
 
     .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:22px; position:relative; overflow:visible; }
     /* container used to center and style the expandable area */
-    /* Wider container for expandables — improved on larger screens while remaining responsive */
-    .container { max-width: 980px; width: calc(100% - 3rem); margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
-    @media (max-width: 1100px) { .container { max-width: 92%; padding: 1.3rem; } }
+    /* Slightly wider container for expandables on larger screens */
+    .container { max-width: 1100px; width: calc(100% - 2rem); margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
+    @media (max-width: 1100px) { .container { max-width: 96%; padding: 1.3rem; } }
 /* Place cobwebs next to the title to avoid header overflow/scrollbars */
 .site-title { position: relative; display:inline-block; margin:0; font-size:3rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
 .site-title::before,
@@ -996,8 +996,7 @@ body.flicker {
                 </div>
                 <div class="expandable-content">
                     <br>
-                    <h5>Reminder: You can use color chats except neon colors!
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Reminder: You can use color chats except neon colors!"></h5>
+                    <h5 style="color:red;">Reminder: You can use color chats except neon colors!</h5>
                     <h5 style="color:red;">Red chats are for instructions
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Red chats are for instructions"></h5>
                     <br>
