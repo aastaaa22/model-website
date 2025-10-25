@@ -69,7 +69,15 @@
         @media (max-width: 600px) {
             nav .logo { font-size: 1.2rem; }
         }
-    h1 { color: var(--accent-sun); text-align: center; margin-top: 2rem; }
+    h1 {
+        color: var(--accent-sun);
+        text-align: center;
+        margin-top: 2rem;
+        /* Use a subtle dark stroke/shadow so the title incorporates both the
+           home page accent (gold) and the deep background color (primary). */
+        -webkit-text-stroke: 0.8px var(--primary);
+        text-shadow: 0 2px 0 rgba(7,16,41,0.95), 0 6px 18px rgba(0,0,0,0.55);
+    }
     .site-header {
         width:100%;
         background:var(--primary);
