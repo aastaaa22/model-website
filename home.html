@@ -7,7 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/site.css">
+    <style>
+        :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff; --muted:#c9d0d8; --radius:14px }
+        .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:22px; }
+        .site-title{ display:inline-block; margin:0; font-size:3rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
+        .header-badge{ height:56px; width:56px; object-fit:contain; display:inline-block; vertical-align:middle; border-radius:50%; }
+        .header-badge.left{ margin-right:14px; }
+        .header-badge.right{ margin-left:14px; }
+        .site-header > a, .site-header > a img{ display:inline-flex; align-items:center; }
+        .container{ max-width:980px; width: calc(100% - 3rem); margin:2rem auto; background:var(--panel); border-radius:var(--radius); padding:2.25rem; box-shadow:0 12px 36px rgba(0,0,0,0.6); backdrop-filter:blur(6px); }
+        @media (max-width:900px){ .site-title{ font-size:2.1rem; } .header-badge{ height:44px; width:44px; } }
+        @media (max-width:600px){ .site-title{ font-size:1.45rem; } .header-badge{ height:36px; width:36px; } }
+    </style>
     <style>
             :root {
                 --primary: #071029;
