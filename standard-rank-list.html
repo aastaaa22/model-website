@@ -181,6 +181,13 @@
         </div>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Ensure dropdowns are hidden on load to avoid accidental open when navigating
+            document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+                try { dd.style.display = 'none'; } catch(e){}
+                var labelled = dd.getAttribute('aria-labelledby');
+                if(labelled){ var tog = document.getElementById(labelled); if(tog) tog.setAttribute('aria-expanded','false'); }
+            });
+
             var navList = document.querySelector('.nav-list');
             var hamburger = document.querySelector('.hamburger');
             hamburger.addEventListener('click', function(){
