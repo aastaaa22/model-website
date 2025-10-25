@@ -75,3 +75,14 @@ nav ul li a:hover { color: var(--accent-sun); }
 
 /* nav container */
 .nav-links { background: var(--panel); position:sticky; top:0; z-index:20; padding:0.5rem 0; font-family: 'Montserrat', Arial, sans-serif; }
+
+/* Site header / shared title styles applied site-wide */
+.site-header { width:100%; background: var(--panel); text-align:center; padding:1.5rem 0 1rem 0; letter-spacing:2px; box-shadow: 0 2px 10px rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; gap:12px; }
+.site-title { display:inline-block; margin:0; font-size:2.5rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:800; }
+.header-badge { height:48px; vertical-align:middle; }
+.header-badge.left { margin-right:12px; }
+.header-badge.right { margin-left:12px; }
+
+/* Global container size to match home.html */
+.container { max-width: 980px; width: calc(100% - 3rem); margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
+@media (max-width: 1100px) { .container { max-width: 92%; padding: 1.3rem; } }
