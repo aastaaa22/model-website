@@ -378,7 +378,17 @@ body.flicker {
                             <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
                         </ul>
                     </li>
-                    <li><a href="/resources">Resources</a></li>
+                    <li style="position:relative;">
+                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
+                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
+                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
+                            <li><a href="/security-training.html">Security Training Manual</a></li>
+                            <li><a href="/education-training.html">Education Training Manual</a></li>
+                            <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
+                            <li><a href="/tour-script.html">Tour Script</a></li>
+                            <li><a href="/transfer-training.html">Transfer Training Script</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#department">Department</a></li>
                     <li style="position:relative;">
                         <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
@@ -451,6 +461,29 @@ body.flicker {
 
                             // Clicking outside closes the policies dropdown
                             document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
+                        // Resources dropdown handlers (mirror Rank Lists / Policies)
+                        (function(){
+                            var resourcesToggle = document.getElementById('resources-toggle');
+                            if(!resourcesToggle) return;
+                            var resourcesLi = resourcesToggle.parentNode;
+                            var resourcesDropdown = resourcesLi.querySelector('.nav-dropdown');
+                            var resourcesItems = Array.prototype.slice.call(resourcesDropdown.querySelectorAll('a'));
+
+                            resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
+                            resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
+
+                            // Click/tap toggles the menu (useful on touch devices)
+                            resourcesToggle.addEventListener('click', function(e){
+                                var visible = resourcesDropdown.style.display === 'block' || window.getComputedStyle(resourcesDropdown).display === 'block';
+                                resourcesDropdown.style.display = visible ? 'none' : 'block';
+                                resourcesToggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
+                                e.preventDefault();
+                            });
+
+                            resourcesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); } else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); } });
+
+                            document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
                         })();
                     });
                     // Improved flicker + drip initialization, auto-enables Halloween between Oct 27–Nov 30 (respects prefers-reduced-motion)
