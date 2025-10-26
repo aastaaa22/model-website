@@ -59,20 +59,7 @@
 
         .nav-links { background: var(--panel); position:sticky; top:0; z-index:20; padding:0.5rem 0; font-family: 'Montserrat', Arial, sans-serif; }
     </style>
-    <!-- Site-wide pumpkin cursor CSS (respects prefers-reduced-motion) -->
-    <style>
-    @media (prefers-reduced-motion: no-preference) {
-        :root{ --pumpkin-size:56px; }
-        html, body, a, button, input, textarea, select { cursor: none !important; }
-        .site-pumpkin-cursor{ position:fixed; width:var(--pumpkin-size); height:var(--pumpkin-size); left:0; top:0; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; transition:transform 120ms linear, opacity 160ms ease; }
-        .site-pumpkin-cursor svg{ width:100%; height:100%; display:block; }
-        .site-pumpkin-cursor.glow { animation: pumpkin-glow 1.8s ease-in-out infinite; }
-        @keyframes pumpkin-glow { 0%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } 50% { filter: drop-shadow(0 0 14px rgba(255,198,43,0.6)); } 100%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        html, body, a, button, input, textarea, select { cursor: auto !important; }
-    }
-    </style>
+    <!-- pumpkin cursor removed -->
     <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -156,26 +143,6 @@
             })();
         });
     </script>
-    <script>
-    (function(){
-        if(typeof window === 'undefined') return;
-        if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        if(document.getElementById('site-pumpkin-cursor')) return;
-
-        var el = document.createElement('div');
-        el.id = 'site-pumpkin-cursor';
-        el.className = 'site-pumpkin-cursor glow';
-        el.setAttribute('aria-hidden','true');
-        el.innerHTML = '\n            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n              <defs><radialGradient id="pg2" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#ffd569" stop-opacity="0.95"/><stop offset="60%" stop-color="#ff8b00" stop-opacity="0.95"/><stop offset="100%" stop-color="#9a3b00" stop-opacity="0.9"/></radialGradient></defs>\n              <g transform="translate(0 2)"><path d="M32 6c-7 0-13 4-16 10-4 7-3 15 1 21 3 5 8 8 14 9 6 1 12 1 17-1 6-2 10-6 13-11 4-7 3-15-1-21-4-6-9-10-18-10z" fill="url(#pg2)"/><polygon points="22,26 28,20 32,26" fill="#201"/><polygon points="40,26 36,20 32,26" fill="#201"/><path d="M20 38c4 2 8 3 12 3s8-1 12-3c0 0-2 6-12 6s-12-6-12-6z" fill="#201"/><rect x="28" y="8" width="8" height="6" rx="2" ry="2" fill="#4b2e00"/></g></svg>';
-
-        document.body.appendChild(el);
-
-        var visible = true;
-        function setPos(x,y){ el.style.left = x + 'px'; el.style.top = y + 'px'; }
-        function onMove(e){ var x = (e.clientX != null) ? e.clientX : (e.touches && e.touches[0] && e.touches[0].clientX) || 0; var y = (e.clientY != null) ? e.clientY : (e.touches && e.touches[0] && e.touches[0].clientY) || 0; setPos(x,y); if(!visible){ el.style.opacity = '1'; visible = true; } }
-        document.addEventListener('mousemove', onMove, {passive:true}); document.addEventListener('touchmove', onMove, {passive:true}); document.addEventListener('mouseleave', function(){ el.style.opacity = '0'; visible = false; });
-        document.addEventListener('mouseover', function(e){ var t = e.target; if(!t) return; var tag = (t.tagName || '').toUpperCase(); var interactive = tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || t.isContentEditable || !!t.closest && !!t.closest('a,button,input,textarea,select'); el.style.transform = interactive ? 'translate(-50%,-50%) scale(0.7)' : 'translate(-50%,-50%) scale(1)'; }, {passive:true});
-    })();
-    </script>
+    <!-- pumpkin cursor removed -->
 </body>
 </html>
