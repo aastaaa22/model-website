@@ -749,9 +749,7 @@
                     <h5>You can go BTB by using the teleport next to you! Thank You!|
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You can go BTB by using the teleport next to you! Thank You!|"></h5>
                     <br>
-                </div>
             </div>
-
         </div>
 
         <script>
@@ -876,7 +874,26 @@
                     btn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyText(e, copyTextValue); } });
 
                     // Use inline SVG (reliable) and keep a FontAwesome <i> optionally present.
-                    btn.innerHTML = '<svg class="copy-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2z"></path></svg><i class="fa-solid fa-copy copy-fa" aria-hidden="true" style="display:none"></i>';
+                    // Build SVG and optional <i> nodes via DOM to avoid embedding literal closing tags
+                    try{
+                        var svgNS = 'http://www.w3.org/2000/svg';
+                        var svg = document.createElementNS(svgNS, 'svg');
+                        svg.setAttribute('class', 'copy-svg');
+                        svg.setAttribute('viewBox', '0 0 24 24');
+                        svg.setAttribute('aria-hidden', 'true');
+                        var path = document.createElementNS(svgNS, 'path');
+                        path.setAttribute('d', 'M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2z');
+                        svg.appendChild(path);
+                        btn.appendChild(svg);
+                        var iEl = document.createElement('i');
+                        iEl.className = 'fa-solid fa-copy copy-fa';
+                        iEl.setAttribute('aria-hidden', 'true');
+                        iEl.style.display = 'none';
+                        btn.appendChild(iEl);
+                    }catch(e){
+                        // Fallback: set minimal accessible text if DOM creation fails
+                        btn.textContent = 'Copy';
+                    }
                     img.parentNode.replaceChild(btn, img);
                 }catch(e){ /* ignore conversion errors */ }
             });
