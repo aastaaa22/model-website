@@ -1,43 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-                    </header>
-                    <nav>
-            <div class="nav-links">
-                <div class="nav-left">
-                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
-                </div>
-                <ul class="nav-list">
-                    <li><a href="/home">Home</a></li>
-                    <li style="position:relative;">
-                        <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
-                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
-                            <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
-                            <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
-                        </ul>
-                    </li>
-                    <li style="position:relative;">
-                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
-                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
-                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
-                            <li><a href="/security-training.html">Security Training Manual</a></li>
-                            <li><a href="/education-training.html">Education Training Manual</a></li>
-                            <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
-                            <li><a href="/tour-script.html">Tour Script</a></li>
-                            <li><a href="/transfer-training.html">Transfer Training Script</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#department">Department</a></li>
-                    <li style="position:relative;">
-                        <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
-                        <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
-                            <li><a href="/pay-system">Pay System</a></li>
-                            <li><a href="/code-of-conduct">Code of Conduct</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
-                </ul>
-                <script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Lists — National Security Council</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff; --muted:#c9d0d8; --radius:14px }
+        .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:18px; }
+        .site-title{ display:inline-block; margin:0; font-size:clamp(1.6rem,4vw,3rem); color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
+        .header-badge{ width:56px; height:56px; max-width:56px; object-fit:cover; display:inline-block; vertical-align:middle; border-radius:50%; }
+            .header-badge.left{ margin-right:14px; }
+            .header-badge.right{ margin-left:14px; }
+    </style>
+    <style>
+        :root { --primary: #071029; --panel: rgba(8,16,28,0.66); --accent-sun: #FFC62B; --accent-red: #C1272D; --accent-blue: #0038A8; --text: #ffffff; --muted: #c9d0d8; --radius: 14px; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Montserrat', Arial, sans-serif; background: radial-gradient(900px 300px at 50% 10%, rgba(255,198,43,0.06), transparent 18%), linear-gradient(180deg, #071029 0%, #02102a 60%, #03102f 100%); background-attachment: fixed; color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+        nav { width: 100%; background: var(--panel); padding: 1.2rem 0; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        nav .logo { font-size: 1.7rem; font-weight: 800; color: var(--accent-blue); letter-spacing: 2px; margin-right: 2rem; }
+        nav ul { list-style: none; display: flex; gap: 2.5rem; margin: 0; padding: 0; font-family: 'Montserrat', Arial, sans-serif; }
+        nav ul li a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.4px; transition: color 0.18s; padding: 0.15rem 0.25rem; }
+        nav ul li a:hover { color: var(--accent-sun); }
+        .nav-list { display: flex; gap: 2.5rem; margin:0; padding:0; list-style:none; justify-content:center; }
+        .hamburger { display: none; background:transparent;border:0;color:var(--text);font-size:1.6rem; cursor:pointer; }
+        .hamburger:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px; }
+        @media (max-width: 900px) { .hamburger { display:inline-block; } .nav-list { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--panel); margin: 0 auto; flex-direction: column; gap:0; padding:0.5rem; border-top:1px solid rgba(255,255,255,0.02); } .nav-list.show { display:flex; } .nav-list li { padding: 0.35rem 0.6rem; } }
+        .dropdown-toggle { color: var(--text); font-weight:600; padding:0.1rem 0.2rem; cursor:default; }
+        .dropdown-toggle::after { content: '▾'; display:inline-block; margin-left:0.5rem; transition: transform 0.25s ease; color: var(--muted); }
+        .dropdown-toggle[aria-expanded="true"]::after { transform: rotate(180deg); color: var(--accent-sun); }
+        .nav-dropdown { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04); box-shadow: none; backdrop-filter: blur(4px); border-radius:8px; padding:0.25rem 0; min-width:220px; position:absolute; top:100%; left:0; display:none; }
+        .nav-dropdown li + li { border-top: 1px solid rgba(255,255,255,0.02); }
+        .nav-dropdown a { display:block; padding:0.55rem 1rem; color:var(--text); text-decoration:none; font-size:1rem; white-space:nowrap; }
+        .nav-dropdown a:hover { background: rgba(255,255,255,0.04); color: var(--accent-sun); }
+        .nav-links { background: var(--panel); position:sticky; top:0; z-index:20; padding:0.5rem 0; }
+    </style>
+    <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
+        <h1 class="site-title">National Security Council</h1>
+        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <div class="nav-left">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="/home">Home</a></li>
+                <li style="position:relative;">
+                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                    <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+                        <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
+                        <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
+                    </ul>
+                </li>
+                <li style="position:relative;">
+                    <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
+                    <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
+                        <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
+                        <li><a href="/security-training.html">Security Training Manual</a></li>
+                        <li><a href="/education-training.html">Education Training Manual</a></li>
+                        <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
+                        <li><a href="/tour-script.html">Tour Script</a></li>
+                        <li><a href="/transfer-training.html">Transfer Training Script</a></li>
+                    </ul>
+                </li>
+                <li><a href="#department">Department</a></li>
+                <li style="position:relative;">
+                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                        <li><a href="/pay-system">Pay System</a></li>
+                        <li><a href="/code-of-conduct">Code of Conduct</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            </ul>
+            <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     var navList = document.querySelector('.nav-list');
                     var hamburger = document.querySelector('.hamburger');
@@ -54,11 +97,18 @@
                     rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
                     rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
 
-                    dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
+                    dropdown.addEventListener('keydown', function(e){
+                        var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
+                        if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
+                        else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
+                        else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
+                        else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
+                        else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+                    });
 
                     document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
 
-                    // Policies dropdown handlers
+                    // Policies dropdown: hover-only, keyboard-friendly
                     (function(){
                         var policiesToggle = document.getElementById('policies-toggle');
                         if(!policiesToggle) return;
@@ -74,7 +124,7 @@
                         document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
                     })();
 
-                    // Resources dropdown handlers
+                    // Resources dropdown: hover-only, keyboard-friendly
                     (function(){
                         var resourcesToggle = document.getElementById('resources-toggle');
                         if(!resourcesToggle) return;
@@ -90,164 +140,19 @@
                         document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
                     })();
                 });
-                </script>
-            </div>
-        </nav>
-        }
-        nav ul li a:hover { color: var(--accent-sun); }
-        .hero {
-            text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
-            background: linear-gradient(180deg, #0e101c 60%, #181b2a 100%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0 0 1rem 0;
-            letter-spacing: 2px;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--muted);
-            margin-bottom: 2.5rem;
-        }
-        .hero .socials {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        .hero .socials a {
-            color: var(--accent);
-            font-size: 2rem;
-            transition: color 0.2s;
-        }
-        .hero .socials a:hover {
-            color: #fff;
-        }
-        section {
-            max-width: 800px;
-            margin: 3rem auto;
-            background: var(--panel);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.55);
-            backdrop-filter: blur(6px);
-        }
-        section h2 {
-            color: var(--accent-sun);
-            margin-top: 0;
-            font-size: 2rem;
-        }
-        section p, section ul { color: var(--muted); font-size: 1.1rem; }
-        section ul {
-            padding-left: 1.2rem;
-        }
-        footer {
-            margin-top: auto;
-            background: #181b2a;
-            color: var(--muted);
-            text-align: center;
-            padding: 1.5rem 0 1rem 0;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            section { padding: 1.2rem 0.7rem; }
-            nav .logo { font-size: 1.2rem; }
-        }
-        /* nav styles moved to css/site.css */
-    /* header styles centralized in css/site.css */
-    /* nav styles moved to css/site.css */
-    </style>
-        <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
-        <!-- Pumpkin cursor removed -->
-        </head>
-    <body>
-            <header class="site-header">
-                <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
-                <h1 class="site-title">National Security Council</h1>
-                <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
-            </header>
-                    <nav>
-                            <ul>
-                <li style="position:relative;">
-                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
-                    <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
-                        <li><a href="standard-rank-list.html">Standard Rank Lists</a></li>
-                        <li><a href="elective-rank-list.html">Elective Rank Lists</a></li>
-                                        </ul>
-                                </li>
-                                <li style="position:relative;">
-                                    <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
-                                    <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
-                                        <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
-                                        <li><a href="/security-training.html">Security Training Manual</a></li>
-                                        <li><a href="/education-training.html">Education Training Manual</a></li>
-                                        <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
-                                        <li><a href="/tour-script.html">Tour Script</a></li>
-                                        <li><a href="/transfer-training.html">Transfer Training Script</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#department">Department</a></li>
-                                <li style="position:relative;">
-                                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
-                                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
-                                        <li><a href="pay-system.html">Pay System</a></li>
-                                        <li><a href="code-of-conduct.html">Code of Conduct</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
-                        </ul>
-                </nav>
-                <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var rankListLi = document.querySelector('nav ul li:nth-child(2)');
-                    var toggle = rankListLi.querySelector('.dropdown-toggle');
-                    var dropdown = rankListLi.querySelector('.nav-dropdown');
-                    var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
-
-                    rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
-                    rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
-
-                    // click and keyboard handlers removed to restore hover-only dropdown behavior
-
-                    dropdown.addEventListener('keydown', function(e){
-                        var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
-                        if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
-                        else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
-                        else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
-                        else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
-                        else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
-                    });
-
-                    document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } });
-
-                    // Policies dropdown (hover-only, keyboard accessible)
-                    (function(){
-                        var policiesToggle = document.getElementById('policies-toggle');
-                        if(!policiesToggle) return;
-                        var policiesLi = policiesToggle.parentNode;
-                        var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
-                        var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
-
-                        policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
-                        policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
-
-                        policiesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); } else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); } });
-
-                        document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
-                    })();
-                });
-                </script>
-        <div class="hero">
-            <p>Welcome to the official site of the National Security Council. Explore our projects, connect with us, and learn more about what we do.</p>
-            <div class="socials">
-                <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:someone@example.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
+            </script>
         </div>
+    </nav>
+
+    <!-- page content preserved from original file -->
+    <div class="hero">
+        <p>Welcome to the official site of the National Security Council. Explore our projects, connect with us, and learn more about what we do.</p>
+        <div class="socials">
+            <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:someone@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
     <section id="about">
         <h2>About</h2>
         <p>SGF is a creative group focused on building innovative digital solutions. We are passionate about technology, design, and community. Our mission is to deliver high-quality projects that make a difference.</p>
@@ -267,6 +172,6 @@
     <footer>
         &copy; 2025 SGF. All rights reserved.
     </footer>
-        <!-- Pumpkin cursor removed -->
-    </body>
-    </html>
+    <!-- Pumpkin cursor removed -->
+</body>
+</html>

@@ -83,46 +83,124 @@
 </head>
 <body>
     <header class="site-header">
-    <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
-        <h1 class="site-title">National Security Council</h1>
-    <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
-    </header>
-    
-    <nav>
-        <div class="nav-links">
-        </div>
-            <ul class="nav-list">
-                <li><a href="/home">Home</a></li>
-                <li style="position:relative;">
-                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
-                    <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
-                        <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
-                        <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
-                    </ul>
-                </li>
-                <li style="position:relative;">
-                    <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
-                    <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
-                        <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
-                        <li><a href="/security-training.html">Security Training Manual</a></li>
-                        <li><a href="/education-training.html">Education Training Manual</a></li>
-                        <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
-                        <li><a href="/tour-script.html">Tour Script</a></li>
-                        <li><a href="/transfer-training.html">Transfer Training Script</a></li>
-                    </ul>
-                </li>
-                <li><a href="#department">Department</a></li>
-                <li style="position:relative;">
-                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
-                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
-                        <li><a href="/pay-system">Pay System</a></li>
-                        <li><a href="/code-of-conduct">Code of Conduct</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
-            </ul>
-        </div>
-    </nav>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
+            <h1 class="site-title">National Security Council</h1>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
+        </header>
+        <nav>
+            <div class="nav-links">
+                <div class="nav-left">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/home">Home</a></li>
+                    <li style="position:relative;">
+                        <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+                            <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
+                            <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
+                        </ul>
+                    </li>
+                    <li style="position:relative;">
+                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
+                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
+                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
+                            <li><a href="/security-training.html">Security Training Manual</a></li>
+                            <li><a href="/education-training.html">Education Training Manual</a></li>
+                            <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
+                            <li><a href="/tour-script.html">Tour Script</a></li>
+                            <li><a href="/transfer-training.html">Transfer Training Script</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#department">Department</a></li>
+                    <li style="position:relative;">
+                        <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                        <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                            <li><a href="/pay-system">Pay System</a></li>
+                            <li><a href="/code-of-conduct">Code of Conduct</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+                </ul>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var navList = document.querySelector('.nav-list');
+                        var hamburger = document.querySelector('.hamburger');
+                        hamburger.addEventListener('click', function(){
+                            var open = navList.classList.toggle('show');
+                            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        });
+
+                        var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+                        var toggle = rankListLi.querySelector('.dropdown-toggle');
+                        var dropdown = rankListLi.querySelector('.nav-dropdown');
+                        var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+
+                        rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                        rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+
+                        // click and keyboard handlers removed to restore hover-only dropdown behavior
+
+                        dropdown.addEventListener('keydown', function(e){
+                            var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
+                            if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
+                            else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
+                            else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
+                            else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
+                            else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+                        });
+
+                        document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+
+                        // Policies dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
+                        (function(){
+                            var policiesToggle = document.getElementById('policies-toggle');
+                            if(!policiesToggle) return;
+                            var policiesLi = policiesToggle.parentNode;
+                            var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                            var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+
+                            policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                            policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+
+                            policiesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); }
+                            });
+
+                            document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
+
+                        // Resources dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
+                        (function(){
+                            var resourcesToggle = document.getElementById('resources-toggle');
+                            if(!resourcesToggle) return;
+                            var resourcesLi = resourcesToggle.parentNode;
+                            var resourcesDropdown = resourcesLi.querySelector('.nav-dropdown');
+                            var resourcesItems = Array.prototype.slice.call(resourcesDropdown.querySelectorAll('a'));
+
+                            resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
+                            resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
+
+                            resourcesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); }
+                            });
+
+                            document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
+                    });
+                </script>
+            </div>
+        </nav>
 
     <div class="container">
         <div class="policy-hero">
