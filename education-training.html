@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Education Training Manual</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <style>
+        :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff }
+        body{ margin:0; font-family:'Montserrat',Arial,sans-serif; background: linear-gradient(180deg,#071029 0%,#02102a 60%,#03102f 100%); color:var(--text); }
+        .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; display:flex; align-items:center; justify-content:center; gap:22px }
+        .site-title{ margin:0; font-size:2rem; color:var(--accent-sun); font-weight:900 }
+        .container{ max-width:1000px; margin:2rem auto; background:var(--panel); border-radius:14px; padding:2rem }
+        .copy-btn{ background:transparent; border:0; color:var(--accent-blue); cursor:pointer }
+        .nav-list{ display:flex; gap:2rem; list-style:none; justify-content:center; margin:0; padding:0 }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" style="height:48px;width:48px"></a>
+        <h1 class="site-title">Education Training Manual</h1>
+        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" style="height:48px;width:48px"></a>
+    </header>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/recruit-training.html">Recruit Training</a></li>
+            <li><a href="/security-training.html">Security Training</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Education Training Manual</h2>
+        <div>
+            <br>
+            <h5>Welcome to Education Training! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>During this training you will learn how to host training lessons, manage trainees, and use the Education tools. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>Please be patient and respectful to trainees and other staff. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <br>
+            <h5>Introduce yourself: "Hello I am [name], I will be your trainer today" <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>Explain the training format and the objectives. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>Make sure trainees understand how assessments will be done and what is expected. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <br>
+            <h5>Keep the class interactive: ask questions, demonstrate examples, and give constructive feedback. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>If trainees are silent, prompt them with small tasks or ask them to demonstrate. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <br>
+            <h5>Ensure safety and compliance with community rules at all times. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>At the end of the session, give a brief recap and allow time for questions. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <br>
+            <h5>Assessment examples: practical demonstration, Q&A, or a mini-quiz. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <h5>Once trainees pass, update their status in the training portal. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <br>
+            <h6>[Do you have any questions?]</h6>
+            <br>
+        </div>
+    </main>
+    <div id="popup" class="popup" role="status" aria-live="polite" style="display:none"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var imgs = Array.prototype.slice.call(document.querySelectorAll('img.copy-icon'));
+            imgs.forEach(function(img){ try{ var aria = img.getAttribute('alt') || 'Copy text'; var btn=document.createElement('button'); btn.type='button'; btn.className='copy-btn'; btn.setAttribute('aria-label', aria); var parent = img.parentNode; var copyTextValue=''; if(parent){ var clone=parent.cloneNode(true); var removes = clone.querySelectorAll('img, button'); removes.forEach(function(n){ n.remove(); }); copyTextValue = clone.textContent.trim(); } if(!copyTextValue) copyTextValue = img.getAttribute('data-copy') || img.getAttribute('alt') || ''; btn.addEventListener('click', function(e){ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(copyTextValue).then(function(){ alert('Copied'); }).catch(function(){ var ta=document.createElement('textarea'); ta.value=copyTextValue; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); alert('Copied'); }catch(e){ alert('Copy failed'); } document.body.removeChild(ta); }); } }); img.parentNode.replaceChild(btn, img); }catch(e){} });
+        });
+    </script>
+</body>
+</html>
