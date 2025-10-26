@@ -360,9 +360,9 @@ body.flicker {
 </head>
 <body>
         <header class="site-header">
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
             <h1 class="site-title">National Security Council</h1>
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
         </header>
         <nav>
             <div class="nav-links">
@@ -428,7 +428,8 @@ body.flicker {
                         });
 
                         document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
-                        // Policies dropdown: mirror Rank Lists behaviour so it works on hover, keyboard and touch
+
+                        // Policies dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
                         (function(){
                             var policiesToggle = document.getElementById('policies-toggle');
                             if(!policiesToggle) return;
@@ -436,20 +437,9 @@ body.flicker {
                             var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
                             var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
 
-                            // Hover open/close for desktop
                             policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
                             policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
 
-                            // Click/tap toggles the menu (useful on touch devices)
-                            policiesToggle.addEventListener('click', function(e){
-                                // If already visible, let clicks on links navigate; otherwise toggle visibility
-                                var visible = policiesDropdown.style.display === 'block' || window.getComputedStyle(policiesDropdown).display === 'block';
-                                policiesDropdown.style.display = visible ? 'none' : 'block';
-                                policiesToggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
-                                e.preventDefault();
-                            });
-
-                            // keyboard navigation inside the dropdown
                             policiesDropdown.addEventListener('keydown', function(e){
                                 var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current);
                                 if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); }
@@ -459,10 +449,10 @@ body.flicker {
                                 else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); }
                             });
 
-                            // Clicking outside closes the policies dropdown
                             document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
                         })();
-                        // Resources dropdown handlers (mirror Rank Lists / Policies)
+
+                        // Resources dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
                         (function(){
                             var resourcesToggle = document.getElementById('resources-toggle');
                             if(!resourcesToggle) return;
@@ -473,80 +463,18 @@ body.flicker {
                             resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
                             resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
 
-                            // Click/tap toggles the menu (useful on touch devices)
-                            resourcesToggle.addEventListener('click', function(e){
-                                var visible = resourcesDropdown.style.display === 'block' || window.getComputedStyle(resourcesDropdown).display === 'block';
-                                resourcesDropdown.style.display = visible ? 'none' : 'block';
-                                resourcesToggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
-                                e.preventDefault();
+                            resourcesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); }
                             });
-
-                            resourcesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); } else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); } });
 
                             document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
                         })();
                     });
-                    // Improved flicker + drip initialization, auto-enables Halloween between Oct 27–Nov 30 (respects prefers-reduced-motion)
-                    (function(){
-                        var key = 'halloween-theme';
-                        function inRange(){
-                            var now = new Date();
-                            var start = new Date(now.getFullYear(), 9, 27); // Oct 27
-                            var end = new Date(now.getFullYear(), 10, 30); // Nov 30
-                            end.setHours(23,59,59,999);
-                            return now >= start && now <= end;
-                        }
-                        var stored = null;
-                        try{ stored = localStorage.getItem(key); }catch(e){}
-                        var enabled = (stored === '1') || (stored === null && inRange());
-                        if(enabled) document.documentElement.classList.add('halloween');
-
-                        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                        if(reduced) return;
-
-                        // Randomized flicker loop: occasional brief or stronger pulses
-                        (function flickerLoop(){
-                            var next = 2000 + Math.random() * 7000; // 2s - 9s between pulses
-                            setTimeout(function(){
-                                var strong = Math.random() < 0.18; // ~18% chance of a stronger pulse
-                                var cls = strong ? 'flicker-strong' : 'flicker-brief';
-                                var dur = strong ? (160 + Math.random() * 340) : (60 + Math.random() * 180); // ms
-                                document.body.classList.add(cls);
-                                setTimeout(function(){ document.body.classList.remove(cls); }, dur);
-                                flickerLoop();
-                            }, next);
-                        })();
-
-                        // Create multiple drip elements under the title with randomized timing/positions
-                        function initDrips(){
-                            var container = document.querySelector('.site-title .drips');
-                            var title = document.querySelector('.site-title');
-                            if(!container || !title) return;
-                            // clear any existing
-                            container.innerHTML = '';
-                            var count = Math.min(7, Math.max(3, Math.floor(title.clientWidth / 140)) );
-                            for(var i=0;i<count;i++){
-                                var d = document.createElement('span');
-                                d.className = 'drip';
-                                // pick a left position across the text width with small padding
-                                var padding = 8;
-                                var left = padding + Math.random() * Math.max(0, title.clientWidth - padding*2);
-                                d.style.left = Math.round(left) + 'px';
-                                // randomized animation durations and delays
-                                var fall = (0.9 + Math.random() * 1.6).toFixed(2);
-                                var swell = (1.0 + Math.random() * 1.4).toFixed(2);
-                                var delay1 = (Math.random() * 3).toFixed(2);
-                                var delay2 = (Math.random() * 3).toFixed(2);
-                                d.style.animationDuration = fall + 's, ' + swell + 's';
-                                d.style.animationDelay = delay1 + 's, ' + delay2 + 's';
-                                container.appendChild(d);
-                            }
-                        }
-                        // init on load and on resize (debounced)
-                        initDrips();
-                        var rzTimeout = null;
-                        window.addEventListener('resize', function(){ if(rzTimeout) clearTimeout(rzTimeout); rzTimeout = setTimeout(initDrips, 260); });
-                    })();
                 </script>
             </div>
         </nav>

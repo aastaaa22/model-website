@@ -17,11 +17,11 @@
 </head>
 <body>
     <header class="site-header">
-        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
-        <h1 class="site-title">National Security Council</h1>
-        <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
-    </header>
-    <nav>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
+            <h1 class="site-title">National Security Council</h1>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
+        </header>
+        <nav>
             <div class="nav-links">
                 <div class="nav-left">
                     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -73,6 +73,8 @@
                         rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
                         rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
 
+                        // click and keyboard handlers removed to restore hover-only dropdown behavior
+
                         dropdown.addEventListener('keydown', function(e){
                             var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
                             if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
@@ -84,6 +86,7 @@
 
                         document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
 
+                        // Policies dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
                         (function(){
                             var policiesToggle = document.getElementById('policies-toggle');
                             if(!policiesToggle) return;
@@ -106,6 +109,7 @@
                             document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
                         })();
 
+                        // Resources dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
                         (function(){
                             var resourcesToggle = document.getElementById('resources-toggle');
                             if(!resourcesToggle) return;
