@@ -72,45 +72,121 @@
         <h2>Recruit Training Manual</h2>
         <p class="muted">Click the small copy icon to copy a line.</p>
 
-        <!-- Start of transferred content -->
-        <h5>Hello and Welcome to your National Security Council Training!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Hello and Welcome to your National Security Council Training!"></h5>
-        <h5>My name is [Your Username] and I will be your instructor for today!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="My name is [Your Username] and I will be your instructor for today!"></h5>
-        <h5>During this training, you will learn some of our basic command and rules.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="During this training, you will learn some of our basic command and rules."></h5>
-        <!-- (rest of recruit content omitted for brevity in this file — full content copied below) -->
+        <header class="site-header">
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
+            <h1 class="site-title">National Security Council</h1>
+            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
+        </header>
+        <nav>
+            <div class="nav-links">
+                <div class="nav-left">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/home">Home</a></li>
+                    <li style="position:relative;">
+                        <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+                            <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
+                            <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
+                        </ul>
+                    </li>
+                    <li style="position:relative;">
+                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
+                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
+                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
+                            <li><a href="/security-training.html">Security Training Manual</a></li>
+                            <li><a href="/education-training.html">Education Training Manual</a></li>
+                            <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
+                            <li><a href="/tour-script.html">Tour Script</a></li>
+                            <li><a href="/transfer-training.html">Transfer Training Script</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#department">Department</a></li>
+                    <li style="position:relative;">
+                        <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                        <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                            <li><a href="/pay-system">Pay System</a></li>
+                            <li><a href="/code-of-conduct">Code of Conduct</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+                </ul>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var navList = document.querySelector('.nav-list');
+                        var hamburger = document.querySelector('.hamburger');
+                        hamburger.addEventListener('click', function(){
+                            var open = navList.classList.toggle('show');
+                            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        });
 
-        <!-- Full recruit training content (transferred from resources.html) -->
-        <div>
-        <br>
-        <h5>Hello and Welcome to your National Security Council Training!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Hello and Welcome to your National Security Council Training!"></h5>
-        <h5>My name is [Your Username] and I will be your instructor for today!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="My name is [Your Username] and I will be your instructor for today!"></h5>
-        <h5>During this training, you will learn some of our basic command and rules.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="During this training, you will learn some of our basic command and rules."></h5>
-        <h5>If at any point I am running through this too quickly for you, please let me know.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If at any point I am running through this too quickly for you, please let me know."></h5>
-        <h5>To prevent idling, please type o/ in your chat box.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="To prevent idling, please type o/ in your chat box."></h5>
-        <h5>Please do not walk around or talk while I go over the information with you.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please do not walk around or talk while I go over the information with you."></h5>
-        <h5>You will be given the chance to ask any questions you have after each section.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You will be given the chance to ask any questions you have after each section."></h5>
-        <br>
-        <h6>[Answer any questions they might have]</h6>
-        <br>
-        <h3>[Note: If the agent is being rude, don't be afraid to hand out 3 warnings before failing the Recruit. If they go AFK, please request for RR at the #request-channel on Discord, after that wait for someone to show up.]</h3>
-        <h3 style="color: blue; font-size: 14px; font-family: Coustard; font-weight: normal;">Reminder: If the recruit has disconnected and hasn’t come back after 5 minutes, you must log it as FAIL instead of INCOMPLETE. If they’ve already passed the test, you must inform on discord, on #trainer-hub, that their training needs to be completed.</h3>
-        <br>
-        <h5>We will now begin the Basic Commands you will need to know.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="We will now begin the Basic Commands you will need to know."></h5>
-        <h5>Please do not perform the commands as I go through it with you.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please do not perform the commands as I go through it with you."></h5>
-        <h5>You will be given a chance to practice at the later stage.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You will be given a chance to practice at the later stage."></h5>
-        <h5>ATT – Attention - Stand up from your seat, wave, and say: "Yes, sir!" / "Yes, ma’am!".
+                        var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+                        var toggle = rankListLi.querySelector('.dropdown-toggle');
+                        var dropdown = rankListLi.querySelector('.nav-dropdown');
+                        var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+
+                        rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                        rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+
+                        dropdown.addEventListener('keydown', function(e){
+                            var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
+                            if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
+                            else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
+                            else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
+                            else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
+                            else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+                        });
+
+                        document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+
+                        (function(){
+                            var policiesToggle = document.getElementById('policies-toggle');
+                            if(!policiesToggle) return;
+                            var policiesLi = policiesToggle.parentNode;
+                            var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                            var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+
+                            policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                            policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+
+                            policiesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); }
+                            });
+
+                            document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
+
+                        (function(){
+                            var resourcesToggle = document.getElementById('resources-toggle');
+                            if(!resourcesToggle) return;
+                            var resourcesLi = resourcesToggle.parentNode;
+                            var resourcesDropdown = resourcesLi.querySelector('.nav-dropdown');
+                            var resourcesItems = Array.prototype.slice.call(resourcesDropdown.querySelectorAll('a'));
+
+                            resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
+                            resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
+
+                            resourcesDropdown.addEventListener('keydown', function(e){
+                                var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current);
+                                if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); }
+                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); }
+                                else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); }
+                                else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); }
+                                else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); }
+                            });
+
+                            document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
+                        })();
+                    });
+                </script>
+            </div>
+        </nav>
             <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="ATT – Attention - Stand up from your seat, wave, and say: \"Yes, sir!\" / \"Yes, ma’am!\"."></h5>
         <h5>AE – At Ease - Sit back down and return to your task.
             <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="AE – At Ease - Sit back down and return to your task."></h5>
