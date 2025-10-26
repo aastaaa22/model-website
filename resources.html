@@ -1301,12 +1301,33 @@ body.flicker {
     <!-- Page-specific cursor override: remove pumpkin and use a simple black arrow + bat cursor for this page only -->
     <style>
     /* Detailed arrow + bat cursor for this page (hotspot adjusted). Respects reduced-motion. */
-        @media (prefers-reduced-motion: no-preference) {
-                html, body, a, button, input, textarea, select {
-                        /* Use a white arrow + bat SVG (so it's visible on dark backgrounds). Fallback to the default cursor if the SVG isn't supported. */
-                        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g fill='white' stroke='black' stroke-width='1'><path d='M4 2 L28 26 L22 30 L26 40 L18 44 L12 34 L4 42 Z'/><rect x='2' y='2' width='6' height='20' rx='1' ry='1'/><g transform='translate(34,6) scale(0.9)'><path d='M4 10c2-4 6-6 10-6 4 0 8 2 10 6 2 4 6 6 8 6-3 0-5 3-9 3-3 0-5-2-8-2s-5 2-8 2c-4 0-6-3-9-3 2 0 6-2 8-6z'/><circle cx='13' cy='9' r='1.2' fill='black'/><circle cx='19' cy='9' r='1.2' fill='black'/></g></g></svg>") 8 6, default !important;
-                }
-        }
+            @media (prefers-reduced-motion: no-preference) {
+                    html, body, a, button, input, textarea, select {
+                            /* Halloween-themed cursor: white arrow + detailed bat with orange accents and soft glow. Hotspot tuned to (8,6). */
+                            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>
+                                <defs>
+                                    <radialGradient id='g' cx='50%25' cy='40%25' r='60%25'>
+                                        <stop offset='0%25' stop-color='%23ffdb66'/>
+                                        <stop offset='100%25' stop-color='%23ff8b00'/>
+                                    </radialGradient>
+                                </defs>
+                                <g>
+                                    <!-- Arrow pointer (white with thin black stroke so it reads on dark background) -->
+                                    <path d='M4 2 L28 26 L22 30 L26 40 L18 44 L12 34 L4 42 Z' fill='white' stroke='black' stroke-width='1'/>
+                                    <rect x='2' y='2' width='6' height='20' rx='1' ry='1' fill='white' stroke='black' stroke-width='1'/>
+
+                                    <!-- Bat to the right of the pointer: black body, orange stroke and glow circle behind -->
+                                    <g transform='translate(36,6) scale(0.92)'>
+                                          <circle cx='14' cy='14' r='6' fill='url%28%23g%29' opacity='0.28'/>
+                                        <path d='M0 12c3-5 8-7 13-6 5 1 9 4 13 6 0 0-2-1-5-1-3 0-5 1-8 1s-5-1-8-1c-3 0-5 1-8 1-3 0-5-1-5-1z' fill='black' stroke='%23ff8b00' stroke-width='0.9'/>
+                                        <path d='M2 12c2-1 4-2 6-2s4 1 6 2' fill='none' stroke='%23ff8b00' stroke-width='0.9' stroke-linecap='round'/>
+                                        <circle cx='9' cy='10' r='1.2' fill='%23ff8b00'/>
+                                        <circle cx='15' cy='10' r='1.2' fill='%23ff8b00'/>
+                                    </g>
+                                </g>
+                            </svg>") 8 6, default !important;
+                    }
+            }
     @media (prefers-reduced-motion: reduce) {
         html, body, a, button, input, textarea, select { cursor: auto !important; }
     }
