@@ -176,18 +176,7 @@
             }
         }
     </style>
-    <!-- Site-wide pumpkin cursor CSS (respects prefers-reduced-motion) -->
-    <style>
-    @media (prefers-reduced-motion: no-preference) {
-        :root{ --pumpkin-size:56px; }
-        html, body, a, button, input, textarea, select { cursor: none !important; }
-        .site-pumpkin-cursor{ position:fixed; width:var(--pumpkin-size); height:var(--pumpkin-size); left:0; top:0; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; transition:transform 120ms linear, opacity 160ms ease; }
-        .site-pumpkin-cursor svg{ width:100%; height:100%; display:block; }
-        .site-pumpkin-cursor.glow { animation: pumpkin-glow 1.8s ease-in-out infinite; }
-        @keyframes pumpkin-glow { 0%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } 50% { filter: drop-shadow(0 0 14px rgba(255,198,43,0.6)); } 100%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } }
-    }
-    @media (prefers-reduced-motion: reduce) { html, body, a, button, input, textarea, select { cursor: auto !important; } }
-    </style>
+    <!-- native cursor restored: custom cursor CSS removed -->
 </head>
 <body>
     <header class="site-header">
