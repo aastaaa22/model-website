@@ -1267,7 +1267,10 @@ body.flicker {
         if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         if(document.getElementById('site-pumpkin-cursor')) return;
 
-        var el = document.createElement('div');
+    // mark document so CSS fallbacks don't show the native cursor while our DOM cursor runs
+    try{ document.documentElement.classList.add('bat-cursor-active'); }catch(e){}
+
+    var el = document.createElement('div');
         el.id = 'site-pumpkin-cursor';
         el.className = 'site-pumpkin-cursor glow';
         el.setAttribute('aria-hidden','true');
@@ -1338,6 +1341,25 @@ body.flicker {
 
         // allow clicking and focusable elements to retain native cursor when needed
         document.addEventListener('pointerdown', function(e){ var t = e.target; if(t && (t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.isContentEditable)) { el.style.opacity='0'; } });
+        
+        // Generate a PNG fallback at runtime (canvas) and set it as the document cursor for browsers that support it.
+        try{
+            var c = document.createElement('canvas'); c.width = 64; c.height = 64;
+            var ctx = c.getContext('2d');
+            // draw a simple stylized bat + arrow as a fallback PNG
+            // arrow (white)
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath(); ctx.moveTo(4,2); ctx.lineTo(28,26); ctx.lineTo(22,30); ctx.lineTo(26,40); ctx.lineTo(18,44); ctx.lineTo(12,34); ctx.lineTo(4,42); ctx.closePath(); ctx.fill();
+            // arrow stem
+            ctx.fillRect(2,2,6,20);
+            // bat body (orange glow circle)
+            var grad = ctx.createRadialGradient(50,26,2,50,26,18); grad.addColorStop(0,'rgba(255,219,102,0.95)'); grad.addColorStop(1,'rgba(255,139,0,0.9)'); ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(50,26,10,0,Math.PI*2); ctx.fill();
+            // bat silhouette
+            ctx.fillStyle = '#000000'; ctx.beginPath(); ctx.moveTo(34,28); ctx.bezierCurveTo(37,18,45,14,54,16); ctx.bezierCurveTo(60,16,62,20,62,20); ctx.bezierCurveTo(58,18,52,18,48,20); ctx.bezierCurveTo(44,22,40,24,36,26); ctx.closePath(); ctx.fill();
+            var data = c.toDataURL('image/png');
+            // set as cursor only when DOM cursor is active (so it doesn't create double cursor):
+            document.documentElement.style.cursor = 'url(' + data + ') 8 6, auto';
+        }catch(e){}
     })();
     </script>
     <!-- Page-specific cursor override: remove pumpkin and use a simple black arrow + bat cursor for this page only -->
@@ -1351,8 +1373,8 @@ body.flicker {
                             html, body, a, button { cursor: none !important; }
                             input, textarea, select, button[role], [contenteditable] { cursor: auto !important; }
 
-                            /* Page-scoped CSS cursor fallback: try an SVG cursor (many browsers support this) then default. */
-                            html, body { cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g fill='white' stroke='black' stroke-width='1'><path d='M4 2 L28 26 L22 30 L26 40 L18 44 L12 34 L4 42 Z'/><rect x='2' y='2' width='6' height='20' rx='1' ry='1'/><g transform='translate(36,6) scale(0.92)'><path d='M0 12c3-5 8-7 13-6 5 1 9 4 13 6 0 0-2-1-5-1-3 0-5 1-8 1s-5-1-8-1c-3 0-5 1-8 1-3 0-5-1-5-1z' fill='black' stroke='%23ff8b00' stroke-width='0.9'/><circle cx='9' cy='10' r='1.2' fill='%23ff8b00'/><circle cx='15' cy='10' r='1.2' fill='%23ff8b00'/></g></g></svg>") 8 6, auto !important; }
+                        /* Page-scoped CSS cursor fallback: only used when the DOM faux cursor is NOT active. */
+                        html:not(.bat-cursor-active), body:not(.bat-cursor-active) { cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><g fill='white' stroke='black' stroke-width='1'><path d='M4 2 L28 26 L22 30 L26 40 L18 44 L12 34 L4 42 Z'/><rect x='2' y='2' width='6' height='20' rx='1' ry='1'/><g transform='translate(36,6) scale(0.92)'><path d='M0 12c3-5 8-7 13-6 5 1 9 4 13 6 0 0-2-1-5-1-3 0-5 1-8 1s-5-1-8-1c-3 0-5 1-8 1-3 0-5-1-5-1z' fill='black' stroke='%23ff8b00' stroke-width='0.9'/><circle cx='9' cy='10' r='1.2' fill='%23ff8b00'/><circle cx='15' cy='10' r='1.2' fill='%23ff8b00'/></g></g></svg>") 8 6, auto !important; }
 
                             /* Faux cursor element styling */
                             #site-bat-cursor{ position:fixed; width:64px; height:64px; left:0; top:0; transform:translate(-50%,-50%); pointer-events:none; z-index:99999; transition:transform 120ms linear, opacity 160ms ease; will-change: transform, left, top, opacity; opacity:0; }
