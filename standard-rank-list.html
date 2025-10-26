@@ -17,7 +17,20 @@
         @media (max-width:900px){ .site-title{ font-size:2.1rem; } .header-badge{ height:44px; width:44px; } }
         @media (max-width:600px){ .site-title{ font-size:1.45rem; } .header-badge{ height:36px; width:36px; } }
     </style>
-    <!-- Pumpkin cursor removed -->
+    <!-- Site-wide pumpkin cursor CSS (respects prefers-reduced-motion) -->
+    <style>
+    @media (prefers-reduced-motion: no-preference) {
+        :root{ --pumpkin-size:56px; }
+        html, body, a, button, input, textarea, select { cursor: none !important; }
+        .site-pumpkin-cursor{ position:fixed; width:var(--pumpkin-size); height:var(--pumpkin-size); left:0; top:0; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; transition:transform 120ms linear, opacity 160ms ease; }
+        .site-pumpkin-cursor svg{ width:100%; height:100%; display:block; }
+        .site-pumpkin-cursor.glow { animation: pumpkin-glow 1.8s ease-in-out infinite; }
+        @keyframes pumpkin-glow { 0%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } 50% { filter: drop-shadow(0 0 14px rgba(255,198,43,0.6)); } 100%{ filter: drop-shadow(0 0 6px rgba(255,120,10,0.45)); } }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        html, body, a, button, input, textarea, select { cursor: auto !important; }
+    }
+    </style>
     <style>
         :root {
             /* Bayanihan-inspired palette */
@@ -136,124 +149,83 @@
     </head>
 <body>
     <header class="site-header">
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left" width="56" height="56"></a>
-            <h1 class="site-title">National Security Council</h1>
-            <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right" width="56" height="56"></a>
-        </header>
-        <nav>
-            <div class="nav-links">
-                <div class="nav-left">
-                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
-                </div>
-                <ul class="nav-list">
-                    <li><a href="/home">Home</a></li>
-                    <li style="position:relative;">
-                        <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
-                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-label="Rank Lists menu" aria-labelledby="ranklists-toggle">
+    <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
+        <h1 class="site-title">National Security Council</h1>
+    <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge right"></a>
+    </header>
+    <nav>
+        <div class="nav-links">
+            <div class="nav-left">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+            </div>
+            <ul class="nav-list">
+                <li><a href="/home">Home</a></li>
+                <li style="position:relative;">
+                    <span id="ranklists-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="ranklists-menu" tabindex="-1">Rank Lists</span>
+                        <ul id="ranklists-menu" class="nav-dropdown" role="menu" aria-labelledby="ranklists-toggle" aria-label="Rank Lists menu">
                             <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
                             <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
                         </ul>
-                    </li>
-                    <li style="position:relative;">
-                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
-                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
-                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
-                            <li><a href="/security-training.html">Security Training Manual</a></li>
-                            <li><a href="/education-training.html">Education Training Manual</a></li>
-                            <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
-                            <li><a href="/tour-script.html">Tour Script</a></li>
-                            <li><a href="/transfer-training.html">Transfer Training Script</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#department">Department</a></li>
-                    <li style="position:relative;">
-                        <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
-                        <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
-                            <li><a href="/pay-system">Pay System</a></li>
-                            <li><a href="/code-of-conduct">Code of Conduct</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
-                </ul>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        var navList = document.querySelector('.nav-list');
-                        var hamburger = document.querySelector('.hamburger');
-                        hamburger.addEventListener('click', function(){
-                            var open = navList.classList.toggle('show');
-                            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-                        });
+                </li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="#department">Department</a></li>
+                <li style="position:relative;">
+                    <span id="policies-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="policies-menu" tabindex="-1">Policies</span>
+                    <ul id="policies-menu" class="nav-dropdown" role="menu" aria-label="Policies menu" aria-labelledby="policies-toggle">
+                        <li><a href="/pay-system">Pay System</a></li>
+                        <li><a href="/code-of-conduct">Code of Conduct</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
+            </ul>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure dropdowns are hidden on load to avoid accidental open when navigating
+            document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+                try { dd.style.display = 'none'; } catch(e){}
+                var labelled = dd.getAttribute('aria-labelledby');
+                if(labelled){ var tog = document.getElementById(labelled); if(tog) tog.setAttribute('aria-expanded','false'); }
+            });
 
-                        var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
-                        var toggle = rankListLi.querySelector('.dropdown-toggle');
-                        var dropdown = rankListLi.querySelector('.nav-dropdown');
-                        var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+            var navList = document.querySelector('.nav-list');
+            var hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', function(){
+                var open = navList.classList.toggle('show');
+                hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
 
-                        rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
-                        rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+            var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+            var toggle = rankListLi.querySelector('.dropdown-toggle');
+            var dropdown = rankListLi.querySelector('.nav-dropdown');
+            var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
 
-                        // click and keyboard handlers removed to restore hover-only dropdown behavior
+            rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+            rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
 
-                        dropdown.addEventListener('keydown', function(e){
-                            var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
-                            if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
-                            else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
-                            else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
-                            else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
-                            else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
-                        });
+            // click and keyboard handlers removed to restore hover-only dropdown behavior
 
-                        document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+            dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
 
-                        // Policies dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
-                        (function(){
-                            var policiesToggle = document.getElementById('policies-toggle');
-                            if(!policiesToggle) return;
-                            var policiesLi = policiesToggle.parentNode;
-                            var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
-                            var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
+            document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
 
-                            policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
-                            policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
+            // Policies dropdown handlers
+            (function(){
+                var policiesToggle = document.getElementById('policies-toggle');
+                if(!policiesToggle) return;
+                var policiesLi = policiesToggle.parentNode;
+                var policiesDropdown = policiesLi.querySelector('.nav-dropdown');
+                var policiesItems = Array.prototype.slice.call(policiesDropdown.querySelectorAll('a'));
 
-                            policiesDropdown.addEventListener('keydown', function(e){
-                                var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current);
-                                if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); }
-                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); }
-                                else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); }
-                                else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); }
-                                else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); }
-                            });
+                policiesLi.addEventListener('mouseenter', function(){ policiesDropdown.style.display = 'block'; policiesToggle.setAttribute('aria-expanded','true'); });
+                policiesLi.addEventListener('mouseleave', function(){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); });
 
-                            document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
-                        })();
+                policiesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = policiesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = policiesItems[(idx + 1) % policiesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = policiesItems[(idx - 1 + policiesItems.length) % policiesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(policiesItems[0]) policiesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(policiesItems[policiesItems.length-1]) policiesItems[policiesItems.length-1].focus(); } else if(key === 'Escape'){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); policiesToggle.focus(); } });
 
-                        // Resources dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
-                        (function(){
-                            var resourcesToggle = document.getElementById('resources-toggle');
-                            if(!resourcesToggle) return;
-                            var resourcesLi = resourcesToggle.parentNode;
-                            var resourcesDropdown = resourcesLi.querySelector('.nav-dropdown');
-                            var resourcesItems = Array.prototype.slice.call(resourcesDropdown.querySelectorAll('a'));
-
-                            resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
-                            resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
-
-                            resourcesDropdown.addEventListener('keydown', function(e){
-                                var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current);
-                                if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); }
-                                else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); }
-                                else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); }
-                                else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); }
-                                else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); }
-                            });
-
-                            document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
-                        })();
-                    });
-                </script>
-            </div>
-        </nav>
+                document.addEventListener('click', function(ev){ if(!policiesLi.contains(ev.target)){ policiesDropdown.style.display = 'none'; policiesToggle.setAttribute('aria-expanded','false'); } });
+            })();
+        });
+        </script>
     </nav>
     <div class="container">
         <h1>Standard Rank List</h1>
@@ -561,7 +533,27 @@
                 });
             })();
         </script>
-    <!-- Pumpkin cursor removed -->
+    <script>
+    (function(){
+        if(typeof window === 'undefined') return;
+        if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if(document.getElementById('site-pumpkin-cursor')) return;
+
+        var el = document.createElement('div');
+        el.id = 'site-pumpkin-cursor';
+        el.className = 'site-pumpkin-cursor glow';
+        el.setAttribute('aria-hidden','true');
+        el.innerHTML = '\n            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n              <defs><radialGradient id="pg2" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#ffd569" stop-opacity="0.95"/><stop offset="60%" stop-color="#ff8b00" stop-opacity="0.95"/><stop offset="100%" stop-color="#9a3b00" stop-opacity="0.9"/></radialGradient></defs>\n              <g transform="translate(0 2)"><path d="M32 6c-7 0-13 4-16 10-4 7-3 15 1 21 3 5 8 8 14 9 6 1 12 1 17-1 6-2 10-6 13-11 4-7 3-15-1-21-4-6-9-10-18-10z" fill="url(#pg2)"/><polygon points="22,26 28,20 32,26" fill="#201"/><polygon points="40,26 36,20 32,26" fill="#201"/><path d="M20 38c4 2 8 3 12 3s8-1 12-3c0 0-2 6-12 6s-12-6-12-6z" fill="#201"/><rect x="28" y="8" width="8" height="6" rx="2" ry="2" fill="#4b2e00"/></g></svg>';
+
+        document.body.appendChild(el);
+
+        var visible = true;
+        function setPos(x,y){ el.style.left = x + 'px'; el.style.top = y + 'px'; }
+        function onMove(e){ var x = (e.clientX != null) ? e.clientX : (e.touches && e.touches[0] && e.touches[0].clientX) || 0; var y = (e.clientY != null) ? e.clientY : (e.touches && e.touches[0] && e.touches[0].clientY) || 0; setPos(x,y); if(!visible){ el.style.opacity = '1'; visible = true; } }
+        document.addEventListener('mousemove', onMove, {passive:true}); document.addEventListener('touchmove', onMove, {passive:true}); document.addEventListener('mouseleave', function(){ el.style.opacity = '0'; visible = false; });
+        document.addEventListener('mouseover', function(e){ var t = e.target; if(!t) return; var tag = (t.tagName || '').toUpperCase(); var interactive = tag === 'A' || tag === 'BUTTON' || tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || t.isContentEditable || !!t.closest && !!t.closest('a,button,input,textarea,select'); el.style.transform = interactive ? 'translate(-50%,-50%) scale(0.7)' : 'translate(-50%,-50%) scale(1)'; }, {passive:true});
+    })();
+    </script>
     </div>
 </body>
 </html>

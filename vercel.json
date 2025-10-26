@@ -4,22 +4,10 @@
   "routes": [
     { "src": "/home.html", "dest": "/home.html" },
     { "src": "/resources.html", "dest": "/resources.html" },
-    { "src": "/recruit-training.html", "dest": "/recruit-training.html" },
-    { "src": "/security-training.html", "dest": "/security-training.html" },
-    { "src": "/education-training.html", "dest": "/education-training.html" },
-    { "src": "/high-rank-training.html", "dest": "/high-rank-training.html" },
-    { "src": "/tour-script.html", "dest": "/tour-script.html" },
-    { "src": "/transfer-training.html", "dest": "/transfer-training.html" },
     { "src": "/elective-rank-list.html", "dest": "/elective-rank-list.html" },
     { "src": "/standard-rank-list.html", "dest": "/standard-rank-list.html" },
     { "src": "/pay-system.html", "dest": "/pay-system.html" },
     { "src": "/code-of-conduct.html", "dest": "/code-of-conduct.html" },
-    { "src": "/recruit-training", "dest": "/recruit-training.html" },
-    { "src": "/security-training", "dest": "/security-training.html" },
-    { "src": "/education-training", "dest": "/education-training.html" },
-    { "src": "/high-rank-training", "dest": "/high-rank-training.html" },
-    { "src": "/tour-script", "dest": "/tour-script.html" },
-    { "src": "/transfer-training", "dest": "/transfer-training.html" },
     { "src": "/([^\\.]+)$", "dest": "/$1.html" },
     { "src": "/(.*)", "dest": "/home.html" }
   ]
