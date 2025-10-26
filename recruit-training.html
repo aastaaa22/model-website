@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recruit Training Manual</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-    <style>
+        <style>
         :root{ --primary:#071029; --panel:rgba(8,16,28,0.66); --accent-sun:#FFC62B; --accent-blue:#0038A8; --text:#fff; --muted:#c9d0d8; --radius:14px }
     .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:18px; }
     .site-title{ display:inline-block; margin:0; font-size:clamp(1.6rem,4vw,3rem); color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
@@ -207,13 +207,103 @@
                             <li><a href="/standard-rank-list">Standard Rank Lists</a></li>
                             <li><a href="/elective-rank-list">Elective Rank Lists</a></li>
                         </ul>
-                    </li>
-                    <li style="position:relative;">
-                        <span id="resources-toggle" class="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-controls="resources-menu" tabindex="-1">Resources</span>
-                        <ul id="resources-menu" class="nav-dropdown" role="menu" aria-label="Resources menu" aria-labelledby="resources-toggle">
-                            <li><a href="/recruit-training.html">Recruit Training Manual</a></li>
-                            <li><a href="/security-training.html">Security Training Manual</a></li>
-                            <li><a href="/education-training.html">Education Training Manual</a></li>
+                    </div>
+                </nav>
+            <main class="container">
+                <section class="training-content" aria-label="Recruit training content">
+                    <h1 style="text-align:center; font-family: 'Montserrat', Arial, sans-serif;">NSC Recruit Training Manual</h1>
+                    <div class="training-block">
+                        <p class="lead">Hello and Welcome to your National Security Council Training!</p>
+                        <p class="lead">My name is [Your Username] and I will be your instructor for today!</p>
+                        <p class="lead">During this training, you will learn some of our basic commands and rules.</p>
+                        <p class="lead">If at any point I am running through this too quickly for you, please let me know.</p>
+                        <p class="lead">To prevent idling, please type <code>o/</code> in your chat box.</p>
+                        <p class="lead">Please do not walk around or talk while I go over the information with you.</p>
+                        <p class="lead">You will be given the chance to ask any questions you have after each section.</p>
+                        <p class="lead">Do you have any questions about NSC before we start?</p>
+
+                        <h6>[Answer any questions they might have]</h6>
+
+                        <div class="note" role="note">[Note: If the agent is being rude, don't be afraid to hand out 3 warnings before failing the Recruit. If they go AFK, please request for RR at the #request-channel on Discord, after that wait for someone to show up.]</div>
+
+                        <h2>Basic Commands</h2>
+                        <p class="lead">We will now begin the Basic Commands you will need to know. Please do not perform the commands as I go through it with you.</p>
+
+                        <ul class="command-list">
+                            <li>ATT – Attention - Stand up from your seat, wave, and say: "Yes, sir!" / "Yes, ma’am!".</li>
+                            <li>AE – At Ease - Sit back down and return to your task.</li>
+                            <li>FTF – Fill The Front – Go to the front desks to recruit and let in existing members.</li>
+                            <li>FTB – Fill The Back - Go to the sofas at the back of the room.</li>
+                            <li>BTB – Back To Base – Return to NSC HQ when instructed.</li>
+                            <li>BTW – Back To Work - Resume your assigned task or role.</li>
+                            <li>CTH – Clear The Halls – Go to a station or FTB; don’t crowd the hallway.</li>
+                        </ul>
+
+                        <h2>Rules</h2>
+                        <p class="lead">Show respect to everyone, regardless of rank, gender, religion, nationality or any political stand.</p>
+                        <p class="lead">Do not flood, spam, or troll while in base, other bases or in public rooms.</p>
+                        <p class="lead">Only work at the NSC. (Double jobbing will lead to immediate termination)</p>
+
+                        <h3>Quick quiz</h3>
+                        <p>1. What do you do when someone tells you to FTF?</p>
+                        <p>2. What do you do when someone tells you to go FTB?</p>
+                        <p>5. Where are you allowed to go idle and AFK?</p>
+
+                        <p class="lead">Please name me at least 3 rules of NSC.</p>
+
+                        <hr>
+
+                        <p class="lead">Congratulations! You are now an official NSC Agent! As an official NSC Agent, your primary duty is to recruit new members to our agency.</p>
+                    </div>
+
+                    <!-- copy icons will be injected next to each .lead element by the script below -->
+                    <div id="popup" class="popup" role="status" aria-live="polite"></div>
+                </section>
+
+                <style>
+                    /* theme-aligned text styles */
+                    .training-content { font-family: 'Montserrat', Arial, sans-serif; color: var(--text); padding: 1rem; }
+                    .training-content .lead { font-size: 1rem; margin: .6rem 0; }
+                    .training-content h1 { color: var(--accent-sun); margin-bottom: .6rem; }
+                    .training-content h2 { color: var(--accent-blue); margin-top: 1rem; }
+                    .training-content h3 { color: var(--muted); }
+                    .command-list { list-style: disc; padding-left: 1.2rem; }
+
+                    /* copy icon and popup */
+                    .copy-icon { width:20px; height:20px; cursor:pointer; transition: transform .12s ease, filter .12s ease; margin-left:10px; vertical-align:middle; opacity:.95 }
+                    .copy-icon:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px }
+                    .copy-icon:hover { transform: translateY(-2px); filter:brightness(.9) }
+
+                    .popup { position: fixed; background: rgba(7,16,41,0.95); color: #fff; padding:8px 10px; border-radius:8px; font-size:0.95rem; box-shadow:0 8px 30px rgba(0,0,0,0.6); display:none; z-index:9999 }
+
+                    .copied-highlight { background: rgba(255,198,43,0.08); transition: background .25s ease }
+                </style>
+
+                <script>
+                    // Enhanced copy function: injects copy icons next to elements with class 'lead'
+                    (function(){
+                        function showPopupAt(x,y,msg){ var p = document.getElementById('popup'); if(!p) return; p.textContent = msg; p.style.left = (x + 10) + 'px'; p.style.top = (y - 10) + 'px'; p.style.display = 'block'; clearTimeout(p._t); p._t = setTimeout(function(){ p.style.display = 'none'; }, 1800); }
+
+                        function flash(el){ if(!el) return; el.classList.add('copied-highlight'); clearTimeout(el._ct); el._ct = setTimeout(function(){ el.classList.remove('copied-highlight'); }, 1200); }
+
+                        function fallbackCopy(text, x, y, el){ var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); showPopupAt(x,y,'Copied'); flash(el); }catch(e){ showPopupAt(x,y,'Copy failed'); } document.body.removeChild(ta); }
+
+                        function copyText(e, text, el){ e = e || window.event; var x = (e.clientX!=null)?e.clientX:12; var y = (e.clientY!=null)?e.clientY:12; if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(function(){ showPopupAt(x,y,'Copied'); flash(el); }).catch(function(){ fallbackCopy(text,x,y,el); }); } else { fallbackCopy(text,x,y,el); } }
+
+                        document.addEventListener('DOMContentLoaded', function(){
+                            var leads = Array.prototype.slice.call(document.querySelectorAll('.training-content .lead'));
+                            leads.forEach(function(p){
+                                // compute copy text: prefer data-copy attr, else textContent
+                                var copyText = p.getAttribute('data-copy') || p.textContent.trim();
+                                var btn = document.createElement('button'); btn.type='button'; btn.className='copy-icon'; btn.setAttribute('aria-label','Copy text'); btn.title='Copy';
+                                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2z" fill="currentColor"/></svg>';
+                                btn.addEventListener('click', function(ev){ copyText(ev, copyText, p); });
+                                btn.addEventListener('keydown', function(ev){ if(ev.key==='Enter' || ev.key===' '){ ev.preventDefault(); copyText(ev, copyText, p); } });
+                                p.appendChild(btn);
+                            });
+                        });
+                    })();
+                </script>
                             <li><a href="/high-rank-training.html">High Rank Training Manual</a></li>
                             <li><a href="/tour-script.html">Tour Script</a></li>
                             <li><a href="/transfer-training.html">Transfer Training Script</a></li>
@@ -229,13 +319,11 @@
                     </li>
                     <li><a href="https://nsc.habboportal.xyz/auth/login" target="_blank" rel="noopener noreferrer">Portal</a></li>
                 </ul>
-                </div>script>
-            </div>
-        </nav>
-    <main class="container">
-        <div>
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="ATT  ">
-        <h5>AE  
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var navList = document.querySelector('.nav-list');
+                        var hamburger = document.querySelector('.hamburger');
+                        hamburger.addEventListener('click', function(){
                             var open = navList.classList.toggle('show');
                             hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
                         });
@@ -310,260 +398,5 @@
                 </script>
             </div>
         </nav>
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="ATT – Attention - Stand up from your seat, wave, and say: \"Yes, sir!\" / \"Yes, ma’am!\"."></h5>
-        <h5>AE – At Ease - Sit back down and return to your task.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="AE – At Ease - Sit back down and return to your task."></h5>
-        <h5>FTF – Fill The Front – Go to the front desks to recruit and let in existing members.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="FTF – Fill The Front – Go to the front desks to recruit and let in existing members."></h5>
-        <h5>FTB – Fill The Back - Go to the sofas at the back of the room.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="FTB – Fill The Back - Go to the sofas at the back of the room."></h5>
-        <h5>BTB – Back To Base – Return to NSC HQ when instructed.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="BTB – Back To Base – Return to NSC HQ when instructed."></h5>
-        <h5>BTW – Back To Work - Resume your assigned task or role.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="BTW – Back To Work - Resume your assigned task or role."></h5>
-        <h5>CTH – Clear The Halls – Go to a station or FTB; don’t crowd the hallway.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="CTH – Clear The Halls – Go to a station or FTB; don’t crowd the hallway."></h5>
-        <h5>Please note: You may not use these commands until you reach the HR division or higher,
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please note: You may not use these commands until you reach the HR division or higher,"></h5>
-        <h5>but you are still expected to follow them when instructed.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="but you are still expected to follow them when instructed."></h5>
-        <h5>Do you have any questions about NSC before we start?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do you have any questions about NSC before we start?"></h5>
-        <br>
-        <h6>[Answer any questions they might have]</h6>
-        <br>
-        <h5>We will now go through the rules you must follow while working in NSC.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="We will now go through the rules you must follow while working in NSC."></h5>
-        <h5>Show respect to everyone, regardless of rank, gender, religion, nationality or any political stand
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Show respect to everyone, regardless of rank, gender, religion, nationality or any political stand"></h5>
-        <h5>Do not flood, spam, or troll while in base, other bases or in public rooms that will be
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do not flood, spam, or troll while in base, other bases or in public rooms that will be"></h5>
-        <h5>considered a nuisance.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="considered a nuisance."></h5>
-        <h5>English is a highly recommended mode of communication in HQ but other languages
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="English is a highly recommended mode of communication in HQ but other languages"></h5>
-        <h5>are allowed for informal conversation.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="are allowed for informal conversation."></h5>
-        <h5>Only work at the NSC. (Double jobbing will lead to immediate termination)
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Only work at the NSC. (Double jobbing will lead to immediate termination)"></h5>
-        <h5>Do not ask or hint for a promotion, pay, room rights, badge admin, portal admin,
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do not ask or hint for a promotion, pay, room rights, badge admin, portal admin,"></h5>
-        <h5>discord admin etc.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="discord admin etc."></h5>
-        <h5>Association with any Mafia is prohibited. Proper actions will be dealt accordingly.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Association with any Mafia is prohibited. Proper actions will be dealt accordingly."></h5>
-        <h5>Any risk of exposure of personal data will be terminated. (eg. harassment, blackmail, and etc.)
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Any risk of exposure of personal data will be terminated. (eg. harassment, blackmail, and etc.)"></h5>
-        <br>
-        <h5>Do you have any questions or would you like me to repeat any of the Rules?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do you have any questions or would you like me to repeat any of the Rules?"></h5>
-        <br>
-        <h6>[Answer any questions they might have]</h6>
-        <br>
-        <h5>Now that you have finished learning the rules and commands, are you ready for the test?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Now that you have finished learning the rules and commands, are you ready for the test?"></h5>
-        <br>
-        <h6>[Wait for them to answer]</h6>
-        <br>
-        <h3>In any case if Recruit has trouble remembering the commands and rules, please try to hint them as much as possible or repeat the command and rules till they get it correct. ( You may only repeat it once when the test starts )</h3>
-        <br>
-        <h5>1. What do you do when someone tells you to FTF?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="1. What do you do when someone tells you to FTF?"></h5>
-        <h5>2. What do you do when someone tells you to go FTB?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="2. What do you do when someone tells you to go FTB?"></h5>
-        <h5>5. Where are you allowed to go idle and AFK?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="5. Where are you allowed to go idle and AFK?"></h5>
-        <br>
-        <h6>[Recruit must get at least 2  questions correct in order to pass!]</h6>
-        <br>
-        <h5>Please name me at least 3 rules of NSC.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please name me at least 3 rules of NSC."></h5>
-        <br>
-        <h6>[Recruit must get 3/3 in order to pass]</h6>
-        <br>
-        <h5>Part 3: Please perform the commands correctly.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Part 3: Please perform the commands correctly. "></h5>
-        <h5>ATT!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="ATT!"></h5>
-        <br>
-        <h6>Recruit stands up, faces you, and then waves before saying, "Yes!" or "Yes Sir!" or "Yes Ma'am!"</h6>
-        <br>
-        <h5>AE!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="AE!"></h5>
-        <br>
-        <h6>Recruit sits back down and is now at ease!</h6>
-        <br>
-        <h3>[Note: If Recruit performs the ATT portion of the test incorrectly, they do not automatically fail the training. Trainers are encouraged to kindly remind them of the correct way to do it, and should redo until the Recruit performs the command correctly]</h3>
-        <br>
-        <h6>[For Recruits that have failed]</h6>
-        <br>
-        <h5>I’m sorry, but you have failed the test. You will now have to retake training.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="I’m sorry, but you have failed the test. You will now have to retake training."></h5>
-        <h5>Please return to the main NSC room so you can be sent to training again.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please return to the main NSC room so you can be sent to training again."></h5>
-        <br>
-        <h3>[If the recruit has failed the test make sure to still log them as a fail]</h3>
-        <h3 style="color: green;">[For Recruits that have passed]</h3>
-        <br>
-        <h5>Congratulations! You have passed the International Security Council training course!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Congratulations! You have passed the International Security Council training course!"></h5>
-        <br>
-        <h3>[Please refrain from logging our newest Agents’ training until you have reached the very end of the training session.]</h3>
-        <h3>[Please provide this information to the recruits that have passed.]</h3>
-        <br>
-        <h5>Congratulations! You are now an official NSC Agent!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Congratulations! You are now an official NSC Agent!"></h5>
-        <h5>As an official NSC Agent, your primary duty is to recruit new members to our agency.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="As an official NSC Agent, your primary duty is to recruit new members to our agency."></h5>
-        <h5>Here’s what you need to know:
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Here’s what you need to know:"></h5>
-        <h5>Step 1: Politely ask if they are interested in joining NSC
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Step 1: Politely ask if they are interested in joining NSC"></h5>
-        <h5>If they aren’t interested, kindly direct them to sit on the lobby sofas.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If they aren’t interested, kindly direct them to sit on the lobby sofas."></h5>
-        <h5>If they are refusing to leave or trolling, do not argue.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If they are refusing to leave or trolling, do not argue."></h5>
-        <h5>Instead, report the situation to a High Rank+ who will take appropriate action.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Instead, report the situation to a High Rank+ who will take appropriate action."></h5>
-        <h5>If They Want to Join: Follow the B.M Process
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If They Want to Join: Follow the B.M Process"></h5>
-        <h5>Step 2: Open their profile and check their badges.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Step 2: Open their profile and check their badges."></h5>
-        <h5>If they are currently working for another agency, send them to the Transfer Desk.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If they are currently working for another agency, send them to the Transfer Desk."></h5>
-        <h5>Make sure they don’t have Mafia-related badges. If they do, kindly explain they are not eligible.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Make sure they don’t have Mafia-related badges. If they do, kindly explain they are not eligible."></h5>
-        <h5>If their badge list is clear, ask them to join and favorite the NSC main badge.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If their badge list is clear, ask them to join and favorite the NSC main badge."></h5>
-        <h5>NSC members must NOT have private profiles or hidden online time.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="NSC members must NOT have private profiles or hidden online time."></h5>
-        <h5>If a recruit/member has either of these settings enabled:
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If a recruit/member has either of these settings enabled:"></h5>
-        <h5>Do not send them to Security.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do not send them to Security."></h5>
-        <h5>Instead, find any Office Supervisor+ in base and ask for assistance.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Instead, find any Office Supervisor+ in base and ask for assistance."></h5>
-        <h5>¶ Motto Ask them to set their motto to: [NSC] Clerk
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="¶ Motto Ask them to set their motto to: [NSC] Clerk"></h5>
-        <h5>Final Step: Send to Security
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Final Step: Send to Security"></h5>
-        <h5>Once the recruit has the correct badge, uniform, and motto,
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Once the recruit has the correct badge, uniform, and motto,"></h5>
-        <h5>wish them good luck and use the command :in
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="wish them good luck and use the command :in"></h5>
-        <h5>This will send them to Security for the next step in the onboarding process.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This will send them to Security for the next step in the onboarding process."></h5>
-        <h5>Do you have any questions for me so far?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do you have any questions for me so far?"></h5>
-        <br>
-        <h6>[Answer any questions they might have]</h6>
-        <br>
-        <h5>We will now cover the pay rules for NSC.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="We will now cover the pay rules for NSC."></h5>
-        <h5>1. Pay times are at 2 AM, 6 AM, 10 AM, 2 PM, 6 PM, 10 PM GMT+8
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="1. Pay times are at 2 AM, 6 AM, 10 AM, 2 PM, 6 PM, 10 PM GMT+8"></h5>
-        <h5>2. You MUST have min 30 minutes of online time (OT) in order to claim pay.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="2. You MUST have min 30 minutes of online time (OT) in order to claim pay."></h5>
-        <h5>3. You MUST fill stations for at least 15 minutes before pay time.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="3. You MUST fill stations for at least 15 minutes before pay time."></h5>
-        <h5>If pay is at 2 PM, fill stations on or before 1:45 and have min 30 mins OT to claim.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If pay is at 2 PM, fill stations on or before 1:45 and have min 30 mins OT to claim."></h5>
-        <h5>4. If you have missed the pay requirements, you will be asked to wait for the next one
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="4. If you have missed the pay requirements, you will be asked to wait for the next one"></h5>
-        <h5>5. For every pay session you participate in(provided you meet the eligibility requirements)
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="5. For every pay session you participate in(provided you meet the eligibility requirements)"></h5>
-        <h5>the Payer on duty will record your points in the NSC Portal.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="the Payer on duty will record your points in the NSC Portal."></h5>
-        <h5>6. After advancing to the Security Division(one level above the Standards Division)
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="6. After advancing to the Security Division(one level above the Standards Division)"></h5>
-        <h5>you'll be able to redeem credits in the Points Store through the NSC Portal.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="you'll be able to redeem credits in the Points Store through the NSC Portal."></h5>
-        <h5>If you disconnect during, after or before pay, they are required to immediately notify the
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If you disconnect during, after or before pay, they are required to immediately notify the"></h5>
-        <h5>the payer, the member needs to log the disconnection on Discord’s #disconnection-logs with
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="payer, the member needs to log the disconnection on Discord’s #disconnection-logs with"></h5>
-        <h5>proper format and tag the payer and any witnesses for vouch.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="proper format and tag the payer and any witnesses for vouch."></h5>
-        <h5>Find the pay regulations here at: nschabbo|weebly|com/pay-policy
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Find the pay regulations here at: nschabbo|weebly|com/pay-policy"></h5>
-        <h5>Replace the | with a dot
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Replace the | with a dot"></h5>
-        <br>
-        <h6>[Answer any questions they might have]</h6>
-        <br>
-        <h5>Now that you are a official agent in NSC,
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Now that you are a official agent in NSC,"></h5>
-        <h5>Kindly please change your motto to: [NSC] Officer I [Your Promotion Tag]
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Kindly please change your motto to: [NSC] Officer I [Your Promotion Tag]"></h5>
-        <h5>Please let me know once you have done so.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Please let me know once you have done so."></h5>
-        <h5>If you ever feel unsure about your duties or things covered in this training,
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If you ever feel unsure about your duties or things covered in this training,"></h5>
-        <h5>you may refer to the guide above.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="you may refer to the guide above."></h5>
-        <h5>Would you like any assistance with joining our Discord server?
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Would you like any assistance with joining our Discord server?"></h5>
-        <br>
-        <h3>If yes, proceed to invite them into the Discord Server by sending them an invite through Discord</h3>
-        <br>
-        <h5>Finally, I’d like to direct you to the Tour station in base for a tour.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Finally, I’d like to direct you to the Tour station in base for a tour."></h5>
-        <h5>This tour is mandatory and will guide you through the NSC base.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This tour is mandatory and will guide you through the NSC base."></h5>
-        <h5>When you're back in HQ, you'll need to go through Security again.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="When you're back in HQ, you'll need to go through Security again."></h5>
-        <h5>Just approach the Front Desks who will let you in. Meet me in base once you have passed Security.
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Just approach the Front Desks who will let you in. Meet me in base once you have passed Security."></h5>
-        <br>
-        <h3>When you meet up with the recruit in the base, guide them out of FTB and lead them to a chair at the SLT Station.</h3>
-        <br>
-        <h5>This is *username*
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is *username*"></h5>
-        <h5>They will be your tour guide today to take you through NSC HQ
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="They will be your tour guide today to take you through NSC HQ"></h5>
-        <h5>Congratulations on passing your training, good luck, and welcome to NSC!
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Congratulations on passing your training, good luck, and welcome to NSC!."></h5>
-        </div>
-        <!-- End transferred content -->
-    </main>
-
-    <div id="popup" class="popup" role="status" aria-live="polite"></div>
-
-    <script>
-        // Minimal nav keyboard/hamburger behaviour (no cursors)
-        document.addEventListener('DOMContentLoaded', function(){
-            // Convert copy icons to accessible buttons
-            function showPopupAt(msg,x,y){ var popup=document.getElementById('popup'); if(!popup) return; popup.textContent=msg; popup.style.left=(Math.max(8, Math.min(x, window.innerWidth - 120)))+'px'; popup.style.top=(Math.max(8, Math.min(y, window.innerHeight - 40)))+'px'; popup.classList.add('show'); clearTimeout(popup._hide); popup._hide=setTimeout(function(){ popup.classList.remove('show'); },1400); }
-
-            function flashSourceFromEvent(ev){ try{ var t=ev.currentTarget||ev.target; var el=t && t.closest ? t.closest('h5,h6,h3,p,li,div') : null; if(!el) return; el.classList.add('copied-highlight'); clearTimeout(el._cto); el._cto=setTimeout(function(){ el.classList.remove('copied-highlight'); },1200); }catch(e){}
-            }
-
-            function fallbackCopy(text,x,y,ev){ var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); showPopupAt('Copied', x, y); if(ev) flashSourceFromEvent(ev); }catch(e){ showPopupAt('Copy failed', x, y); } document.body.removeChild(ta); }
-
-            function copyText(ev,text){ ev=ev||window.event; var x=(ev.clientX!=null)?ev.clientX:(ev.touches&&ev.touches[0]&&ev.touches[0].clientX)||12; var y=(ev.clientY!=null)?ev.clientY:(ev.touches&&ev.touches[0]&&ev.touches[0].clientY)||12; if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(function(){ showPopupAt('Copied', x, y); flashSourceFromEvent(ev); }).catch(function(){ fallbackCopy(text,x,y,ev); }); } else { fallbackCopy(text,x,y,ev); } }
-
-            var imgs = Array.prototype.slice.call(document.querySelectorAll('img.copy-icon'));
-            imgs.forEach(function(img){ try{ var aria = img.getAttribute('alt') || 'Copy text'; var btn=document.createElement('button'); btn.type='button'; btn.className='copy-btn'; btn.setAttribute('aria-label', aria); var copyTextValue=''; var parent = img.parentNode; if(parent){ var clone=parent.cloneNode(true); var removes = clone.querySelectorAll('img, button'); removes.forEach(function(n){ n.remove(); }); copyTextValue = clone.textContent.trim(); } if(!copyTextValue) copyTextValue = img.getAttribute('data-copy') || img.getAttribute('alt') || ''; btn.addEventListener('click', function(e){ copyText(e, copyTextValue); }); btn.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); copyText(e, copyTextValue); } }); btn.innerHTML = '<svg class="copy-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2z"></path></svg>'; img.parentNode.replaceChild(btn, img); }catch(e){} });
-
-            // Resources dropdown handlers: ensure keyboard and hover parity
-            (function(){
-                var resourcesToggle = document.getElementById('resources-toggle');
-                if(!resourcesToggle) return;
-                var resourcesLi = resourcesToggle.parentNode;
-                var resourcesDropdown = resourcesLi.querySelector('.nav-dropdown');
-                var resourcesItems = Array.prototype.slice.call(resourcesDropdown.querySelectorAll('a'));
-
-                resourcesLi.addEventListener('mouseenter', function(){ resourcesDropdown.style.display = 'block'; resourcesToggle.setAttribute('aria-expanded','true'); });
-                resourcesLi.addEventListener('mouseleave', function(){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); });
-
-                // Click/tap toggle intentionally removed to keep Resources hover-only.
-                // Touch devices can tap the actual menu items to navigate.
-
-                resourcesDropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = resourcesItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = resourcesItems[(idx + 1) % resourcesItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = resourcesItems[(idx - 1 + resourcesItems.length) % resourcesItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(resourcesItems[0]) resourcesItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(resourcesItems[resourcesItems.length-1]) resourcesItems[resourcesItems.length-1].focus(); } else if(key === 'Escape'){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); resourcesToggle.focus(); } });
-
-                document.addEventListener('click', function(ev){ if(!resourcesLi.contains(ev.target)){ resourcesDropdown.style.display = 'none'; resourcesToggle.setAttribute('aria-expanded','false'); } });
-            })();
-        });
-    </script>
 </body>
 </html>
