@@ -358,6 +358,18 @@ body.flicker {
     </style>
     <script src="https://kit.fontawesome.com/4b7e5e8e2e.js" crossorigin="anonymous"></script>
 </head>
+<script>
+    /* Seasonal Halloween enable: automatically add .halloween between Oct 27 and Nov 30 (inclusive) */
+    (function(){
+        try{
+            var now = new Date();
+            var year = now.getFullYear();
+            var start = new Date(year, 9, 27);
+            var end = new Date(year, 10, 30, 23, 59, 59);
+            if(now >= start && now <= end){ document.documentElement.classList.add('halloween'); }
+        }catch(e){}
+    })();
+</script>
 <body>
         <header class="site-header">
             <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
@@ -873,11 +885,6 @@ body.flicker {
                                     <span class="caret">▾</span>
                                 </div>
                                 <div class="expandable-content">
-                                    <br>
-                                    <h5>Reminder:</h5>
-                                    <h5>You can use color chats except neon colors!</h5>
-                                    <h5 style="color:red;">Red chats are for instructions</h5>
-                                    <br>
                                     <h5>Congratulations on your promotion! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
                                     <h5>I am [your name] and will be your trainer today! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
                                     <h5>During this training,you will learn how to operate the Security Station. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
@@ -986,11 +993,6 @@ body.flicker {
                     <span class="caret">▾</span>
                 </div>
                 <div class="expandable-content">
-                    <br>
-                    <h5 style="color:red;">Reminder: You can use color chats except neon colors!</h5>
-                    <h5 style="color:red;">Red chats are for instructions
-                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Red chats are for instructions"></h5>
-                    <br>
                     <h5>Hello! Congratulations on your promotion to the Trainer Division.
                         <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Hello! Congratulations on your promotion to the Trainer Division."></h5>
                     <h5>I’ll be your instructor today, and by the end of this session, you’ll be fully equipped to train new recruits and represent NSC with pride and professionalism.

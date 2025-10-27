@@ -197,6 +197,18 @@
         @media (prefers-reduced-motion: reduce) { .ghost { display: none !important; } }
     </style>
 </head>
+<script>
+    /* Seasonal Halloween enable: automatically add .halloween between Oct 27 and Nov 30 (inclusive) */
+    (function(){
+        try{
+            var now = new Date();
+            var year = now.getFullYear();
+            var start = new Date(year, 9, 27);
+            var end = new Date(year, 10, 30, 23, 59, 59);
+            if(now >= start && now <= end){ document.documentElement.classList.add('halloween'); }
+        }catch(e){}
+    })();
+</script>
 <body>
     <header class="site-header">
         <a href="/home" aria-label="Home"><img src="https://www.habbo.com/habbo-imaging/badge/b26154s01015s80115s96114s91113405bed8bb4cc3cc1d1e390e95904bb87.gif" alt="Badge" class="header-badge left"></a>
