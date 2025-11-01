@@ -266,7 +266,7 @@
             position: fixed;
             top: -10vh;
             pointer-events: none;
-            z-index: 60; /* under popups (200) but above the fog overlay (50) */
+            z-index: 1; /* keep ghosts visually behind header/nav which use z-index >= 10 */
             opacity: 0;
             will-change: transform, opacity, left, top;
         }
@@ -318,7 +318,7 @@
     nav ul li a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.4px; transition: color 0.18s; padding: 0.15rem 0.25rem; }
     nav ul li a:hover { color: var(--accent-sun); }
 
-    .nav-list { display: flex; gap: 2.5rem; margin:0; padding:0; list-style:none; justify-content:center; font-family: 'Montserrat', Arial, sans-serif; }
+    .nav-list { display: flex; gap: 2.5rem; margin:0; padding:0; list-style:none; justify-content:center; font-family: 'Montserrat', Arial, sans-serif; z-index: 120; }
     .hamburger { display: none; background:transparent;border:0;color:var(--text);font-size:1.6rem; cursor:pointer; }
     .hamburger:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px; }
 
@@ -1410,8 +1410,10 @@ body.flicker {
                 g.className = 'ghost';
                 // size, position and motion
                 var size = 42 + Math.random() * 72; // px
-                g.style.width = Math.round(size) + 'px';
-                g.style.height = Math.round(size) + 'px';
+                // cap max size so ghosts don't become huge on small screens
+                size = Math.min(Math.round(size), 80);
+                g.style.width = size + 'px';
+                g.style.height = size + 'px';
                 var leftPct = 6 + Math.random() * 88; // keep inside viewport
                 g.style.left = leftPct + '%';
                 // horizontal wiggle (CSS var)
