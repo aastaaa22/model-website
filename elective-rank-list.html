@@ -84,10 +84,14 @@
         color: var(--accent-sun);
         text-align: center;
         margin-top: 2rem;
-        /* Use a subtle dark stroke/shadow so the title incorporates both the
-           home page accent (gold) and the deep background color (primary). */
-        -webkit-text-stroke: 0.8px var(--primary);
-        text-shadow: 0 2px 0 rgba(7,16,41,0.95), 0 6px 18px rgba(0,0,0,0.55);
+        /* Stronger, clearer title: larger, heavier, responsive, with an improved stroke and shadow */
+        font-weight: 900;
+        font-size: clamp(2.0rem, 6.4vw, 3.6rem); /* responsive between ~32px and 58px */
+        line-height: 1.05;
+        letter-spacing: 0.4px;
+        -webkit-text-stroke: 1px var(--primary);
+        text-shadow: 0 3px 0 rgba(7,16,41,0.95), 0 10px 28px rgba(0,0,0,0.65);
+        margin-bottom: 0.6rem;
     }
     /* header styles centralized in css/site.css */
     /* per-page nav styles (copied for easy copy/paste) */
