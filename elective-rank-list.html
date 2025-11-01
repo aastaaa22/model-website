@@ -18,6 +18,13 @@
         @media (max-width:600px){ .site-title{ font-size:1.45rem; } .header-badge{ height:36px; width:36px; } }
     </style>
     <style>
+        /* Presidential division header: center heading and show a small icon beneath */
+        .division-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.35rem; margin-bottom: 0.8rem; }
+        .division-header h2 { margin: 0; color: var(--accent-sun); font-weight: 800; font-size: 1.35rem; }
+        .division-icon { width: 40px; height: auto; display: inline-block; margin-top: 4px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.55)); }
+        @media (max-width: 600px) { .division-icon { width: 32px; } .division-header h2 { font-size: 1.05rem; } }
+    </style>
+    <style>
         :root {
             --primary: #071029;
             --panel: rgba(8,16,28,0.66);
@@ -321,7 +328,10 @@
     </div>
     <div class="container">
         <div class="division">
-            <h2>Presidential</h2>
+            <div class="division-header">
+                <h2>Presidential</h2>
+                <img src="/assets/presidential-icon.gif" alt="Presidential icon" class="division-icon">
+            </div>
             <div class="rank-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 3rem; justify-items: center; width: 100%;">
                 <div class="rank-card">
                     <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5971-1346-.hd-208-10-.ch-4111-110-.lg-5927-110-1408-.sh-3524-110-1408-.he-5088-undefined-.fa-3276-96-.cc-5951-92-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="VorpalX">
@@ -329,8 +339,8 @@
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">President of the Republic</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5019-40-.hd-180-14-.ch-210-1408-.lg-270-1408-.ea-1403-1408-.fa-1201-undefined-.cc-3327-1408-1408-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Hasroy">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Hasroy</span>
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Vacant</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary-General</span>
                 </div>
                 <div class="rank-card">
@@ -398,8 +408,8 @@
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Finance</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-831-41-.hd-3101-28-.ch-3050-110-1408-.lg-5594-110-.sh-3089-110-.he-5088-undefined-.ea-3169-110-.cc-5926-110-92-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Jer-Jhai">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Jer-Jhai</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Secretary of Labor and Employment</span>
                 </div>
                 <div class="rank-card">
@@ -435,8 +445,8 @@
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Majority Floor Leader</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3043-1395-.hd-180-14-.ch-3185-110-.lg-4066-110-.sh-3154-110-110-.he-5808-1408-.fa-5624-96-.ca-5738-63-.cc-5690-1325-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Flex_--_--">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Flex_--_--</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Minority Floor Leader</span>
                 </div>
                 <div class="rank-card">
@@ -445,13 +455,13 @@
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for Foreign Relations</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3163-1403-.hd-3845-28-.ch-3001-1427-1427-.lg-3058-110-.sh-3016-63-.ha-3709-undefined-.he-5088-undefined-.ea-1402-undefined-.ca-3175-1331-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Victor-Banned70">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Victor-Banned70</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for National Defense and Security</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-834-61-.hd-3704-1389-.ch-3935-1430-110-.lg-3174-1430-1430-.sh-3275-85-.ha-3488-undefined-.he-3740-undefined-.fa-4044-undefined-.ca-4129-1432-.cp-3285-87-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Alexza81">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Alexza81</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Chairperson for Civic Order</span>
                 </div>
             </div>
@@ -472,8 +482,8 @@
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Deputy Speaker</span>
                 </div>
                 <div class="rank-card">
-                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
-                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-891-42-.hd-180-14-.ch-878-91-83-.lg-3290-84-.sh-3524-83-83-.fa-5703-undefined-.cc-3389-84-85-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="XxAlexX">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">XxAlexX</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Majority Floor Leader</span>
                 </div>
                 <div class="rank-card">
@@ -569,6 +579,44 @@
                     <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
                     <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
                     <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Officer in Charge</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="division">
+            <h2>Trial Electives</h2>
+            <div class="rank-grid">
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-4352-1342-.hd-3536-28-28-.ch-3013-110-.lg-5594-110-.ha-5301-110-.he-5088-undefined-.fa-5467-undefined-.ca-3844-110-92-.wa-5370-undefined-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="krevDL">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">krevDL</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-3841-49-.hd-185-10-.ch-3077-110-92-.lg-3864-undefined-.sh-3016-110-.ha-3862-undefined-.he-3543-96-.fa-1205-92-.ca-1805-92-.wa-2001-undefined-.cc-3863-92-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="Yushihama">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">Yushihama</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://sandbox.habbo.com/habbo-imaging/avatarimage?figure=hr-5590-61-57-.hd-6219-10-30-.ch-6015-91-110-.lg-5594-110-.sh-6182-undefined-.ha-3709-undefined-.he-5088-undefined-.fa-3276-1414-.cc-5951-110-&gender=M&direction=3&head_direction=3&action=wav&gesture=sml&size=l" alt="ypeacej3rd">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">ypeacej3rd</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
+                </div>
+                <div class="rank-card">
+                    <img src="https://www.habbo.com/habbo-imaging/avatarimage?user=NSC-Owner&direction=3&head_direction=3&action=&gesture=nrm&size=m" alt="VACANT">
+                    <span style="font-size:1.2rem;font-weight:700;color:#fff;">VACANT</span>
+                    <span style="font-size:1rem;color:#fff;margin-top:0.5rem;">Trial Elective</span>
                 </div>
             </div>
         </div>
