@@ -403,33 +403,72 @@ body.flicker {
                 </ul>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        var navList = document.querySelector('.nav-list');
-                        var hamburger = document.querySelector('.hamburger');
-                        hamburger.addEventListener('click', function(){
-                            var open = navList.classList.toggle('show');
-                            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-                        });
+                            // Safely wire up nav toggle and dropdowns. Older code assumed elements always exist
+                            // which caused runtime errors on some pages/devices. Add null checks and a touch-friendly
+                            // click toggle for the Rank Lists dropdown so it works on mobile.
+                            var navList = document.querySelector('.nav-list');
+                            var hamburger = document.querySelector('.hamburger');
+                            if(hamburger && navList){
+                                hamburger.addEventListener('click', function(){
+                                    var open = navList.classList.toggle('show');
+                                    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                                });
+                            }
 
-                        var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
-                        var toggle = rankListLi.querySelector('.dropdown-toggle');
-                        var dropdown = rankListLi.querySelector('.nav-dropdown');
-                        var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
+                            var rankListLi = document.querySelector('.nav-list li:nth-child(2)');
+                            if(rankListLi){
+                                var toggle = rankListLi.querySelector('.dropdown-toggle');
+                                var dropdown = rankListLi.querySelector('.nav-dropdown');
+                                var menuItems = dropdown ? Array.prototype.slice.call(dropdown.querySelectorAll('a')) : [];
 
-                        rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
-                        rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                                // Use hover on devices that support hover, otherwise provide a click/tap toggle for touch devices
+                                try{
+                                    if(toggle && dropdown){
+                                        var supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+                                        if(supportsHover){
+                                            rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                                            rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                                        } else {
+                                            // touch devices: clicking the toggle shows/hides the dropdown
+                                            toggle.addEventListener('click', function(e){
+                                                var visible = dropdown.style.display === 'block' || window.getComputedStyle(dropdown).display === 'block';
+                                                dropdown.style.display = visible ? 'none' : 'block';
+                                                toggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
+                                                e.preventDefault();
+                                            });
+                                        }
 
-                        // click and keyboard handlers removed to restore hover-only dropdown behavior
+                                        // keyboard navigation inside the dropdown (if present)
+                                        dropdown.addEventListener('keydown', function(e){
+                                            var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
+                                            if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
+                                            else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
+                                            else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
+                                            else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
+                                            else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+                                        });
+                                    }
+                                }catch(e){ /* defensive: ignore any dropdown wiring errors */ }
+                            }
 
-                        dropdown.addEventListener('keydown', function(e){
-                            var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current);
-                            if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); }
-                            else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); }
-                            else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); }
-                            else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); }
-                            else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
-                        });
-
-                        document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+                            // Close dropdowns / mobile nav when clicking outside (defensive checks)
+                            document.addEventListener('click', function(ev){
+                                try{
+                                    if(rankListLi){
+                                        var dropdown = rankListLi.querySelector('.nav-dropdown');
+                                        var toggle = rankListLi.querySelector('.dropdown-toggle');
+                                        if(dropdown && toggle && !rankListLi.contains(ev.target)){
+                                            dropdown.style.display = 'none';
+                                            toggle.setAttribute('aria-expanded','false');
+                                        }
+                                    }
+                                    var navLinks = document.querySelector('.nav-links');
+                                    if(navLinks && navList && !navLinks.contains(ev.target)){
+                                        navList.classList.remove('show');
+                                        if(hamburger) hamburger.setAttribute('aria-expanded','false');
+                                    }
+                                }catch(e){ /* swallow accidental errors to avoid breaking other scripts */ }
+                            });
                         // Policies dropdown: mirror Rank Lists behaviour so it works on hover, keyboard and touch
                         (function(){
                             var policiesToggle = document.getElementById('policies-toggle');
@@ -1138,7 +1177,7 @@ body.flicker {
                     <h5>• Listen carefully, take notes if you like, and stay focused. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Listen carefully, take notes if you like, and stay focused."></h5>
                     <h5>• AFK = automatic fail. And you'll need to redo everything. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="AFK = automatic fail. And you'll need to redo everything."></h5>
                     <br>
-                    <h6>Ready to start? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Ready to start?"></h6>
+                    <h5>Ready to start? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Ready to start?"></h5>
                     <h6>[Wait for them to respond]</h6>
                     <br>
 
@@ -1161,7 +1200,7 @@ body.flicker {
                     <h5>• You can receive a promotion every 1 hour and 30 minutes <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You can receive a promotion every 1 hour and 30 minutes"></h5>
                     <h5>• You can promote until Trial Education Mentee <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You can promote until Trial Education Mentee"></h5>
                     <h5>• Log all promotions in the portal <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Log all promotions in the portal"></h5>
-
+                    <br>
                     <h5>Promotion guidelines: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Promotion guidelines:"></h5>
                     <h5>• Ensure you and the person you gonna promote have 20 mins online time and make sure they are filling stations <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Ensure you and the person you gonna promote have 20 mins online time and make sure they are filling stations"></h5>
                     <h5>• Check Portal for promotion readiness (Look at the Actions column — if it's green and says &quot;Promote Now,&quot; it means the member is eligible for promotion.) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Check Portal for promotion readiness. If Actions column says Promote Now, member is eligible."></h5>
@@ -1171,7 +1210,7 @@ body.flicker {
                     <h5>• Always check the motto after giving the new promotion if it is in the correct motto and has the right tag before logging. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Always check the motto after giving the new promotion if it is in the correct motto and has the right tag before logging."></h5>
                     <h5>• If the person you promoted is in a new division, kindly ask in base FIRST if there is an available Badge Admin (BA) that can accept the badge request. If no one is active at the moment, you can tag the BA in #request on discord. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If the person you promoted is in a new division, ask for a Badge Admin or tag BA in #request on discord."></h5>
                     <h5>Take note that some new divisions need training, and you must remember to ask the member you promoted if they are available for training. If unavailable, tell them to go to the help desk when ready for training. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Some new divisions need training; ask the member if they're available for training or direct them to help desk."></h5>
-                    <h6>Do you have any questions so far? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Do you have any questions so far?"></h6>
+                    <h6>Do you have any questions so far?</h6>
                     <h6>[Wait for them to respond]</h6>
                     <br>
 
@@ -1198,14 +1237,16 @@ body.flicker {
                     <h5>How many minutes is required so that you can promote. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="How many minutes is required so that you can promote."></h5>
                     <h5>Can you give verbal warning? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Can you give verbal warning?"></h5>
                     <br>
-                    <h5>If member passed the test: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If member passed the test: Congratulations! You passed the test!"></h5>
+                    <h6>[If member passed the test]</h6>
                     <h5>&gt; Congratulations! You passed the test!| <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> Congratulations! You passed the test!|"></h5>
-                    <h5>[proceed to final leadership notes] <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="proceed to final leadership notes"></h5>
-
-                    <h5>If member fail the test: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If member fail the test: I'm sorry you didn't pass the test or meet the required score."></h5>
+                    <h6>[proceed to final leadership notes]</h6>
+                    <br>
+                    <h6>[If member fail the test]</h6>
                     <h5>&gt; I'm sorry you didn't pass the test or meet the required score. Would you like me to go over some parts of the training with you again? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> I'm sorry you didn't pass the test or meet the required score. Would you like me to go over some parts of the training with you again?"></h5>
-                    <h5>You can go over the parts of the training where the member gave incorrect answers, Discuss those sections in detail, and then ask the same questions again to check their understanding. If the member answers correctly this time, you can proceed to the passing stage <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You can go over the parts of the training where the member gave incorrect answers and retest them."></h5>
-
+                    <h6>You can go over the parts of the training where the member gave incorrect answers</h6>
+                    <h6>Discuss those sections in detail, and then ask the same questions again to check their understanding.</h6>
+                    <h6>If the member answers correctly this time, you can proceed to the passing stage</h6>
+                    <br>
                     <h5>Final Leadership Notes <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Final Leadership Notes"></h5>
                     <h5>• Model professionalism and respect at all times. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Model professionalism and respect at all times."></h5>
                     <h5>• Lead by example, not fear. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Lead by example, not fear."></h5>

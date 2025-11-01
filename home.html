@@ -266,8 +266,21 @@
                         var dropdown = rankListLi.querySelector('.nav-dropdown');
                         var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
 
-                        rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
-                        rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                        // Use hover on devices that support it; otherwise add a click/tap toggle for touch devices
+                        try{
+                            var supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+                            if(supportsHover){
+                                rankListLi.addEventListener('mouseenter', function() { dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                                rankListLi.addEventListener('mouseleave', function() { dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                            } else {
+                                toggle.addEventListener('click', function(e){
+                                    var visible = dropdown.style.display === 'block' || window.getComputedStyle(dropdown).display === 'block';
+                                    dropdown.style.display = visible ? 'none' : 'block';
+                                    toggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
+                                    e.preventDefault();
+                                });
+                            }
+                        }catch(e){ }
 
                         // click and keyboard handlers removed to restore hover-only dropdown behavior
 
@@ -280,7 +293,24 @@
                             else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
                         });
 
-                        document.addEventListener('click', function(ev){ if(!rankListLi.contains(ev.target)){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); } if(!document.querySelector('.nav-links').contains(ev.target)){ navList.classList.remove('show'); hamburger.setAttribute('aria-expanded','false'); } });
+                        // defensive outside-click handler: close dropdowns and mobile nav when tapping outside
+                        document.addEventListener('click', function(ev){
+                            try{
+                                if(rankListLi){
+                                    var dropdown = rankListLi.querySelector('.nav-dropdown');
+                                    var toggle = rankListLi.querySelector('.dropdown-toggle');
+                                    if(dropdown && toggle && !rankListLi.contains(ev.target)){
+                                        dropdown.style.display = 'none';
+                                        toggle.setAttribute('aria-expanded','false');
+                                    }
+                                }
+                                var navLinks = document.querySelector('.nav-links');
+                                if(navLinks && navList && !navLinks.contains(ev.target)){
+                                    navList.classList.remove('show');
+                                    if(hamburger) hamburger.setAttribute('aria-expanded','false');
+                                }
+                            }catch(e){ }
+                        });
 
                         // Policies dropdown: hover-only, keyboard-friendly (mirrors Rank Lists behaviour)
                         (function(){

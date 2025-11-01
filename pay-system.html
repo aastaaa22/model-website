@@ -259,8 +259,21 @@
                 var toggle = rankListLi.querySelector('.dropdown-toggle');
                 var dropdown = rankListLi.querySelector('.nav-dropdown');
                 var menuItems = Array.prototype.slice.call(dropdown.querySelectorAll('a'));
-                rankListLi.addEventListener('mouseenter', function(){ dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
-                rankListLi.addEventListener('mouseleave', function(){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                // Use hover on devices that support it; otherwise add a click/tap toggle for touch devices
+                try{
+                    var supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+                    if(supportsHover){
+                        rankListLi.addEventListener('mouseenter', function(){ dropdown.style.display = 'block'; toggle.setAttribute('aria-expanded','true'); });
+                        rankListLi.addEventListener('mouseleave', function(){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); });
+                    } else {
+                        toggle.addEventListener('click', function(e){
+                            var visible = dropdown.style.display === 'block' || window.getComputedStyle(dropdown).display === 'block';
+                            dropdown.style.display = visible ? 'none' : 'block';
+                            toggle.setAttribute('aria-expanded', visible ? 'false' : 'true');
+                            e.preventDefault();
+                        });
+                    }
+                }catch(e){ }
                 dropdown.addEventListener('keydown', function(e){ var key = e.key; var current = document.activeElement; var idx = menuItems.indexOf(current); if(key === 'ArrowDown'){ e.preventDefault(); var next = menuItems[(idx + 1) % menuItems.length]; if(next) next.focus(); } else if(key === 'ArrowUp'){ e.preventDefault(); var prev = menuItems[(idx - 1 + menuItems.length) % menuItems.length]; if(prev) prev.focus(); } else if(key === 'Home'){ e.preventDefault(); if(menuItems[0]) menuItems[0].focus(); } else if(key === 'End'){ e.preventDefault(); if(menuItems[menuItems.length-1]) menuItems[menuItems.length-1].focus(); } else if(key === 'Escape'){ dropdown.style.display = 'none'; toggle.setAttribute('aria-expanded','false'); toggle.focus(); } });
             }
 
