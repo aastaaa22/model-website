@@ -128,24 +128,273 @@
     </nav>
 
     <div class="container">
-        <h2 style="color:var(--accent-sun);">Code of Conduct</h2>
-        <p class="muted">This page contains the Code of Conduct. Replace this with your official rules and formatting. Below is starter content to get you going.</p>
+        <h2 style="color:var(--accent-sun);">NSC Handbook — Code of Conduct</h2>
 
-        <h3>Respect and inclusion</h3>
-        <ul>
-            <li>Treat other members with respect regardless of rank, background or beliefs.</li>
-            <li>No harassment, hate speech, or targeted abuse.</li>
-            <li>Use English in public HQ channels whenever possible for clarity.</li>
-        </ul>
+        <p style="color:var(--muted); margin-top:0.4rem;">This handbook outlines the rules, responsibilities, and procedures for NSC members. Click a section title to expand details.</p>
 
-        <h3>Behavioural rules</h3>
-        <ul>
-            <li>No griefing, trolling, or intentionally disruptive behaviour in NSC rooms.</li>
-            <li>Double-jobbing and badges associated with disallowed groups are prohibited.</li>
-            <li>Follow trainer guidance during training sessions; warnings and penalties apply for repeated offences.</li>
-        </ul>
+        <style>
+            /* Handbook expandables */
+            .handbook { margin-top:1.25rem; display:flex; flex-direction:column; gap:1rem; }
+            .handbook .section { background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; }
+            .section-toggle { width:100%; text-align:left; padding:0.85rem 1rem; background:transparent; border:0; color:var(--accent-sun); font-weight:800; font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:space-between; }
+            .section-toggle:focus { outline:3px solid rgba(255,198,43,0.12); outline-offset:3px; }
+            .section-toggle .chev { transition: transform 200ms ease; color:var(--muted); margin-left:0.75rem; }
+            .section[aria-expanded="true"] .section-toggle .chev { transform: rotate(180deg); color:var(--accent-sun); }
+            .section-body { padding:0.9rem 1rem 1.2rem 1rem; color:var(--text); line-height:1.5; font-size:0.98rem; }
+            .section-body p { margin:0 0 0.9rem 0; }
+            .section-body ul { margin:0 0 0.9rem 1.1rem; }
+            .section-body table { width:100%; border-collapse:collapse; margin-top:0.6rem; }
+            .section-body th, .section-body td { padding:0.5rem 0.6rem; border-bottom:1px solid rgba(255,255,255,0.04); text-align:left; }
+            .section-body .muted { color:var(--muted); font-size:0.92rem; }
+        </style>
 
-        <p style="margin-top:1.2rem;color:var(--muted);font-size:0.95rem;">If you want this page to include copy buttons per paragraph or linked anchors, tell me where and I'll add them.</p>
+        <div class="handbook" id="handbook">
+
+            <!-- Section 1.1 -->
+            <section class="section" id="sec-1-1" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-1-body" aria-expanded="false">Section 1.1 – Basic Rules <span class="chev">▾</span></button>
+                <div id="sec-1-1-body" class="section-body" hidden>
+                    <p>Show respect to everyone, regardless of rank, gender, religion, nationality, disability, or political affiliation.</p>
+                    <p>Do not flood, spam, or troll in base unless permitted by the Foundation Team under special consideration.</p>
+                    <p>English is the recommended mode of communication in HQ. Other languages are allowed if respectful to the agency’s members and visitors.</p>
+                    <p>Only work at the NSC. Double jobbing will lead to immediate termination with proper documentation.</p>
+                    <p>Do not ask or hint for a promotion, pay, room rights, badge admin, portal admin, Discord admin, etc., unless permitted by the Foundation Team.</p>
+                    <p>Ignore and report trolls and raiders to HR and above.</p>
+                    <p>Association with any Mafia is prohibited. Violations will result in proper disciplinary actions.</p>
+                    <p>Any risk of exposure of personal data will be terminated (e.g., harassment, blackmail).</p>
+                    <p>When in doubt or facing a problem, ask an HR+ member for assistance. “Asking is caring.”</p>
+                    <p>No excessive swearing/cursing in base. Proper decorum must be observed.</p>
+                    <p class="muted">(Removed numbering inconsistency; original Section 1.1 skipped 11.)</p>
+                    <p>Do not self-promote or self-pay without prior permission.</p>
+                    <p>Correct badge and motto must always be observed in base.</p>
+                    <p>Always follow the Habbo Way and Discord’s Terms and Conditions.</p>
+                    <p>Do not troll other agencies or rooms that may affect the agency’s reputation.</p>
+                </div>
+            </section>
+
+            <!-- Section 1.2 -->
+            <section class="section" id="sec-1-2" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-2-body" aria-expanded="false">Section 1.2 – Office Supervisor+ Rules <span class="chev">▾</span></button>
+                <div id="sec-1-2-body" class="section-body" hidden>
+                    <p>Do not abuse the power given to you as Office Supervisor+ or divisions.</p>
+                    <p>Office Supervisor+ are accountable for conflicts in base. Problems should be solved with precise due process; escalate to Internal Affairs if necessary.</p>
+                    <p>For conflicts beyond your reach, provide evidence (screenshot or video with details).</p>
+                    <p>Promotions are held after 15 minutes of OT in base and filling a station for 15 minutes. Present promotions to the promoter.</p>
+                    <p>Favoritism is not tolerated; all members are considered equal with due respect.</p>
+                </div>
+            </section>
+
+            <!-- Section 1.3 -->
+            <section class="section" id="sec-1-3" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-3-body" aria-expanded="false">Section 1.3 – Commands <span class="chev">▾</span></button>
+                <div id="sec-1-3-body" class="section-body" hidden>
+                    <ul>
+                        <li><strong>FTF</strong> – Fill the Front: Welcome returning members, visitors, and recruits.</li>
+                        <li><strong>FTB</strong> – Fill the Back: Sit in the AFK area when idle or away.</li>
+                        <li><strong>FTS</strong> – Fill the Security: Work at Security Station to check member status and allow entry.</li>
+                        <li><strong>FTT</strong> – Fill the Training: Send recruits to the training area and train them.</li>
+                        <li><strong>BTB</strong> – Back to Base: Return to base immediately.</li>
+                        <li><strong>CTH</strong> – Clear the Hall: Clear the hall and return to a station or FTB area.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 1.4 -->
+            <section class="section" id="sec-1-4" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-4-body" aria-expanded="false">Section 1.4 – Special Commands <span class="chev">▾</span></button>
+                <div id="sec-1-4-body" class="section-body" hidden>
+                    <ul>
+                        <li><strong>ATT</strong> – Attention: Stand in front of a member, wave, and say “Yes, Ma’am/Sir.”</li>
+                        <li><strong>AE</strong> – At Ease: Return to your previous activity.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 1.5 -->
+            <section class="section" id="sec-1-5" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-5-body" aria-expanded="false">Section 1.5 – Dress Code <span class="chev">▾</span></button>
+                <div id="sec-1-5-body" class="section-body" hidden>
+                    <h4>Badges</h4>
+                    <p>Official NSC badges are required with the correct rank. Special Visitors (SV) and VIPs must wear theirs for identification.</p>
+                    <h4>Motto</h4>
+                    <p>Must reflect the correct rank at all times.</p>
+                    <h4>Official Dress Code</h4>
+                    <p>Members may wear anything except:</p>
+                    <ul>
+                        <li>Attire promoting raid groups (e.g., mafia)</li>
+                        <li>Offensive attire promoting racial stereotypes</li>
+                        <li>Revealing or sexually inappropriate clothing</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 1.6 -->
+            <section class="section" id="sec-1-6" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-6-body" aria-expanded="false">Section 1.6 – Promotions <span class="chev">▾</span></button>
+                <div id="sec-1-6-body" class="section-body" hidden>
+                    <p>Promotions are given only by Office Supervisor+ members.</p>
+                    <p><strong>Promotional Time Limits</strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Rank</th><th>Time Required</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Standard Division</td><td>15 mins</td></tr>
+                            <tr><td>Security</td><td>30 mins</td></tr>
+                            <tr><td>Education Division</td><td>1 hr</td></tr>
+                            <tr><td>Office Supervisor</td><td>1 hr 30 mins</td></tr>
+                            <tr><td>Overseer</td><td>2 hrs</td></tr>
+                            <tr><td>Management Officers</td><td>2 hrs 30 mins</td></tr>
+                            <tr><td>Public Relations</td><td>3 hrs</td></tr>
+                            <tr><td>Consultancy</td><td>3 hrs 30 mins</td></tr>
+                            <tr><td>Government Affairs</td><td>4 hrs</td></tr>
+                            <tr><td>Professional Staff</td><td>4 hrs 30 mins</td></tr>
+                            <tr><td>Senior Executive</td><td>6 hrs</td></tr>
+                            <tr><td>Leadership Council</td><td>8 hrs</td></tr>
+                            <tr><td>Prestigious Council</td><td>10 hrs</td></tr>
+                            <tr><td>Elites</td><td>16 hrs</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 1.7 -->
+            <section class="section" id="sec-1-7" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-7-body" aria-expanded="false">Section 1.7 – Pay, Pay Session, and Bonus Pay <span class="chev">▾</span></button>
+                <div id="sec-1-7-body" class="section-body" hidden>
+                    <p><strong>Pay Sessions:</strong> Six times daily at 2AM, 6AM, 10AM, 2PM, 6PM, 10PM GMT+8.</p>
+                    <p><strong>Requirements to qualify for pay:</strong></p>
+                    <ul>
+                        <li>At least 30 minutes online</li>
+                        <li>Be at base to fill a station 15 mins before session</li>
+                        <li>Join pay session via portal within 5 minutes after opening</li>
+                        <li>If disconnected, log the disconnection on Discord’s #disconnection-logs</li>
+                    </ul>
+                    <p><strong>Pay Distribution (points)</strong></p>
+                    <table>
+                        <tbody>
+                            <tr><td>Standard Division (Clerk)</td><td>1</td></tr>
+                            <tr><td>Security to Education</td><td>2</td></tr>
+                            <tr><td>Office Supervisor to Management Officers</td><td>3</td></tr>
+                            <tr><td>Public Relations to Professional Staff</td><td>4</td></tr>
+                            <tr><td>Senior Executives to Elite</td><td>5</td></tr>
+                            <tr><td>iC Divisions (5iC to 1iC)</td><td>6</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Bonus Points:</strong> Stay 15 mins after pay = 1 bonus point (max 3 bonus points per day). Earn by doing training or tours.</p>
+                    <p class="muted">Weekly Pay Bonus, quotas, and claim rules are maintained by the Foundation. See internal Finance documentation for details.</p>
+                </div>
+            </section>
+
+            <!-- Section 1.8 -->
+            <section class="section" id="sec-1-8" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-8-body" aria-expanded="false">Section 1.8 – Room Rights (RR) & Badge Administrators (BA) <span class="chev">▾</span></button>
+                <div id="sec-1-8-body" class="section-body" hidden>
+                    <p>RR and BA are privileges granted by the Foundation, not rights. Abuse will result in disciplinary action. RR/BA can never be bought.</p>
+                </div>
+            </section>
+
+            <!-- Section 1.9 -->
+            <section class="section" id="sec-1-9" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-1-9-body" aria-expanded="false">Section 1.9 – Rank Sellers, VIP, and SV <span class="chev">▾</span></button>
+                <div id="sec-1-9-body" class="section-body" hidden>
+                    <p>Approved rank sellers must report transactions to the Finance and Audit Overseer for documentation.</p>
+                </div>
+            </section>
+
+            <!-- Section 2.0 and beyond summarized -->
+            <section class="section" id="sec-2-0" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-2-0-body" aria-expanded="false">Section 2.0 – Responsibilities of Each Division <span class="chev">▾</span></button>
+                <div id="sec-2-0-body" class="section-body" hidden>
+                    <p><strong>Standard Division:</strong> Recruit new members.</p>
+                    <p><strong>Security Division:</strong> Maintain order and protect agency assets by enforcing security protocols and monitoring activity.</p>
+                    <p><strong>Education Division:</strong> Educate and mentor new agents, ensuring they are equipped with the skills and mindset for success.</p>
+                    <p><strong>Office Supervisors Division:</strong> Evaluate agent performance and promote qualified individuals to Trainer rank with fairness and insight.</p>
+                    <p><strong>Overseers Division:</strong> Promote Standard → Supervisor; supervise departmental operations and ensure compliance.</p>
+                    <p><strong>Management Officers Division:</strong> Promote Standard → Overseers; conduct tours and onboarding sessions.</p>
+                    <p><strong>Public Relations Division:</strong> Represent the agency externally; manage communications.</p>
+                    <p><strong>Consultancy Division:</strong> Provide expert guidance and resolve inquiries.</p>
+                    <p><strong>Government Affairs Division:</strong> Coordinate policies and uphold agency governance.</p>
+                    <p><strong>Professional Staff, Senior Executive, Leadership Council, Prestigious Council, Elites:</strong> Various leadership and advisory responsibilities as described in internal documentation.</p>
+                </div>
+            </section>
+
+            <!-- Section 2.1 - 3.0 condensed into expandable sections -->
+            <section class="section" id="sec-2-1" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-2-1-body" aria-expanded="false">Section 2.1 – Meetings & 2.2 Pay Hosts/Managers <span class="chev">▾</span></button>
+                <div id="sec-2-1-body" class="section-body" hidden>
+                    <p>Monthly meeting for Division Heads. Non-iC members may give input after deliberation. ICs/Special Units must hold one internal meeting prior to monthly meeting. Failure to meet quotas may result in a meeting with Advisory Team/Foundation.</p>
+                    <p><strong>Pay Hosts:</strong> Handle paytimes; have badge & Discord tag; cannot be deprived of pay if eligible; late hosts must notify director.</p>
+                    <p><strong>Pay Managers:</strong> Distribute funds; only they may pay; bribes or harassment result in removal.</p>
+                </div>
+            </section>
+
+            <section class="section" id="sec-2-3" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-2-3-body" aria-expanded="false">Section 2.3 – Discipline & 2.4 Reinstatement <span class="chev">▾</span></button>
+                <div id="sec-2-3-body" class="section-body" hidden>
+                    <p><strong>Strike System:</strong></p>
+                    <ol>
+                        <li>1st Strike: Verbal Warning</li>
+                        <li>2nd Strike: First Warning logged</li>
+                        <li>3rd Strike: Second Warning + 1 rank demotion</li>
+                        <li>4th Strike: Third Warning + 1 division demotion</li>
+                    </ol>
+                    <p>Severe repetitive offenses = Immediate Termination. National Punishment (NP), Ban on Sight (BoS), Do Not Hire (DNH) may be applied for serious violations.</p>
+                    <p><strong>Reinstatement and Appeal:</strong> Conditions vary; may lose rank. Maximum of 3 reinstatements allowed. Appeals handled by Founders, Advisory Team, 5iCs. No bribery or favoritism allowed in appeals.</p>
+                </div>
+            </section>
+
+            <section class="section" id="sec-2-5" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-2-5-body" aria-expanded="false">Section 2.5 – Alliances, 2.6 – Transfer Policy, 2.7 – Portal Usage <span class="chev">▾</span></button>
+                <div id="sec-2-5-body" class="section-body" hidden>
+                    <p>NSC does not currently take alliances. Contact Director of External Affairs or Foundation for proposals.</p>
+                    <p><strong>Transfer Policy:</strong> Transfers by Department of Labor and Employment (DoLE) only. Must meet member requirements and pass trial training.</p>
+                    <p><strong>Portal Usage:</strong> Allowed: Screenshot portal rank for proof, report glitches, record incidents for Internal Affairs. Not allowed: Disclose infractions without IA knowledge, pay themselves outside of pay sessions.</p>
+                </div>
+            </section>
+
+            <section class="section" id="sec-2-8" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-2-8-body" aria-expanded="false">Section 2.8 – Veterans’ Committee, 2.9 – LOA <span class="chev">▾</span></button>
+                <div id="sec-2-8-body" class="section-body" hidden>
+                    <p>Veterans’ Committee: For retired members; 3-month active service required. Perks: SV, VIP, Veteran Badge, website recognition. Revocation possible for misconduct.</p>
+                    <p><strong>LOA (Leave of Absence):</strong> iC: &gt;7 days → LOA required. Non-iC: &gt;14 days → LOA required. LOA up to 45 days; approval by 1iC+. Emergency LOA allowed with direct approval.</p>
+                </div>
+            </section>
+
+            <section class="section" id="sec-3-0" aria-expanded="false">
+                <button class="section-toggle" aria-controls="sec-3-0-body" aria-expanded="false">Section 3.0 – Discord & External Policy <span class="chev">▾</span></button>
+                <div id="sec-3-0-body" class="section-body" hidden>
+                    <p>Discord is mandatory for communication. Tagging system must be used for official business. Members must abide by Discord Terms of Service. Harassment, exploitation, blackmail, or personal gain is prohibited.</p>
+                    <p>Inactive or terminated members are removed from roles; severe cases banned. English is required for communication to prevent confusion. NSC is not liable for missed announcements if member fails to join Discord.</p>
+                    <p class="muted">All members must react to Internal Affairs daily announcements regarding the Code of Conduct. Failure to react may result in disciplinary action.</p>
+                    <p>Special Visitors, Veterans, Allies: Discord access is a privilege. Misconduct may result in removal of Discord access or badges. Leaks of sensitive info = removal from Discord and badges.</p>
+                    <p>Intent to harm or disrupt the community must be reported to responsible personnel instead of taking unauthorized action.</p>
+                </div>
+            </section>
+
+        </div>
+
+        <script>
+            // Accessible expand/collapse for handbook sections
+            (function(){
+                function toggleSection(sec, btn, body){
+                    var expanded = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    sec.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    if(expanded){ body.hidden = true; } else { body.hidden = false; body.focus(); }
+                }
+                document.addEventListener('DOMContentLoaded', function(){
+                    var sections = document.querySelectorAll('.handbook .section');
+                    sections.forEach(function(sec){
+                        var btn = sec.querySelector('.section-toggle');
+                        var body = sec.querySelector('.section-body');
+                        // keyboard accessibility
+                        btn.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); } });
+                        btn.addEventListener('click', function(e){ toggleSection(sec, btn, body); });
+                    });
+                });
+            })();
+        </script>
     </div>
 
     <script>
