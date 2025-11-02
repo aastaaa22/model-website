@@ -41,151 +41,7 @@
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 10;
-        }
-        nav .logo {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: var(--accent-blue);
-            letter-spacing: 2px;
-            margin-right: 2rem;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing:0.4px;
-            transition: color 0.18s;
-            padding: 0.15rem 0.25rem;
-        }
-        nav ul li a:hover { color: var(--accent-sun); }
-        .hero {
-            text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
-            background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.02) 100%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0 0 1rem 0;
-            letter-spacing: 2px;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--muted);
-            margin-bottom: 2.5rem;
-        }
-        .hero .socials {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        .hero .socials a {
-            color: var(--accent);
-            font-size: 2rem;
-            transition: color 0.2s;
-        }
-        .hero .socials a:hover {
-            color: #fff;
-        }
-        section {
-            max-width: 800px;
-            margin: 3rem auto;
-            background: var(--panel);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.55);
-            backdrop-filter: blur(6px);
-        }
-        section h2 {
-            color: var(--accent-sun);
-            margin-top: 0;
-            font-size: 2rem;
-        }
-        section p, section ul { color: var(--muted); font-size: 1.1rem; }
-        section ul {
-            padding-left: 1.2rem;
-        }
-        footer {
-            margin-top: auto;
-            background: #181b2a;
-            color: var(--muted);
-            text-align: center;
-            padding: 1.5rem 0 1rem 0;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            section { padding: 1.2rem 0.7rem; }
-            nav .logo { font-size: 1.2rem; }
-        }
-    /* header styles centralized in css/site.css */
-/* expandable division styles (copied from standard-rank-list) */
-.expandable { background: rgba(255,255,255,0.02); border-radius: 10px; margin-top: 1.25rem; overflow: hidden; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.03); }
-.expandable-header { padding: 0.9rem 1rem; cursor: pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-.expandable-header strong { font-size: 1.05rem; color: var(--text); }
-.expandable-header .caret { transition: transform 0.25s ease; font-size:1.1rem; }
-.expandable-content { max-height: 0; overflow: hidden; transition: max-height 0.32s ease; padding: 0 1rem; }
-.expandable.open .expandable-header { background: rgba(0,0,0,0.06); }
-.expandable.open .caret { transform: rotate(180deg); }
-.expandable .muted { color: var(--muted); margin: 0.5rem 0 1rem 0; }
-.expandable-header .caret { color: var(--muted); }
-.expandable .rank-list { list-style: none; padding: 0 0 1rem 0; margin: 0; }
-.expandable .rank-list li { padding: 0.4rem 0; border-bottom: 1px dashed rgba(255,255,255,0.03); }
-.expandable-header strong { color: var(--accent-sun); font-weight:700; }
-.expandable-header .caret { color: var(--accent-blue); }
-.expandable.open { box-shadow: 0 8px 28px rgba(0,0,0,0.5); border-left: 4px solid var(--accent-red); padding-left: calc(1rem - 4px); }
-.expandable-header:hover { background: rgba(0,56,168,0.04); }
-.expandable-header:focus-within { background: rgba(255,198,43,0.04); }
-
-/* Halloween overlay and cobweb corners */
-.halloween::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    pointer-events: none;
-    background-image:
-        radial-gradient(600px 180px at 10% 10%, rgba(255,140,0,0.02), transparent 15%),
-        radial-gradient(700px 200px at 90% 30%, rgba(255,140,0,0.02), transparent 18%);
-    mix-blend-mode: screen;
-    opacity: 0.85;
-    animation: fog-drift 40s linear infinite;
-}
-
-@keyframes fog-drift {
-    0% { transform: translateX(-3%); }
-    50% { transform: translateX(3%); }
-    100% { transform: translateX(-3%); }
-}
-
-    .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:22px; position:relative; overflow:visible; }
-    /* container used to center and style the expandable area */
-    /* Slightly wider container for expandables on larger screens */
-    .container { max-width: 1100px; width: calc(100% - 2rem); margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
-    @media (max-width: 1100px) { .container { max-width: 96%; padding: 1.3rem; } }
-/* Place cobwebs next to the title to avoid header overflow/scrollbars */
-.site-title { position: relative; display:inline-block; margin:0; font-size:3rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
-.site-title::before,
-.site-title::after {
-    content: '';
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    top: -8px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0;
-    transition: opacity 600ms ease, transform 600ms ease;
+            <!-- Security Training Manual expandable -->
     pointer-events: none;
 }
 .site-title::before {
@@ -918,148 +774,6 @@ body.flicker {
                     </div>
             </div>
             
-                    <!-- Tour Script expandable (new) -->
-                    <div class="expandable" id="tour-script">
-                        <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
-                            <strong>Tour Script</strong>
-                            <span class="caret">▾</span>
-                        </div>
-                        <div class="expandable-content">
-                            <br>
-                            <style>
-                                .instruction-blue { color: var(--accent-blue); font-weight:700; }
-                                .tour-line { margin: 0.35rem 0; }
-                            </style>
-
-                            <h5 class="tour-line"><span class="instruction-blue">Blue texts are instructions!</span>
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Blue texts are instructions!">
-                            </h5>
-
-                            <h5 class="tour-line">Reminders:
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Reminders:">
-                            </h5>
-                            <h5 class="tour-line" style="margin-left:0.6rem;color:var(--muted);">&gt; Tours should only be conducted by staff members from the Management Officers or higher.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> Tours should only be conducted by staff members from the Management Officers or higher.">
-                            </h5>
-                            <h5 class="tour-line" style="margin-left:0.6rem;color:var(--muted);">&gt; Trial Managers have the priority to conduct tours to members
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> Trial Managers have the priority to conduct tours to members">
-                            </h5>
-
-                            <br>
-                            <h5 class="tour-line instruction-blue">Say outloud:</h5>
-                            <h5 class="tour-line">: x, Hello! Welcome to NSC and great job finishing your training!
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy=": x, Hello! Welcome to NSC and great job finishing your training!">
-                            </h5>
-                            <h5 class="tour-line">I'll be your tour guide today.|</h5>
-                            <h5 class="tour-line">To keep the chat clear, I’ll send messages via whisper.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="I'll be your tour guide today. To keep the chat clear, I’ll send messages via whisper.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">Please switch to the BLUE colored chat for whisper and use it until the tour is complete.</h5>
-                            <h5 class="tour-line">Ready to get started?
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Ready to get started?">
-                            </h5>
-                            <h5 class="tour-line">Great! Stick with me as we go through the tour, and I’m happy to answer any questions you might have!
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Great! Stick with me as we go through the tour, and I’m happy to answer any questions you might have!">
-                            </h5>
-
-                            <br>
-                            <h5 class="tour-line instruction-blue">MANAGEMENT OFFICER STATION:</h5>
-                            <h5 class="tour-line">This is the Tour Desk — it's where NSC members come when they need a tour!
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Tour Desk — it's where NSC members come when they need a tour!">
-                            </h5>
-                            <h5 class="tour-line">You’ll be eligible to work at this desk once you reach the Management Officer.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You’ll be eligible to work at this desk once you reach the Management Officer.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">SECURITY STATION:</h5>
-                            <h5 class="tour-line">This is the Security Station, where members are checked to ensure they’re wearing the correct badge and motto.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Security Station, where members are checked to ensure they’re wearing the correct badge and motto.">
-                            </h5>
-                            <h5 class="tour-line">Members ranked Standard to Education Division are verified here before they’re allowed inside the base.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Members ranked Standard to Education Division are verified here before they’re allowed inside the base.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">MEETING ROOM DOOR: (CONFERENCE DOOR)</h5>
-                            <h5 class="tour-line">This teleporter to get to NSC’s Meeting Room for meetings.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This teleporter to get to NSC’s Meeting Room for meetings.">
-                            </h5>
-                            <h5 class="tour-line">We do general meetings for the announcement of units and promotions. General Meeting happens every Sunday at 9 PM PH Time.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="We do general meetings for the announcement of units and promotions. General Meeting happens every Sunday at 9 PM PH Time.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">TRAINING TELEPORTER: (NUMBER 221H DOOR)</h5>
-                            <h5 class="tour-line">This door leads you to Training Hallway. Members of Education Division and above can use this door.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This door leads you to Training Hallway. Members of Education Division and above can use this door.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">TRAINING STATION:</h5>
-                            <h5 class="tour-line">Welcome to the Training Station — this is where members go to receive their training.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to the Training Station — this is where members go to receive their training.">
-                            </h5>
-
-                            <h5 class="tour-line">Is everything clear so far? Any questions?
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Is everything clear so far? Any questions?">
-                            </h5>
-                            <h5 class="tour-line">- Wait for a member to answer. You can continue the tour if there is no question from a member.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Wait for a member to answer. You can continue the tour if there is no question from a member.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">PODIUM:</h5>
-                            <h5 class="tour-line">This is our Podium, Payers use this for Paytimes and uses RED colored chat and Foundation uses the YELLOW colored chat to make important announcements regarding NSC.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our Podium, Payers use this for Paytimes and uses RED colored chat and Foundation uses the YELLOW colored chat to make important announcements regarding NSC.">
-                            </h5>
-                            <h5 class="tour-line">Right in front of the podium, you’ll find our clock! The displayed time follows Philippine Time GMT+8. This makes it easy to see when paytimes are coming up.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Right in front of the podium, you’ll find our clock! The displayed time follows Philippine Time GMT+8. This makes it easy to see when paytimes are coming up.">
-                            </h5>
-
-                            <h5 class="tour-line">In front of the Podium is where the payline hosted. Make sure to line up for pay attendance if you are going to collect pay once the payer called “PAYLINE”.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="In front of the Podium is where the payline hosted. Make sure to line up for pay attendance if you are going to collect pay once the payer called “PAYLINE”.">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">DJ BOOTH:</h5>
-                            <h5 class="tour-line">This is the DJ Booth where you can enjoy live music from our DJs! You can dance while a DJ is on air|
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the DJ Booth where you can enjoy live music from our DJs! You can dance while a DJ is on air|"></h5>
-
-                            <h5 class="tour-line instruction-blue">FTB:</h5>
-                            <h5 class="tour-line">Welcome to the FTB – the chill zone where you can go AFK without worry! Use the arrow plate to stay safe from auto-kick. The arrow will lead you to Maharaja Plush Sofa and remember those are part of FTB|
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to the FTB – the chill zone where you can go AFK without worry! Use the arrow plate to stay safe from auto-kick. The arrow will lead you to Maharaja Plush Sofa and remember those are part of FTB|"></h5>
-
-                            <h5 class="tour-line instruction-blue">TRANSFER STATION:</h5>
-                            <h5 class="tour-line">This is the Transfer Station. We assist new members who want to transfer into NSC from other agencies, as well as returning NSC members.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Transfer Station. We assist new members who want to transfer into NSC from other agencies, as well as returning NSC members."></h5>
-                            <h5 class="tour-line">If members are asking about retrieving their badges due to inactivity, hacking, or a ban, you can direct them to the TU Station. And above the TU station are all different badges in our agency.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If members are asking about retrieving their badges due to inactivity, hacking, or a ban, you can direct them to the TU Station. And above the TU station are all different badges in our agency."></h5>
-
-                            <h5 class="tour-line instruction-blue">HELP DESK STATION:</h5>
-                            <h5 class="tour-line">This is our Help Desk, where you can get assistance with Habbo/HIA-related questions. Bullying is not tolerated under any circumstances in NSC. If you experience bullying, feel free to report it at the Help Desk. Make sure to collect screenshots before submitting your complaint.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our Help Desk, where you can get assistance with Habbo/HIA-related questions. Bullying is not tolerated under any circumstances in NSC. If you experience bullying, feel free to report it at the Help Desk. Make sure to collect screenshots before submitting your complaint."></h5>
-
-                            <h5 class="tour-line instruction-blue">CAFE:</h5>
-                            <h5 class="tour-line">This is our cafe – the spot to chill, chat, and play with fellow NSC members. The Events Unit will host games with cool prizes. Join in and make new friends!
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our cafe – the spot to chill, chat, and play with fellow NSC members. The Events Unit will host games with cool prizes. Join in and make new friends!">
-                            </h5>
-
-                            <h5 class="tour-line instruction-blue">VIP:</h5>
-                            <h5 class="tour-line">Above the cafe is the VIP area where you can chill with friends. You need a VIP badge to get in—it costs 40 credits from a rank seller.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Above the cafe is the VIP area where you can chill with friends. You need a VIP badge to get in—it costs 40 credits from a rank seller."></h5>
-
-                            <h5 class="tour-line instruction-blue">FTF:</h5>
-                            <h5 class="tour-line">Welcome to FTF, where you’ll be working! Put your training skills to use and stay sharp. If you need a break or to go AFK, you can always head over to FTB.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to FTF, where you’ll be working! Put your training skills to use and stay sharp. If you need a break or to go AFK, you can always head over to FTB."></h5>
-                            <h5 class="tour-line">Quick tips for filling FTF: Always check Badge & Motto. Say :in to let people in. If someone is bothering you, please put them on ‘ignore’.
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Quick tips for filling FTF: Always check Badge & Motto. Say :in to let people in. If someone is bothering you, please put them on ‘ignore’.">
-                            </h5>
-
-                            <h5 class="tour-line">Is there anything you want to ask before we close?
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Is there anything you want to ask before we close?"></h5>
-                            <h5 class="tour-line">Okay! Once again, a warm welcome to NSC. See you around the base! Don’t forget to log the tour on the Portal!
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Okay! Once again, a warm welcome to NSC. See you around the base! Don’t forget to log the tour on the Portal!">
-                            </h5>
-                            <br>
-                        </div>
-                    </div>
-
                     <!-- Security Training Manual expandable -->
                             <div class="expandable" id="security-manual">
                                 <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
@@ -1407,6 +1121,148 @@ body.flicker {
                     <h5>|Congratulations! You are now an official High-Rank Leader in the NSC <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Congratulations! You are now an official High-Rank Leader in the NSC"></h5>
                     <h5>See you around! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
             </div>
+
+                    <!-- Tour Script expandable (moved) -->
+                    <div class="expandable" id="tour-script">
+                        <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
+                            <strong>Tour Script</strong>
+                            <span class="caret">▾</span>
+                        </div>
+                        <div class="expandable-content">
+                            <br>
+                            <style>
+                                .instruction-blue { color: var(--accent-blue); font-weight:700; }
+                                .tour-line { margin: 0.35rem 0; }
+                            </style>
+
+                            <h5 class="tour-line"><span class="instruction-blue">Blue texts are instructions!</span>
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Blue texts are instructions!">
+                            </h5>
+
+                            <h5 class="tour-line">Reminders:
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Reminders:">
+                            </h5>
+                            <h5 class="tour-line" style="margin-left:0.6rem;color:var(--muted);">&gt; Tours should only be conducted by staff members from the Management Officers or higher.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> Tours should only be conducted by staff members from the Management Officers or higher.">
+                            </h5>
+                            <h5 class="tour-line" style="margin-left:0.6rem;color:var(--muted);">&gt; Trial Managers have the priority to conduct tours to members
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="> Trial Managers have the priority to conduct tours to members">
+                            </h5>
+
+                            <br>
+                            <h5 class="tour-line instruction-blue">Say outloud:</h5>
+                            <h5 class="tour-line">: x, Hello! Welcome to NSC and great job finishing your training!
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy=": x, Hello! Welcome to NSC and great job finishing your training!">
+                            </h5>
+                            <h5 class="tour-line">I'll be your tour guide today.|</h5>
+                            <h5 class="tour-line">To keep the chat clear, I’ll send messages via whisper.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="I'll be your tour guide today. To keep the chat clear, I’ll send messages via whisper.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">Please switch to the BLUE colored chat for whisper and use it until the tour is complete.</h5>
+                            <h5 class="tour-line">Ready to get started?
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Ready to get started?">
+                            </h5>
+                            <h5 class="tour-line">Great! Stick with me as we go through the tour, and I’m happy to answer any questions you might have!
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Great! Stick with me as we go through the tour, and I’m happy to answer any questions you might have!">
+                            </h5>
+
+                            <br>
+                            <h5 class="tour-line instruction-blue">MANAGEMENT OFFICER STATION:</h5>
+                            <h5 class="tour-line">This is the Tour Desk — it's where NSC members come when they need a tour!
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Tour Desk — it's where NSC members come when they need a tour!">
+                            </h5>
+                            <h5 class="tour-line">You’ll be eligible to work at this desk once you reach the Management Officer.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="You’ll be eligible to work at this desk once you reach the Management Officer.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">SECURITY STATION:</h5>
+                            <h5 class="tour-line">This is the Security Station, where members are checked to ensure they’re wearing the correct badge and motto.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Security Station, where members are checked to ensure they’re wearing the correct badge and motto.">
+                            </h5>
+                            <h5 class="tour-line">Members ranked Standard to Education Division are verified here before they’re allowed inside the base.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Members ranked Standard to Education Division are verified here before they’re allowed inside the base.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">MEETING ROOM DOOR: (CONFERENCE DOOR)</h5>
+                            <h5 class="tour-line">This teleporter to get to NSC’s Meeting Room for meetings.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This teleporter to get to NSC’s Meeting Room for meetings.">
+                            </h5>
+                            <h5 class="tour-line">We do general meetings for the announcement of units and promotions. General Meeting happens every Sunday at 9 PM PH Time.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="We do general meetings for the announcement of units and promotions. General Meeting happens every Sunday at 9 PM PH Time.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">TRAINING TELEPORTER: (NUMBER 221H DOOR)</h5>
+                            <h5 class="tour-line">This door leads you to Training Hallway. Members of Education Division and above can use this door.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This door leads you to Training Hallway. Members of Education Division and above can use this door.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">TRAINING STATION:</h5>
+                            <h5 class="tour-line">Welcome to the Training Station — this is where members go to receive their training.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to the Training Station — this is where members go to receive their training.">
+                            </h5>
+
+                            <h5 class="tour-line">Is everything clear so far? Any questions?
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Is everything clear so far? Any questions?">
+                            </h5>
+                            <h5 class="tour-line">- Wait for a member to answer. You can continue the tour if there is no question from a member.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Wait for a member to answer. You can continue the tour if there is no question from a member.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">PODIUM:</h5>
+                            <h5 class="tour-line">This is our Podium, Payers use this for Paytimes and uses RED colored chat and Foundation uses the YELLOW colored chat to make important announcements regarding NSC.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our Podium, Payers use this for Paytimes and uses RED colored chat and Foundation uses the YELLOW colored chat to make important announcements regarding NSC.">
+                            </h5>
+                            <h5 class="tour-line">Right in front of the podium, you’ll find our clock! The displayed time follows Philippine Time GMT+8. This makes it easy to see when paytimes are coming up.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Right in front of the podium, you’ll find our clock! The displayed time follows Philippine Time GMT+8. This makes it easy to see when paytimes are coming up.">
+                            </h5>
+
+                            <h5 class="tour-line">In front of the Podium is where the payline hosted. Make sure to line up for pay attendance if you are going to collect pay once the payer called “PAYLINE”.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="In front of the Podium is where the payline hosted. Make sure to line up for pay attendance if you are going to collect pay once the payer called “PAYLINE”.">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">DJ BOOTH:</h5>
+                            <h5 class="tour-line">This is the DJ Booth where you can enjoy live music from our DJs! You can dance while a DJ is on air|
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the DJ Booth where you can enjoy live music from our DJs! You can dance while a DJ is on air|"></h5>
+
+                            <h5 class="tour-line instruction-blue">FTB:</h5>
+                            <h5 class="tour-line">Welcome to the FTB – the chill zone where you can go AFK without worry! Use the arrow plate to stay safe from auto-kick. The arrow will lead you to Maharaja Plush Sofa and remember those are part of FTB|
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to the FTB – the chill zone where you can go AFK without worry! Use the arrow plate to stay safe from auto-kick. The arrow will lead you to Maharaja Plush Sofa and remember those are part of FTB|"></h5>
+
+                            <h5 class="tour-line instruction-blue">TRANSFER STATION:</h5>
+                            <h5 class="tour-line">This is the Transfer Station. We assist new members who want to transfer into NSC from other agencies, as well as returning NSC members.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is the Transfer Station. We assist new members who want to transfer into NSC from other agencies, as well as returning NSC members."></h5>
+                            <h5 class="tour-line">If members are asking about retrieving their badges due to inactivity, hacking, or a ban, you can direct them to the TU Station. And above the TU station are all different badges in our agency.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="If members are asking about retrieving their badges due to inactivity, hacking, or a ban, you can direct them to the TU Station. And above the TU station are all different badges in our agency."></h5>
+
+                            <h5 class="tour-line instruction-blue">HELP DESK STATION:</h5>
+                            <h5 class="tour-line">This is our Help Desk, where you can get assistance with Habbo/HIA-related questions. Bullying is not tolerated under any circumstances in NSC. If you experience bullying, feel free to report it at the Help Desk. Make sure to collect screenshots before submitting your complaint.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our Help Desk, where you can get assistance with Habbo/HIA-related questions. Bullying is not tolerated under any circumstances in NSC. If you experience bullying, feel free to report it at the Help Desk. Make sure to collect screenshots before submitting your complaint."></h5>
+
+                            <h5 class="tour-line instruction-blue">CAFE:</h5>
+                            <h5 class="tour-line">This is our cafe – the spot to chill, chat, and play with fellow NSC members. The Events Unit will host games with cool prizes. Join in and make new friends!
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="This is our cafe – the spot to chill, chat, and play with fellow NSC members. The Events Unit will host games with cool prizes. Join in and make new friends!">
+                            </h5>
+
+                            <h5 class="tour-line instruction-blue">VIP:</h5>
+                            <h5 class="tour-line">Above the cafe is the VIP area where you can chill with friends. You need a VIP badge to get in—it costs 40 credits from a rank seller.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Above the cafe is the VIP area where you can chill with friends. You need a VIP badge to get in—it costs 40 credits from a rank seller."></h5>
+
+                            <h5 class="tour-line instruction-blue">FTF:</h5>
+                            <h5 class="tour-line">Welcome to FTF, where you’ll be working! Put your training skills to use and stay sharp. If you need a break or to go AFK, you can always head over to FTB.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Welcome to FTF, where you’ll be working! Put your training skills to use and stay sharp. If you need a break or to go AFK, you can always head over to FTB."></h5>
+                            <h5 class="tour-line">Quick tips for filling FTF: Always check Badge & Motto. Say :in to let people in. If someone is bothering you, please put them on ‘ignore’.
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Quick tips for filling FTF: Always check Badge & Motto. Say :in to let people in. If someone is bothering you, please put them on ‘ignore’.">
+                            </h5>
+
+                            <h5 class="tour-line">Is there anything you want to ask before we close?
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Is there anything you want to ask before we close?"></h5>
+                            <h5 class="tour-line">Okay! Once again, a warm welcome to NSC. See you around the base! Don’t forget to log the tour on the Portal!
+                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon" data-copy="Okay! Once again, a warm welcome to NSC. See you around the base! Don’t forget to log the tour on the Portal!">
+                            </h5>
+                            <br>
+                        </div>
+                    </div>
 
         </div>
 
