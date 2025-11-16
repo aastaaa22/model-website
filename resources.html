@@ -41,7 +41,151 @@
             align-items: center;
             position: sticky;
             top: 0;
-            <!-- Security Training Manual expandable -->
+            z-index: 10;
+        }
+        nav .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            letter-spacing: 2px;
+            margin-right: 2rem;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing:0.4px;
+            transition: color 0.18s;
+            padding: 0.15rem 0.25rem;
+        }
+        nav ul li a:hover { color: var(--accent-sun); }
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 3rem 1rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.02) 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+        }
+        .hero .socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .hero .socials a {
+            color: var(--accent);
+            font-size: 2rem;
+            transition: color 0.2s;
+        }
+        .hero .socials a:hover {
+            color: #fff;
+        }
+        section {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: var(--panel);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.55);
+            backdrop-filter: blur(6px);
+        }
+        section h2 {
+            color: var(--accent-sun);
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        section p, section ul { color: var(--muted); font-size: 1.1rem; }
+        section ul {
+            padding-left: 1.2rem;
+        }
+        footer {
+            margin-top: auto;
+            background: #181b2a;
+            color: var(--muted);
+            text-align: center;
+            padding: 1.5rem 0 1rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 1.2rem 0.7rem; }
+            nav .logo { font-size: 1.2rem; }
+        }
+    /* header styles centralized in css/site.css */
+/* expandable division styles (copied from standard-rank-list) */
+.expandable { background: rgba(255,255,255,0.02); border-radius: 10px; margin-top: 1.25rem; overflow: hidden; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.03); }
+.expandable-header { padding: 0.9rem 1rem; cursor: pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.expandable-header strong { font-size: 1.05rem; color: var(--text); }
+.expandable-header .caret { transition: transform 0.25s ease; font-size:1.1rem; }
+.expandable-content { max-height: 0; overflow: hidden; transition: max-height 0.32s ease; padding: 0 1rem; }
+.expandable.open .expandable-header { background: rgba(0,0,0,0.06); }
+.expandable.open .caret { transform: rotate(180deg); }
+.expandable .muted { color: var(--muted); margin: 0.5rem 0 1rem 0; }
+.expandable-header .caret { color: var(--muted); }
+.expandable .rank-list { list-style: none; padding: 0 0 1rem 0; margin: 0; }
+.expandable .rank-list li { padding: 0.4rem 0; border-bottom: 1px dashed rgba(255,255,255,0.03); }
+.expandable-header strong { color: var(--accent-sun); font-weight:700; }
+.expandable-header .caret { color: var(--accent-blue); }
+.expandable.open { box-shadow: 0 8px 28px rgba(0,0,0,0.5); border-left: 4px solid var(--accent-red); padding-left: calc(1rem - 4px); }
+.expandable-header:hover { background: rgba(0,56,168,0.04); }
+.expandable-header:focus-within { background: rgba(255,198,43,0.04); }
+
+/* Halloween overlay and cobweb corners */
+.halloween::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    background-image:
+        radial-gradient(600px 180px at 10% 10%, rgba(255,140,0,0.02), transparent 15%),
+        radial-gradient(700px 200px at 90% 30%, rgba(255,140,0,0.02), transparent 18%);
+    mix-blend-mode: screen;
+    opacity: 0.85;
+    animation: fog-drift 40s linear infinite;
+}
+
+@keyframes fog-drift {
+    0% { transform: translateX(-3%); }
+    50% { transform: translateX(3%); }
+    100% { transform: translateX(-3%); }
+}
+
+    .site-header{ width:100%; background: linear-gradient(180deg, rgba(6,12,22,0.98), rgba(8,16,28,0.92)); padding:1rem 0.5rem; letter-spacing:2px; box-shadow:0 6px 30px rgba(0,0,0,0.65), inset 0 -2px 0 rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:center; gap:22px; position:relative; overflow:visible; }
+    /* container used to center and style the expandable area */
+    /* Slightly wider container for expandables on larger screens */
+    .container { max-width: 1100px; width: calc(100% - 2rem); margin: 2rem auto; background: var(--panel); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 12px 36px rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
+    @media (max-width: 1100px) { .container { max-width: 96%; padding: 1.3rem; } }
+/* Place cobwebs next to the title to avoid header overflow/scrollbars */
+.site-title { position: relative; display:inline-block; margin:0; font-size:3rem; color:var(--accent-sun); font-family:'Montserrat',Arial,sans-serif; font-weight:900; line-height:1; -webkit-text-stroke:2px rgba(7,16,41,0.95); text-shadow:0 4px 0 rgba(7,16,41,0.95), 0 10px 22px rgba(0,0,0,0.6); }
+.site-title::before,
+.site-title::after {
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    top: -8px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 600ms ease, transform 600ms ease;
     pointer-events: none;
 }
 .site-title::before {
@@ -774,116 +918,116 @@ body.flicker {
                     </div>
             </div>
             
-                    <!-- Security Training Manual expandable -->
-                            <div class="expandable" id="security-manual">
-                                <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
-                                    <strong>Security Training Manual</strong>
-                                    <span class="caret">▾</span>
-                                </div>
-                                <div class="expandable-content">
-                                    <h5>Congratulations on your promotion! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I am [your name] and will be your trainer today! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>During this training,you will learn how to operate the Security Station. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Please don’t walk around or talk during the training session. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>To prevent idling, you can wave by typing o/ in your chat box. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If at any point I’m running through this too quickly for you, please let me know. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>You will have the chance to ask any questions you have after each section. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I recommend you pay close attention and take notes since there will be a test at the end. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h6>[Are you ready to begin?]</h6>
-                                    <h6>[Wait for them to respond]</h6>
-                                    <br>
-                                    <h5>The Security Station is essential to prevent unauthorized people from entering base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>It also sends our members where they need to go, such as our training rooms or FTB. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>We have a security check on our website that will automatically check the members' motto for you,<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>and will tell you if the member is allowed into our base or not. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Please ALWAYS use this security search to prevent fired members from entering our base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Please open your browser and type in [name of the website] <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Let me know once you’re there.]</h6>
-                                    <h6>[Wait for them to respond]</h6>
-                                    <br>
-                                    <h5>When you type a username in the box, it will show you one of the following colours: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>GREEN - Allowed to enter our base if they have the correct badge and motto. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Use the command :base to let them in. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>YELLOW - CHECK FOR [NSC] Recruit This means the person doesn’t work at NSC. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>You can send them to training if their motto says [NSC] Recruit by using the command :training <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>YELLOW - USE HR GATE This means that the person is HR+ member and should enter by using the HR gate in the lobby. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>You can send them back to the lobby by saying the command :deny <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>RED - This means this member has either been removed due to inactivity or has been fired. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Do NOT let them into base, direct them to the TU desk. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>GRAY -This means this member has been placed on BOS/NP/DNH. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Let a HR+ member know so they can contact Room Rights. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>Now I’ll teach you how to use the security simulator. When a member appears on the rollers,<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
-                                    <h5>say the command :gate and kindly greet them. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Then use the security system by typing their username in the box. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>The easiest way to do this is to whisper the member and copy paste their username into the security search. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If our security system is ever down, ask the member to whisper you 3 NSC rules instead. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If a member is not wearing the correct badge or has the wrong motto, <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>ask them to change it before letting them into base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If they are wearing a Special Visitors badge, you can send them to the lobby<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
-                                    <h5>and tell them to enter through the gate. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>A short recap about the following commands: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>:base (sends them to base) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>:training (sends them to training) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>:deny (sends back to lobby) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h6>[Do you have any questions for me?]</h6>
-                                    <h6>[Answer any questions they have]</h6>
-                                    <br>
-                                    <h5>Alright! Now it's time for the test. Are you ready to begin? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Wait for them to respond]</h6>
-                                    <br>
-                                    <h5>I’m wearing the Agent ID badge and my motto says [NSC] Recruit. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I’m wearing the correct badge, but my motto is incorrect. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I’m wearing everything correctly. Upon typing my name into the system, it goes GREEN. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>When typing my name in the security search it goes GRAY. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I'm wearing everything correctly but when typing my name in the security search it goes RED. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>I’m wearing everything correctly with the 'High Rank' Badge. When typing my name in the system, it goes YELLOW. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Note: Don't fail the trainee unless they are trolling.]</h6>
-                                    <br>
-                                    <h6>[Do you have any questions for me?]</h6>
-                                    <h6>[Answer any questions that they might have]</h6>
-                                    <br>
-                                    <h5>Congratulations! You have passed the training! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If you ever feel unsure about Security, you can always look up the guide at [name website] <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If you’re playing on mobile, we highly recommend you to FTF instead, <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>switching to PC is a better alternative if you wish to use FTS. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <br>
-                                    <h5>Alright, let’s set up your portal <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Please go to nsc.habboportal|xyz <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Change the | into . <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Let me know if you are there. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Great! Click Sign Up and kindly fill up the blank box <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Then sync the code given into your habbo motto <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Remember it should not have any other spaces, just the code only. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Let me know once you have signed up. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Tagged the Portal admin in #request channel for activation]</h6>
-                                    <h5>Alright! Let me contact a Portal admin to activate your portal. Kindly wait for the activation.</h5>
-                                    <h6>[Once activated]</h6>
-                                    <h5>Please check and refresh your portal, it is activated. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Please find the Training on the left side. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Then click on it and you will see the training management <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Kindly click the “+add training” on the upper right side and You will see the “New training session” <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>On the trainee name, put the recruit’s name <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Type of training should be “STANDARD” <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Then select the status that is appropriate for the recruit. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Do you have any questions so far?]</h6>
-                                    <h6>[Answer any questions that they might have]</h6>
-                                    <br>
-                                    <h5>Lastly, now let’s talk about LOA (Leave Of Absence) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Security+ members can't be inactive for 14+ days. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>If you do go inactive for 14+, your badges will be removed.<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
-                                    <h5>If you need to be away for longer, you should apply for LOA at the Help Desk. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h5>Do you have any final questions for me?<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
-                                    <h6>[Answer any questions that they might have]</h6>
-                                    <br>
-                                    <h5>You can go BTB by using the teleport next to you! Thank You!| <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+            <!-- Security Training Manual expandable -->
+            <div class="expandable" id="security-manual">
+                <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
+                    <strong>Security Training Manual</strong>
+                    <span class="caret">▾</span>
+                </div>
+                <div class="expandable-content">
+                    <h5>Congratulations on your promotion! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I am [your name] and will be your trainer today! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>During this training,you will learn how to operate the Security Station. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Please don’t walk around or talk during the training session. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>To prevent idling, you can wave by typing o/ in your chat box. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If at any point I’m running through this too quickly for you, please let me know. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>You will have the chance to ask any questions you have after each section. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I recommend you pay close attention and take notes since there will be a test at the end. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h6>[Are you ready to begin?]</h6>
+                    <h6>[Wait for them to respond]</h6>
+                    <br>
+                    <h5>The Security Station is essential to prevent unauthorized people from entering base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>It also sends our members where they need to go, such as our training rooms or FTB. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>We have a security check on our website that will automatically check the members' motto for you,<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>and will tell you if the member is allowed into our base or not. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Please ALWAYS use this security search to prevent fired members from entering our base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Please open your browser and type in [name of the website] <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Let me know once you’re there.]</h6>
+                    <h6>[Wait for them to respond]</h6>
+                    <br>
+                    <h5>When you type a username in the box, it will show you one of the following colours: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>GREEN - Allowed to enter our base if they have the correct badge and motto. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Use the command :base to let them in. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>YELLOW - CHECK FOR [NSC] Recruit This means the person doesn’t work at NSC. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>You can send them to training if their motto says [NSC] Recruit by using the command :training <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>YELLOW - USE HR GATE This means that the person is HR+ member and should enter by using the HR gate in the lobby. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>You can send them back to the lobby by saying the command :deny <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>RED - This means this member has either been removed due to inactivity or has been fired. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Do NOT let them into base, direct them to the TU desk. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>GRAY -This means this member has been placed on BOS/NP/DNH. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Let a HR+ member know so they can contact Room Rights. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>Now I’ll teach you how to use the security simulator. When a member appears on the rollers,<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
+                    <h5>say the command :gate and kindly greet them. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Then use the security system by typing their username in the box. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>The easiest way to do this is to whisper the member and copy paste their username into the security search. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If our security system is ever down, ask the member to whisper you 3 NSC rules instead. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If a member is not wearing the correct badge or has the wrong motto, <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>ask them to change it before letting them into base. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If they are wearing a Special Visitors badge, you can send them to the lobby<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
+                    <h5>and tell them to enter through the gate. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>A short recap about the following commands: <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>:base (sends them to base) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>:training (sends them to training) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>:deny (sends back to lobby) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h6>[Do you have any questions for me?]</h6>
+                    <h6>[Answer any questions they have]</h6>
+                    <br>
+                    <h5>Alright! Now it's time for the test. Are you ready to begin? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Wait for them to respond]</h6>
+                    <br>
+                    <h5>I’m wearing the Agent ID badge and my motto says [NSC] Recruit. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I’m wearing the correct badge, but my motto is incorrect. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I’m wearing everything correctly. Upon typing my name into the system, it goes GREEN. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>When typing my name in the security search it goes GRAY. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I'm wearing everything correctly but when typing my name in the security search it goes RED. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>I’m wearing everything correctly with the 'High Rank' Badge. When typing my name in the system, it goes YELLOW. What do you do? <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Note: Don't fail the trainee unless they are trolling.]</h6>
+                    <br>
+                    <h6>[Do you have any questions for me?]</h6>
+                    <h6>[Answer any questions that they might have]</h6>
+                    <br>
+                    <h5>Congratulations! You have passed the training! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If you ever feel unsure about Security, you can always look up the guide at [name website] <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If you’re playing on mobile, we highly recommend you to FTF instead, <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>switching to PC is a better alternative if you wish to use FTS. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <br>
+                    <h5>Alright, let’s set up your portal <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Please go to nsc.habboportal|xyz <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Change the | into . <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Let me know if you are there. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Great! Click Sign Up and kindly fill up the blank box <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Then sync the code given into your habbo motto <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Remember it should not have any other spaces, just the code only. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Let me know once you have signed up. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Tagged the Portal admin in #request channel for activation]</h6>
+                    <h5>Alright! Let me contact a Portal admin to activate your portal. Kindly wait for the activation.</h5>
+                    <h6>[Once activated]</h6>
+                    <h5>Please check and refresh your portal, it is activated. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Please find the Training on the left side. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Then click on it and you will see the training management <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Kindly click the “+add training” on the upper right side and You will see the “New training session” <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>On the trainee name, put the recruit’s name <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Type of training should be “STANDARD” <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Then select the status that is appropriate for the recruit. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Do you have any questions so far?]</h6>
+                    <h6>[Answer any questions that they might have]</h6>
+                    <br>
+                    <h5>Lastly, now let’s talk about LOA (Leave Of Absence) <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Security+ members can't be inactive for 14+ days. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>If you do go inactive for 14+, your badges will be removed.<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5> 
+                    <h5>If you need to be away for longer, you should apply for LOA at the Help Desk. <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h5>Do you have any final questions for me?<img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
+                    <h6>[Answer any questions that they might have]</h6>
+                    <br>
+                    <h5>You can go BTB by using the teleport next to you! Thank You!| <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
                                     <br>
                                 </div>
                             </div>
@@ -1122,7 +1266,8 @@ body.flicker {
                     <h5>See you around! <img src="https://cdn-icons-png.flaticon.com/512/1828/1828145.png" alt="Copy" class="copy-icon"></h5>
             </div>
 
-                    <!-- Tour Script expandable (moved) -->
+        </div>
+<!-- Tour Script expandable (new) -->
                     <div class="expandable" id="tour-script">
                         <div class="expandable-header" role="button" aria-expanded="false" tabindex="0">
                             <strong>Tour Script</strong>
@@ -1263,8 +1408,6 @@ body.flicker {
                             <br>
                         </div>
                     </div>
-
-        </div>
 
         <script>
             (function(){
